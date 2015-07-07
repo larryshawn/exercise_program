@@ -1,0 +1,210 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.center {
+  text-align: center;
+}
+
+/* Nav Header */
+#nav-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 47px;
+  background-color: rgba(0, 0, 0, .5);
+  z-index: 900;
+}
+
+#nav-header > span {
+  font-family: helvetica;
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+  margin: 14px 10px;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+}
+
+#nav-header a, a:visited {
+  color: white;
+  text-decoration: none;
+}
+
+#nav-header a.active {
+  font-weight: bold;
+}
+    
+
+/* Visited links under #nav-header */
+#nav-header a, a:visited {
+  text-decoration: none;
+}
+
+#subtitle {
+    margin-top: 0;
+}
+
+#hero {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+#main-container {
+  width: 100%;
+  background-color: goldenrod;
+  padding-bottom: 20px;
+}
+
+#food-container {
+  width: 100%;
+  background-color: yellowgreen;
+  padding-bottom: 20px;
+}
+
+#alternate-container {
+  width: 100%;
+  background-color: #000;
+  color: #ebebeb;
+  padding-bottom: 20px;
+}
+
+#preferences-container {
+  width: 100%;
+  background-color: #000;
+  color: #ebebeb;
+  padding-bottom: 20px;
+  /*display: none;*/
+}
+
+/* Hero poster */
+#hero {
+  background-image: url(../images/strawberry.jpg);
+  height: 188px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 0 auto;
+}
+
+#logo-image {
+  width: 100%;
+  max-width: 600px;
+}
+
+#headline-text {
+  font-size: 30px;
+  padding: 25px;
+}
+
+#narrative-text {
+  font-size: 24px;
+  font-weight: lighter;
+  padding: 25px;
+}
+
+#testimony {
+  font-size: 18px;
+  color: #aaaaaa;
+  margin: 20px 0;
+}
+
+#customer-container {
+  background-color: white;
+  width: 100%;
+}
+
+.customers img {
+  padding: 25px 0;
+  max-width: 100px;
+}
+
+.row-spacer {
+  margin-top: 25px;
+}
+
+#footer {
+  background-color: white;
+  font-size: 18px;
+  font-weight: lighter;
+  color: #666;
+  width: 100%;
+  padding: 20px;
+}
+
+#footer a {
+  color: #666;
+  margin-left: 15px;
+}
+
+#tagline1 {
+  font-size: 3em;
+}
+
+#tagline2 {
+  font-size: 2em;
+  position: relative;
+  bottom: 2px;
+}
+
+#tagline3 {
+  font-size: 2em;
+  position: relative;
+  bottom: 2px;
+  font-style: oblique;
+}
+
+#tagline3 span {
+  color: orange;
+}
+
+.row-spacer {
+  margin-bottom: 25px;
+}
+
+.thumb {
+  border: solid 3px #ebebeb;
+}
+
+input {
+  color: #000000;
+}
+
+#main-container .thumb {
+  float: left;
+}
+
+.description {
+  text-align: left;
+  margin-left: 20px;
+  position: relative;
+  left: 20px;
+  padding-right: 20px;
+}
+
+.description a {
+  /*color: white;*/
+}
+
+.description ul {
+  position: relative;
+  left: 16px;
+}
+
+.card {
+  border: 1px solid lightgray;
+  padding: 16px;
+  background-color: whitesmoke;
+  color: #333;
+  width: 45%;
+  margin: 2%;
+  display: inline-table;
+}
+
+#beginnerIncreaseWorkout, #beginnerDecreaseWorkout, #intermediateIncreaseWorkout, #intermediateDecreaseWorkout, #advancedIncreaseWorkout, #advancedDecreaseWorkout, #monolog {
+  display: none;
+}
+
+video {
+  margin: 0 auto;
+}

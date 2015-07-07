@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Required to properly zoom the viewport on mobile. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Health Schedule As Whole Foods Fitness</title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+    <script type="text/javascript" src="js/scripts.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+<!-- header -->
+    <div id="nav-header">
+        <span></span>
+        <span>Whole Foods Fitness</span>
+        <span></span>
+    </div>
+<!-- hero image -->
+    <div id="hero"></div>
+    <div id="preferences-container" class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Preferences</h2>
+            </div>
+        </div>
+        <form name="myForm" action="" onsubmit="getFormValues()" method="post">
+        <div class="form-group">
+            <label>Days on this schedule</label><br>
+            <input type="text" name="days" id="amountOfDays" autofocus class="form-control">
+        </div>
+        <div class="form-group">
+                    <label>Your goal</label><br>
+                    <select id="goal" class="form-control">
+                        <option value="increase">Increase weight</option>
+                        <option value="decrease">Decrease weight</option>
+                    </select>
+        </div>
+        <label>Alert Type</label>
+        <div class="radio ">
+            <label>
+                <input type="radio" name="alertTypeRadios" id="wantsAudio" value="audio" checked>
+                Audio
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="alertTypeRadios" id="wantsVideo" value="video">
+                Video
+            </label>
+        </div>
+        <div class="radio">
+            <label>
+                <input type="radio" name="alertTypeRadios" id="wantsBoth" value="both">
+                Both
+            </label>
+        </div>
+        <button type="button" class="btn btn-primary row-spacer" onclick="getFormValues()">Save Preferences</button>
+        </form>
+    </div>
+    <div id="main-container" class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Alerts</h2>
+            </div>
+        </div>
+        <div class="row center" id="monolog">
+            <div class="col-sm-12 row-spacer">
+                <div class="center"></div>
+                <!-- 
+                    alternate audio link: http://www.freesfx.co.uk/rx2/mp3s/6/7299_1343917537.mp3
+                    monitor screen tapping audio: http://www.freesfx.co.uk/rx2/mp3s/2/2729_1329133415.mp3
+                 -->
+                <audio src="http://www.freesfx.co.uk/rx2/mp3s/7/8243_1352125365.mp3" style="display:none;" controls></audio>
+                <video src="images/bird.mp4" controls id="videoAlert" style="display:none;"></video>
+            </div>
+        </div>
+    </div>
+    <div id="alternate-container" class="container">
+        <div class="row col-xs-12">
+            <h2>Workout Overview</h2>
+            <div id="beginnerIncreaseWorkout" class="col-xs-12">
+                <h3>Muscle mass building workout for beginners</h3>
+                <h4>Workout</h4>
+                <div>
+                    Monday - Do this<br>
+                    Tuesday - Do this<br>
+                    Wednesday - Do this<br>
+                    Thursday - Do this<br>
+                    Friday - Do this
+                </div>
+                <h4>Meals</h4>
+                <div>
+                    Breakfast 1 (Immediately Upon Waking) - eat this<br>
+                    Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this<br>
+                    Late Morning Snack - eat this<br>
+                    Lunch - eat this<br>
+                    Afternoon Snack - eat this<br>
+                    Pre-Workout (Within 30 Minutes Before Workouts) - eat this<br>
+                    Post-Workout (Within 30 Minutes After Workouts) - eat this<br>
+                    Dinner - eat this<br>
+                    Before Bed Snack - eat this
+                </div>
+
+            </div>
+            <div id="beginnerDecreaseWorkout" class="col-xs-12">
+                <h2>Get lean workout for beginners</h2>
+                <h4>Workout</h4>
+                <div>
+                    Monday - Do this<br>
+                    Tuesday - Do this<br>
+                    Wednesday - Do this<br>
+                    Thursday - Do this<br>
+                    Friday - Do this
+                </div>
+                <h4>Meals</h4>
+                <div>
+                    Breakfast 1 (Immediately Upon Waking) - eat this<br>
+                    Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this<br>
+                    Late Morning Snack - eat this<br>
+                    Lunch - eat this<br>
+                    Afternoon Snack - eat this<br>
+                    Pre-Workout (Within 30 Minutes Before Workouts) - eat this<br>
+                    Post-Workout (Within 30 Minutes After Workouts) - eat this<br>
+                    Dinner - eat this<br>
+                    Before Bed Snack - eat this
+                </div>
+            </div>
+            <div id="intermediateIncreaseWorkout" class="col-xs-12">
+                <h2>Muscle mass building workout for intermediate</h2>
+                <h4>Workout</h4>
+                <div>
+                    Monday - Do this<br>
+                    Tuesday - Do this<br>
+                    Wednesday - Do this<br>
+                    Thursday - Do this<br>
+                    Friday - Do this
+                </div>
+                <h4>Meals</h4>
+                <div>
+                    Breakfast 1 (Immediately Upon Waking) - eat this<br>
+                    Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this<br>
+                    Late Morning Snack - eat this<br>
+                    Lunch - eat this<br>
+                    Afternoon Snack - eat this<br>
+                    Pre-Workout (Within 30 Minutes Before Workouts) - eat this<br>
+                    Post-Workout (Within 30 Minutes After Workouts) - eat this<br>
+                    Dinner - eat this<br>
+                    Before Bed Snack - eat this
+                </div>
+            </div>
+            <div id="intermediateDecreaseWorkout" class="col-xs-12">
+                <h2>Get lean workout for intermediate</h2>
+                <h4>Workout</h4>
+                <div>
+                    Monday - Do this<br>
+                    Tuesday - Do this<br>
+                    Wednesday - Do this<br>
+                    Thursday - Do this<br>
+                    Friday - Do this
+                </div>
+                <h4>Meals</h4>
+                <div>
+                    Breakfast 1 (Immediately Upon Waking) - eat this<br>
+                    Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this<br>
+                    Late Morning Snack - eat this<br>
+                    Lunch - eat this<br>
+                    Afternoon Snack - eat this<br>
+                    Pre-Workout (Within 30 Minutes Before Workouts) - eat this<br>
+                    Post-Workout (Within 30 Minutes After Workouts) - eat this<br>
+                    Dinner - eat this<br>
+                    Before Bed Snack - eat this
+                </div>
+            </div>
+            <div id="advancedIncreaseWorkout" class="col-xs-12">
+                <h2>Muscle mass building workout for advanced</h2>
+                <h4>Workout</h4>
+                <div>
+                    Monday - Do this<br>
+                    Tuesday - Do this<br>
+                    Wednesday - Do this<br>
+                    Thursday - Do this<br>
+                    Friday - Do this
+                </div>
+                <h4>Meals</h4>
+                <div>
+                    Breakfast 1 (Immediately Upon Waking) - eat this<br>
+                    Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this<br>
+                    Late Morning Snack - eat this<br>
+                    Lunch - eat this<br>
+                    Afternoon Snack - eat this<br>
+                    Pre-Workout (Within 30 Minutes Before Workouts) - eat this<br>
+                    Post-Workout (Within 30 Minutes After Workouts) - eat this<br>
+                    Dinner - eat this<br>
+                    Before Bed Snack - eat this
+                </div>
+            </div>
+            <div id="advancedDecreaseWorkout" class="col-xs-12">
+                <h2>Get lean workout for advanced</h2>
+                <h4>Workout</h4>
+                <div>
+                    Monday - Do this<br>
+                    Tuesday - Do this<br>
+                    Wednesday - Do this<br>
+                    Thursday - Do this<br>
+                    Friday - Do this
+                </div>
+                <h4>Meals</h4>
+                <div>
+                    Breakfast 1 (Immediately Upon Waking) - eat this
+                    Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this
+                    Late Morning Snack - eat this
+                    Lunch - eat this
+                    Afternoon Snack - eat this
+                    Pre-Workout (Within 30 Minutes Before Workouts) - eat this
+                    Post-Workout (Within 30 Minutes After Workouts) - eat this
+                    Dinner - eat this
+                    Before Bed Snack - eat this
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="food-container" class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h2>Food Information</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6 card row-spacer">
+                <strong>Brussels sprouts:</strong> 1 cup, 65 cal, 6 gm, low in leucine, lysine, methionine + cystine, phenylalanine + tyrosine<br>
+                <strong>Spinach:</strong> 1 cup chopped, 65 cal, 6 gm, low in methionine + cystine<br>
+                <strong>Broccoli:</strong> 1 cup spears, 52 cal, 6 gm, low in methionine + cystine<br>
+                <strong>Potato:</strong> 1 med with skin, 161 cal, 4 gm, all aa in proper ratio<br>
+                <strong>Asparagus:</strong> ½ cup, 20 cal, 2 gm, all aa in proper ratio<br>
+                <strong>Apricots:</strong> dried ½ cup, 190 cal, 3 gm, low in methionine + cystine<br>
+                <strong>Peaches:</strong>  dried ½ cup, 185 cal, 3 gm, low in tryptophan and lysine
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+        <div class="row">
+            <h4>Resources</h4>
+            <div>
+                <a href="http://www.bodybuilding.com/fun/no-meat-muscle-4-rules-for-building-mass-on-vegetarian-diet.html">No Meat Muscle</a>
+                <a href="http://rawforbeauty.com/blog/my-experience-10-months-100-raw-vegan-diet-muscle-building.html">Raw Vegan Diet</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
