@@ -196,7 +196,7 @@ input {
   padding: 16px;
   background-color: whitesmoke;
   color: #333;
-  width: 45%;
+  width: 96%;
   margin: 2%;
   display: inline-table;
 }
@@ -207,4 +207,5 @@ input {
 
 video {
   margin: 0 auto;
+  width: 100%;
 }
