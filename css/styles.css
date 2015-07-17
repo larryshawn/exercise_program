@@ -80,7 +80,7 @@ body {
 
 /* Hero poster */
 #hero {
-  background-image: url(../images/strawberry.jpg);
+  background-image: url(../images/mango.jpg);
   height: 188px;
   background-repeat: no-repeat;
   background-size: cover;
@@ -201,11 +201,116 @@ input {
   display: inline-table;
 }
 
-#beginnerIncreaseWorkout, #beginnerDecreaseWorkout, #intermediateIncreaseWorkout, #intermediateDecreaseWorkout, #advancedIncreaseWorkout, #advancedDecreaseWorkout, #monolog {
+#beginnerIncreaseWorkout, #beginnerDecreaseWorkout, #intermediateIncreaseWorkout, #intermediateDecreaseWorkout, #advancedIncreaseWorkout, #advancedDecreaseWorkout, #monolog, #btnAddToMenu {
   display: none;
 }
 
 video {
   margin: 0 auto;
+  width: 100%;
+}
+
+#workoutOverviewForStats {
+  padding-left: 15px
+}
+#today {
+  padding-left: 15px
+}
+/* style search area */
+#goSearchSubmit {
+    display: inline-block;
+    width: 32px;
+    height: 33px;
+    text-indent: -9999px;
+    position: relative;
+    top: -34px;
+    float: right;
+    border: 0px none;
+}
+#goSearchSubmit:active {
+  top: -33px;
+}
+#searchResults {
+  display: block;
+  padding: 50px 20px 10px 20px;
+}
+/* setting search results */
+.item {
+  font-weight: bold;
+  display: inline;
+  left: 4px;
+  top: 2px;
+  position: relative;
+}
+.calories {
+  border: 1px solid darkblue;
+  display: block;
+  padding: 10px;
+  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
+  color: white;
+  border-radius: 9px;
+  position: relative;
+  top: 12px;
+  text-align: center;
+}
+.protein {
+  border: 1px solid darkblue;
+  display: block;
+  padding: 10px;
+  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
+  color: white;
+  border-radius: 9px;
+  position: relative;
+  top: 12px;
+  text-align: center;
+}
+.carbs {
+  border: 1px solid darkblue;
+  display: block;
+  padding: 10px;
+  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
+  color: white;
+  border-radius: 9px;
+  position: relative;
+  top: 12px;
+  text-align: center;
+}
+.servingSize {
+  border: 1px solid darkblue;
+  display: block;
+  padding: 10px;
+  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
+  color: white;
+  border-radius: 9px;
+  position: relative;
+  top: 12px;
+  text-align: center;
+}
+.servingSizeUnit {
+  border: 1px solid darkblue;
+  display: block;
+  padding: 10px;
+  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
+  color: white;
+  border-radius: 9px;
+  position: relative;
+  top: 12px;
+  text-align: center;
+}
+.fat {
+  border: 1px solid darkblue;
+  display: block;
+  padding: 10px;
+  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
+  color: white;
+  border-radius: 9px;
+  position: relative;
+  top: 12px;
+  text-align: center;
+}
+.resultContainer > label {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid darkgray;
   width: 100%;
 }
