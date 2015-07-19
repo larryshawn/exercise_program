@@ -8,6 +8,8 @@
 - Allow user to choose their own menu items to meet the dietary quota set by the program
 - Display dynamic running totals of key nutrition facts ie. Calories, Fat, Protein and Carbs.
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
-  
+'''
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js">
+'''
+
 ## V1
