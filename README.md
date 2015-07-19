@@ -8,12 +8,3 @@
 - Allow user to choose their own menu items to meet the dietary quota set by the program
 - Display dynamic running totals of key nutrition facts ie. Calories, Fat, Protein and Carbs.
 
-Check out this neat program I wrote:
-
-
-    x = 0
-    x = 2 + 2
-    what is x
-
-
-
