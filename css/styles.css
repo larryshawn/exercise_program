@@ -27,13 +27,26 @@ body {
   display: inline-block;
 }
 
-#nav-header a, a:visited {
-  color: white;
+a, a:visited {
+  color: #337AB7;
   text-decoration: none;
 }
 
-#nav-header a.active {
+a.active {
   font-weight: bold;
+}
+
+a.hover {
+  text-decoration: none;
+  border-bottom: 1px solid #337AB7;
+}
+
+#logo {
+  float: left;
+}
+
+#settingsIcon {
+  float: right;
 }
     
 
@@ -63,28 +76,86 @@ body {
   padding-bottom: 20px;
 }
 
-#alternate-container {
+#overview-container {
   width: 100%;
-  background-color: #000;
-  color: #ebebeb;
+  background-color: #FFF;
+  color: #333;
   padding-bottom: 20px;
+}
+
+#overviewTitle h2 {
+  font-size: 25px;
+  font-weight: bold;
+  border-bottom: 6px solid #009900;
+  display: inline;
+}
+
+#overviewTitle h3 {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#today h3 {
+  font-size: 16px;
+  font-weight: normal;
 }
 
 #preferences-container {
   width: 100%;
-  background-color: #000;
+  background-color: rgba(0,0,0,.8);
   color: #ebebeb;
   padding-bottom: 20px;
-  /*display: none;*/
+  display: block;
+  margin-top: 28px;
+  transform: translateY(-560px);
+  transition: transform 750ms;
+}
+
+.glyphicon-cog {
+  float: right;
+}
+
+.close-btn {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 /* Hero poster */
+.img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}
+
+
+// Usage
+.jumbotron {
+  .img-retina("../images/mango.jpg-1x.png", "../images/mango.jpg-2x.png", 100px, 100px);
+}
+
 #hero {
   background-image: url(../images/mango.jpg);
   height: 188px;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
+}
+
+#heroText {
+  text-align: center;
 }
 
 #logo-image {
@@ -191,15 +262,7 @@ input {
   left: 16px;
 }
 
-.card {
-  border: 1px solid lightgray;
-  padding: 16px;
-  background-color: whitesmoke;
-  color: #333;
-  width: 96%;
-  margin: 2%;
-  display: inline-table;
-}
+
 
 #beginnerIncreaseWorkout, #beginnerDecreaseWorkout, #intermediateIncreaseWorkout, #intermediateDecreaseWorkout, #advancedIncreaseWorkout, #advancedDecreaseWorkout, #monolog, #btnAddToMenu {
   display: none;
@@ -214,7 +277,8 @@ video {
   padding-left: 15px
 }
 #today {
-  padding-left: 15px
+  padding-left: 15px;
+  display: inline-flex;
 }
 /* style search area */
 #goSearchSubmit {
@@ -234,83 +298,59 @@ video {
   display: block;
   padding: 50px 20px 10px 20px;
 }
-/* setting search results */
-.item {
-  font-weight: bold;
-  display: inline;
-  left: 4px;
-  top: 2px;
-  position: relative;
+
+.navbar-default .navbar-toggle {
+  background-color: #fed136;
+  border-color: #fed136;
 }
-.calories {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
+
+/* Displaying the workout schedule */
+
+.daysOfWeekCardContainer {
+  height: 115px;
+  background-color: #ebebeb;
+}
+
+.daysOfWeekCard {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding-bottom: 10px;
+  background-color: white;
   color: white;
-  border-radius: 9px;
+  border-radius: 4px;
   position: relative;
   top: 12px;
   text-align: center;
+  margin: 4px;
+  height: 84px;
 }
-.protein {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
+
+.daysOfWeek {
+  background-color: black;
 }
-.carbs {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
+
+.exercises {
+  color: #333;
+  padding: 10px 10px 0px 10px;
 }
-.servingSize {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
+
+/* Horizontal scroll gallery */
+.gallery {
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 25px;
 }
-.servingSizeUnit {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
+
+/* I want to have neighboring images peek through.
+   All <img> elements underneath .gallery
+   are shrunk to 90% width. */
+.calendarCards > div {
+  /*width: 90%;*/
 }
-.fat {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
+
+/* Hide the scrollbars in the calendar. Only works in webkit browsers */
+.gallery::-webkit-scrollbar { 
+  display: none; 
 }
-.resultContainer > label {
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid darkgray;
-  width: 100%;
-}
+

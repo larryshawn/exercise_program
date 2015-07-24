@@ -1,0 +1,64 @@
+body {
+  background-color: black;
+}
+
+#cards-container {
+  text-align: center;
+}
+
+/*.card {
+  display: inline-block;
+  text-align: left;
+  width: 320px;
+  height: 360px;
+  background-size: 320px 180px;
+  background-repeat: no-repeat;
+  border: 1px solid #141414;
+  border-radius: 10px;
+  margin: 25px auto;
+  font-family: sans-serif;
+  font-weight: lighter;
+  font-size: 13px;
+}*/
+
+.card {
+  border: 1px solid lightgray;
+  padding: 16px;
+  background-color: whitesmoke;
+  color: #333;
+  width: 96%;
+  margin: 2%;
+  display: inline-table;
+}
+
+/* setting search results */
+.item {
+  font-weight: bold;
+  display: inline;
+  left: 4px;
+  top: 2px;
+  position: relative;
+}
+#nutritionInfo {
+  text-align: center;
+}
+.calories, .protein, .carbs, .fat {
+  border: 1px solid darkgray;
+  display: inline-block;
+  padding: 10px;
+  background-image: linear-gradient(rgb(64, 64, 65), rgb(138, 138, 139));
+  color: white;
+  border-radius: 9px;
+  position: relative;
+  top: 12px;
+  text-align: center;
+  margin: 4px;
+}
+
+.resultContainer > label {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid darkgray;
+  width: 100%;
+  background-color: white;
+}

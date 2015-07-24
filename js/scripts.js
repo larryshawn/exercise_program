@@ -1,8 +1,41 @@
 // Create a program to keep track of my schedule. When and what I eat. When and what to do that which is physical throughout the day.
 
+// Here are some functions that need to start right away...
+function handleClickEvents() {
+  // If the settings icon gets clicked, slide the mask curtain down.
+  $('.glyphicon-cog').click(function(e) {
+    // the e.target is the event target. It means, "whichever DOM element was clicked referring to #settingsIcon"
+    var mask = $(e.target).parent().children('#preferences-container');
+    // var mask = $(e.target).children('.mask');
+    // transform has a bunch of methods like 
+    // translate(x-axis-in px) y-axis-in-px); - moves it around 
+    // rotate(90deg) - rotates clockwise and counter clockwise
+    // scale(0.1,14) - everything under 1 goes smaller
+    // skewX(139deg) - top and bottom slant
+    // skewY(-20deg) - sides slant
+    // skew(25deg,186deg) - skews on x and y axis unless you only put one value in. In that case it functions just like a skewX()
+    // matrix(scalex, rotate, scaley, translatex, translatey) - all at once
+    mask.css('transform', 'translateY(-42px)');
+    $("#amountOfDays").focus();
+  })
+
+  // If any close button gets clicked, slide the mask curtain up.
+  $('.close-btn').click(function(e) {
+    var mask = $("#preferences-container");
+    mask.css('transform', 'translateY(-560px)');
+  });
+}
+
+
+
+// function toggleSettings() {
+//       // $("#preferences-container").toggle("fast");
+//       $("#preferences-container").css("fast");
+// }
+
 // Here are the functions used listed in call order...
 
-// 1. 
+// 1. preferences.js
 function setPreferences(days, goal, alertType, weight) {
     var days = "";
     var goal = "";
@@ -58,69 +91,241 @@ function setPreferences(days, goal, alertType, weight) {
     // alert(preferences);
     return preferences;
 }
-// 2.
+
+// 2-a. set workout
+
+function setBeginnerIncreaseWorkout() {
+  var abbreviatedDaysOfWeek = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  var workouts = ["Chest & triceps", "Back & biceps", "Rest & relaxation", "Just Shoulders", "Just Legs", "Rest & relaxation", "Rest & relaxation"];
+  for (var i = 0; i < abbreviatedDaysOfWeek.length; i++) {
+    renderCalendarCard(abbreviatedDaysOfWeek[i], workouts[i]);
+  }
+}
+
+
+// 2. programOverview.js
 // show the program overview
 function showProgramOverview(level, goal, weight) {
     if (level == 'beginner') {
         if (goal == 'increase') {
-            document.querySelector("#beginnerIncreaseWorkout").style.display = "block";
+            // document.querySelector("#beginnerIncreaseWorkout").style.display = "block";
+            $("#beginnerIncreaseWorkout").show();
+            setBeginnerIncreaseWorkout();
         }
         else {
-            document.getElementById("beginnerDecreaseWorkout").style.display = "block";
+            // document.getElementById("beginnerDecreaseWorkout").style.display = "block";
+            $("#beginnerDecreaseWorkout").show();
         }
     }
     else if (level == "intermediate") {
         if (goal == 'increase') {
-            document.getElementById("intermediateIncreaseWorkout").style.display = "block";
+            // document.getElementById("intermediateIncreaseWorkout").style.display = "block";
+            $("#intermediateIncreaseWorkout").show();
         }
         else {
-            document.getElementById("intermediateDecreaseWorkout").style.display = "block";
+            // document.getElementById("intermediateDecreaseWorkout").style.display = "block";
+            $("#intermediateDecreaseWorkout").show();
+
         }
     }
     else if (level == "advanced") {
         if (goal == 'increase') {
-            document.getElementById("advancedIncreaseWorkout").style.display = "block";
+            // document.getElementById("advancedIncreaseWorkout").style.display = "block";
+            $("#advancedIncreaseWorkout").show();
         }
         else {
-            document.getElementById("advancedDecreaseWorkout").style.display = "block";
+            // document.getElementById("advancedDecreaseWorkout").style.display = "block";
+            $("#advancedDecreaseWorkout").show();
         }
     }
+    // Compute daily allowances
+    var dailyIncreaseCaloriesOnRestDays = (18 * weight).toFixed();
+    var dailyIncreaseProteinOnRestDays = (1.57 * weight).toFixed();
+    var dailyIncreaseCarbsOnRestDays = (1.57 * weight).toFixed();
+    var dailyIncreaseFatOnRestDays = (.6 * weight).toFixed();
+
+    var dailyIncreaseCaloriesOnWorkoutDays = (20 * weight).toFixed();
+    var dailyIncreaseProteinOnWorkoutDays = (1.57 * weight).toFixed();
+    var dailyIncreaseCarbsOnWorkoutDays = (1.57 * weight).toFixed();
+    var dailyIncreaseFatOnWorkoutDays = (.6 * weight).toFixed();
+
+    var dailyDecreaseCaloriesForAllDays = (18 * weight).toFixed();
+    var dailyDecreaseProteinForAllDays = (1.57 * weight).toFixed();
+    var dailyDecreaseCarbsForAllDays = (1.57 * weight).toFixed();
+    var dailyDecreaseFatForAllDays = (.6 * weight).toFixed();
+
+    // Compute weight gain Meal 1 allowances
+    var meal1IncreaseCalories = dailyIncreaseCaloriesOnRestDays * .06;
+    var meal1IncreaseProtein = dailyIncreaseProteinOnRestDays * .08;
+    var meal1IncreaseCarbs = dailyIncreaseCarbsOnRestDays * .08;
+    var meal1IncreaseFat = dailyIncreaseFatOnRestDays * 1.19;
+
+    // Compute weight gain Meal 2 allowances
+    var meal2IncreaseCalories = dailyIncreaseCaloriesOnRestDays * .26;
+    var meal2IncreaseProtein = dailyIncreaseProteinOnRestDays * .13;
+    var meal2IncreaseCarbs = dailyIncreaseCarbsOnRestDays * .23;
+    var meal2IncreaseFat = dailyIncreaseFatOnRestDays * .33;
+
+   // Compute weight gain Meal 3 allowances
+    var meal3IncreaseCalories = dailyIncreaseCaloriesOnRestDays * .13;
+    var meal3IncreaseProtein = dailyIncreaseProteinOnRestDays * .11;
+    var meal3IncreaseCarbs = dailyIncreaseCarbsOnRestDays * .16;
+    var meal3IncreaseFat = dailyIncreaseFatOnRestDays * .05;
+
+    // Compute weight gain Meal 4 allowances
+    var meal4IncreaseCalories = dailyIncreaseCaloriesOnRestDays * .1;
+    var meal4IncreaseProtein = dailyIncreaseProteinOnRestDays * .06;
+    var meal4IncreaseCarbs = dailyIncreaseCarbsOnRestDays * .21;
+    var meal4IncreaseFat = dailyIncreaseFatOnRestDays * .13;
+
+    // Compute weight gain Meal 5 allowances
+    var meal5IncreaseCalories = dailyIncreaseCaloriesOnRestDays * .11;
+    var meal5IncreaseProtein = dailyIncreaseProteinOnRestDays * .37;
+    var meal5IncreaseCarbs = dailyIncreaseCarbsOnRestDays * .14;
+    var meal5IncreaseFat = dailyIncreaseFatOnRestDays * .45;
+
+    // Compute weight gain Meal 6 preworkout allowances
+    var meal6IncreaseCalories = dailyIncreaseCaloriesOnRestDays * .06;
+    var meal6IncreaseProtein = dailyIncreaseProteinOnRestDays * .08;
+    var meal6IncreaseCarbs = dailyIncreaseCarbsOnRestDays * .08;
+    var meal6IncreaseFat = dailyIncreaseFatOnRestDays * .03;
+
+    // Compute weight gain Meal 7 postworkout allowances
+    var meal7IncreaseCalories = dailyIncreaseCaloriesOnRestDays * .06;
+    var meal7IncreaseProtein = dailyIncreaseProteinOnRestDays * .14;
+    var meal7IncreaseCarbs = dailyIncreaseCarbsOnRestDays * .02;
+    var meal7IncreaseFat = dailyIncreaseFatOnRestDays * .02;
+
+    // Compute weight gain Meal 8 allowances
+    var meal8IncreaseCalories = dailyIncreaseCaloriesOnRestDays * .14;
+    var meal8IncreaseProtein = dailyIncreaseProteinOnRestDays * .19;
+    var meal8IncreaseCarbs = dailyIncreaseCarbsOnRestDays * .02;
+    var meal8IncreaseFat = dailyIncreaseFatOnRestDays * 3.13;
+
+    // Compute weight gain Meal 9 allowances
+    var meal9IncreaseCalories = dailyIncreaseCaloriesOnRestDays * .05;
+    var meal9IncreaseProtein = dailyIncreaseProteinOnRestDays * .08;
+    var meal9IncreaseCarbs = dailyIncreaseCarbsOnRestDays * .02;
+    var meal9IncreaseFat = dailyIncreaseFatOnRestDays * .08;
+
+    // increase and decrease bigger object
+    var increaseMeals = [
+      meal1 = {
+        "meals"     : "Breakfast 1 (Immediately Upon Waking)",
+        "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
+        "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+        "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
+        "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed()
+      },
+      meal2 = {
+        "meals"     : "Breakfast 2 (30-60 Minutes After Breakfast 1)",
+        "calories"  : (dailyIncreaseCaloriesOnRestDays * .26).toFixed(),
+        "protein"   : (dailyIncreaseProteinOnRestDays * .13).toFixed(),
+        "carbs"     : (dailyIncreaseCarbsOnRestDays * .23).toFixed(),
+        "fats"      : (dailyIncreaseFatOnRestDays * 33).toFixed()
+      },
+      meal3 = {
+        "meals"     :"Late Morning Snack",
+        "calories"  : (dailyIncreaseCaloriesOnRestDays * .13).toFixed(),
+        "protein"   : (dailyIncreaseProteinOnRestDays * .11).toFixed(),
+        "carbs"     : (dailyIncreaseCarbsOnRestDays * .16).toFixed(),
+        "fats"      : (dailyIncreaseFatOnRestDays * .05).toFixed()
+      },
+      meal4 = {
+        "meals"     : "Lunch",
+        "calories"  : (dailyIncreaseCaloriesOnRestDays * .1).toFixed(),
+        "protein"   : (dailyIncreaseProteinOnRestDays * .06).toFixed(),
+        "carbs"     : (dailyIncreaseCarbsOnRestDays * .21).toFixed(),
+        "fats"      : (dailyIncreaseFatOnRestDays * .13).toFixed()
+      },
+      meal5 = {
+        "meals"     : "Afternoon Snack",
+        "calories"  : (dailyIncreaseCaloriesOnRestDays * .11).toFixed(),
+        "protein"   : (dailyIncreaseProteinOnRestDays * .37).toFixed(),
+        "carbs"     : (dailyIncreaseCarbsOnRestDays * .14).toFixed(),
+        "fats"      : (dailyIncreaseFatOnRestDays * .45).toFixed()
+      },
+      meal6 = {
+        "meals"     : "Pre-Workout (Within 30 Minutes Before Workouts)",
+        "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
+        "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+        "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
+        "fats"      : (dailyIncreaseFatOnRestDays * .03).toFixed()
+      },
+      meal7 = {
+        "meals"     : "Post-Workout (Within 30 Minutes After Workouts)",
+        "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
+        "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+        "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
+        "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed()
+      },
+      meal8 = {
+        "meals"     : "Dinner",
+        "calories"  : (dailyIncreaseCaloriesOnRestDays * .14).toFixed(),
+        "protein"   : (dailyIncreaseProteinOnRestDays * .19).toFixed(),
+        "carbs"     : (dailyIncreaseCarbsOnRestDays * .02).toFixed(),
+        "fats"      : (dailyIncreaseFatOnRestDays * 3.13).toFixed()
+      },
+      meal9 = {
+        "meals"     : "Before Bed Snack",
+        "calories"  : (dailyIncreaseCaloriesOnRestDays * .05).toFixed(),
+        "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+        "carbs"     : (dailyIncreaseCarbsOnRestDays * .02).toFixed(),
+        "fats"      : (dailyIncreaseFatOnRestDays * .08).toFixed()
+      }
+    ];
+    for (var i = 0; i < increaseMeals.length; i++) {
+    renderMealsCard(increaseMeals[i].meals, increaseMeals[i].calories, increaseMeals[i].protein, increaseMeals[i].carbs, increaseMeals[i].fats);
+    };
+
     if (goal == 'increase') {
         document.getElementById("workoutOverviewForStats").innerHTML = 
-        "You weigh " + weight + ".<br>On your rest days you need to eat:" + 
-         "<br>calories: " + (18 * weight).toFixed() +
-         "<br>protein: " + (1.57 * weight).toFixed() +
-         "<br>carbs: " + (1.57 * weight).toFixed() +
-         "<br>fat: " + (.6 * weight).toFixed() + 
+        "You weigh " + weight + "lbs.<br>Today you need to eat:" + 
+         "<br>calories: " + dailyIncreaseCaloriesOnRestDays +
+         "<br>protein: " + dailyIncreaseProteinOnRestDays +
+         "<br>carbs: " + dailyIncreaseCarbsOnRestDays +
+         "<br>fat: " + dailyIncreaseFatOnRestDays + 
          "<br><br>On your workout days you need to eat:" + 
-         "<br>calories: " + (20 * weight).toFixed() +
-         "<br>protein: " + (1.75 * weight).toFixed() +
-         "<br>carbs: " + (1.75 * weight).toFixed() +
-         "<br>fat: " + (.6 * weight).toFixed();
+         "<br>calories: " + dailyIncreaseCaloriesOnWorkoutDays +
+         "<br>protein: " + dailyIncreaseProteinOnWorkoutDays +
+         "<br>carbs: " + dailyIncreaseCarbsOnWorkoutDays +
+         "<br>fat: " + dailyIncreaseFatOnWorkoutDays;
+         // renderWorkoutOverviewCard(weight, dailyIncreaseCaloriesOnRestDays, dailyIncreaseProteinOnRestDays, dailyIncreaseFatOnRestDays, dailyIncreaseCaloriesOnWorkoutDays, dailyIncreaseProteinOnWorkoutDays, dailyIncreaseCarbsOnWorkoutDays, dailyIncreaseFatOnWorkoutDays);
      }
      if (goal == 'decrease') {
         document.getElementById("workoutOverviewForStats").innerHTML = 
         "You weigh " + weight + ".<br>For both workout days and rest days you need to eat:" + 
-         "<br>calories: " + (18 * weight).toFixed() +
-         "<br>protein: " + (1.5 * weight).toFixed() +
-         "<br>carbs: " + (1.5 * weight).toFixed() +
-         "<br>fat: " + (.5 * weight).toFixed();
+         "<br>calories: " + dailyDecreaseCaloriesForAllDays +
+         "<br>protein: " + dailyDecreaseProteinForAllDays +
+         "<br>carbs: " + dailyDecreaseCarbsForAllDays +
+         "<br>fat: " + dailyDecreaseFatForAllDays;
      }
+
+     function computeWeightGainForBreakfast1() {
+        var dailyCalories = 3700;
+        var dailyProtein = 335;
+      }
 }
 
 function getDayOfWeek() {
     var todaysDate = new Date();
-    var weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
+    var beginnerIncreaseWorkoutDays = ["Monday", "Tuesday", "Thursday", "Friday"];
+    var weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
     var dayOfWeek = weekday[todaysDate.getDay()];
-    document.getElementById("today").innerHTML = "<br>Today is " + dayOfWeek + ".";
+    var workoutDayMessage = "";
+    document.getElementById("today").innerHTML = "<h3 class='typeOfDay'>Today is " + dayOfWeek + ".</h3>";
+
+    for (var i = 0; i < beginnerIncreaseWorkoutDays.length; i++) {
+      if (dayOfWeek == beginnerIncreaseWorkoutDays[i]) {
+        workoutDayMessage =(" It's a workout day.<br><a href=''>View workout</a>");
+        break;
+      }
+      else {
+        workoutDayMessage = (" It's a rest day.");
+      }
+    };
+    $(".typeOfDay").append(workoutDayMessage);
 }
 
 // function determineWorkoutDay {
@@ -202,6 +407,7 @@ function mainFunction() {
     showProgramOverview(preferences[3], preferences[1], preferences[4]);
     getDayOfWeek();
     setAlerts();
+    $("#preferences-container").hide();
     // showWorkout(); // todo
     // showMeals(); // todo
 }
@@ -220,7 +426,7 @@ function mainFunction() {
 function renderNutritionFactsAPI() {
     // set up a search bar
     var searchItem = $("#foodSearch").val();
-
+https://nutritionix.com/v1_1/search/
   $.get('https://api.nutritionix.com/v1_1/search/' + searchItem + '?fields=*&appId=fa29d9c4&appKey=0ba07a98eec4870860353ad5617c973e', function(nutritionFacts) {
       // console.log("food item: " + nutritionFacts.hits[0].fields.item_name + "\n calories: " + nutritionFacts.hits[0].fields.nf_calories + "\n protein: " + nutritionFacts.hits[0].fields.nf_protein + "\n carbs: " + nutritionFacts.hits[0].fields.nf_total_carbohydrate + "\n serving size: " + nutritionFacts.hits[0].fields.nf_serving_size_qty + " " + nutritionFacts.hits[0].fields.nf_serving_size_unit);
       // I can't get the following to work
@@ -229,84 +435,19 @@ function renderNutritionFactsAPI() {
       console.log(items);
 
       for (var i = 0; i < items.length; i++) {
-        document.getElementById("searchResults").innerHTML += 
-        "<div class='resultContainer'><label><input type='checkbox' id='group" + i +"' name='group" + i +"'></span><div class='item'>" + items[i].fields.brand_name + " " + items[i].fields.item_name + "</div><div class='calories'>calories: " + items[i].fields.nf_calories + "</div><div class='protein'>protein: " + items[i].fields.nf_protein + "</div><div class='carbs'>carbs: " + items[i].fields.nf_total_carbohydrate + "</div><span class='servingSize'>serving size: " + items[i].fields.nf_serving_size_qty + " " + items[i].fields.nf_serving_size_unit + "</span><div class='fat'>fat: " + items[i].fields.nf_total_fat + "</label></div>";
+        renderNewCard(items[i].fields.brand_name, items[i].fields.item_name, items[i].fields.nf_calories, items[i].fields.nf_protein, items[i].fields.nf_total_carbohydrate, items[i].fields.nf_total_fat);
     };
-     document.getElementById("btnAddToMenu").style.display = "block";
 
+// I could have used this...
+     // document.getElementById("btnAddToMenu").style.display = "block";
+     $("#btnAddToMenu").show();
 });
 }
 
+handleClickEvents();
+
 // tick each food item that you have available?
 
-
-
-// function renderNutritionFactsForMultipleProductsAPI() {
-//   $.getJSON('https://api.nutritionix.com/v1_1/search', function(nutritionFacts) {
-//       appId: "fa29d9c4",
-//       appKey: "0ba07a98eec4870860353ad5617c973e",
-//       fields: [
-//         "item_name",
-//         "brand_name",
-//         "nf_calories",
-//         "nf_protein",
-//         "nf_total_carbohydrate",
-//         "nf_serving_size_qty",
-//         "nf_serving_size_unit"
-//       ],
-//       offset: 0,
-//       limit: 50,
-//       sort: {
-//         field: "nf_protein",
-//         order: "desc"
-//       },
-//       min_score: 0.5,
-//       query: "sprouts OR alfalfa",
-//       filters: {
-//         not: {
-//           item_type: 2
-//         },
-//         nf_calories: {
-//           from: 0,
-//           to: 400
-//         }
-//       }
-//     }
-//       });
-// }
-
-// function curlTest() {
-//     curl -XPOST https://api.nutritionix.com/v1_1/search -H 'Content-Type: application/json' -d'
-//     {
-//      "appId":"YOUR_API_ID",
-//      "appKey":"YOUR_API_KEY",
-//      "query":"Cookies `n Cream"
-//     }
-// }
-
-// function renderCurl() {
-//   $.getJSON('https://api.nutritionix.com/v1_1/search', {
-//      appId:"fa29d9c4",
-//      appKey:"0ba07a98eec4870860353ad5617c973e",
-//      query:"alfalfa AND sprouts",
-//      fields:["item_name","brand_name","upc"],
-//   sort:{
-//     field:"_score",
-//     order:"desc"
-//   },
-//   filters:{
-//     item_type:2
-//   }
-//     }, processCurlData);
-// }
-
-
-// renderNutritionFactsForMultipleProductsAPI()
-// renderCurl();
-
-
-// renderNutritionFactsAPI();
-// renderPostsApi();
 
 // function computeCalories() {
 //     var weight = 0;
