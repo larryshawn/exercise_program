@@ -1,290 +1,354 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Required to properly zoom the viewport on mobile. -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Health Schedule As Whole Foods Fitness</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/cards.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
+  <!-- Required to properly zoom the viewport on mobile. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Health Schedule As Whole Foods Fitness</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/cards.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+
 </head>
 
 <body>
-<!-- header -->
-    <div id="nav-header">
-        <span></span>
-        <span id="logo">Whole Foods Fitness</span>
-        <span id="settingsIcon">
-            <i class="glyphicon glyphicon-cog"></i>
-        
-        <div id="preferences-container" class="container">
-          <div class="row">
-              <div class="col-xs-12">
-                  <h2 class="center">Preferences</h2>
-                  <img class="close-btn" src="images/close.png">
-              </div>
+  <!-- header -->
+  <div id="nav-header">
+    <span></span>
+    <span id="logo">Whole Foods Fitness</span>
+    <span id="settingsIcon">
+      <i class="glyphicon glyphicon-cog"></i>
+    </span>
+    <div id="preferences-container" class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <h2 class="center">Preferences</h2>
+            <img class="close-btn" src="images/close.png">
           </div>
-          <form name="myForm" action="" onsubmit="getFormValues()" method="post">
+        </div>
+        <form name="myForm" action="" onsubmit="getFormValues()" method="post">
           <div class="form-group">
-              <label>Days on this schedule</label><br>
-              <input type="text" name="days" id="amountOfDays" class="form-control">
+            <label>Days on this schedule</label><br>
+            <input type="text" name="days" id="amountOfDays" class="form-control">
           </div>
           <div class="form-group">
-              <label>Your goal</label><br>
-              <select id="goal" class="form-control">
-                  <option value="increase">Increase weight</option>
-                  <option value="decrease">Decrease weight</option>
-              </select>
+            <label>Your goal</label><br>
+            <select id="goal" class="form-control">
+              <option value="increase">Increase weight</option>
+              <option value="decrease">Decrease weight</option>
+            </select>
           </div>
           <label>Alert Type</label>
           <div class="radio ">
-              <label>
-                  <input type="radio" name="alertTypeRadios" id="wantsAudio" value="audio" checked>
-                  Audio
-              </label>
+            <label>
+              <input type="radio" name="alertTypeRadios" id="wantsAudio" value="audio" checked>
+              Audio
+            </label>
           </div>
           <div class="radio">
-              <label>
-                  <input type="radio" name="alertTypeRadios" id="wantsVideo" value="video">
-                  Video
-              </label>
+            <label>
+              <input type="radio" name="alertTypeRadios" id="wantsVideo" value="video">
+              Video
+            </label>
           </div>
           <div class="radio">
-              <label>
-                  <input type="radio" name="alertTypeRadios" id="wantsBoth" value="both">
-                  Both
-              </label>
+            <label>
+              <input type="radio" name="alertTypeRadios" id="wantsBoth" value="both">
+              Both
+            </label>
           </div>
           <div class="form-group">
-              <label>How much do you weigh?</label><br>
-              <input type="text" name="currentWeight" id="currentWeight" class="form-control">
+            <label>How much do you weigh?</label><br>
+            <input type="text" name="currentWeight" id="currentWeight" class="form-control">
           </div>
           <button type="button" class="btn btn-large btn-success btn-block row-spacer" onclick="mainFunction()">Show Workout Overview</button>
-          </form>
+        </form>
       </div>
-      </span>
-    </div>
+  </div>
 
 
-<!-- hero image -->
-    <div id="hero" class="jumbotron img-retina container">
-        <h1 id="heroText">Whole Food Body Building Guide</h1>
+  <!-- hero image -->
+  <div id="hero" class="jumbotron img-retina container">
+    <h1 id="heroText">Whole Foods Body Building Guide</h1>
+  </div>
+  
+  <div id="alert-container" class="container">
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="center">Alerts</h2>
+      </div>
     </div>
-    
-    <div id="main-container" class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="center">Alerts</h2>
-            </div>
-        </div>
-        <div class="row center" id="monolog">
-            <div class="col-sm-12 row-spacer">
-                <div class="center"></div>
-                <!-- 
-                    alternate audio link: http://www.freesfx.co.uk/rx2/mp3s/6/7299_1343917537.mp3
-                    monitor screen tapping audio: http://www.freesfx.co.uk/rx2/mp3s/2/2729_1329133415.mp3
-                 -->
-                <audio src="images/alert-sound.mp3" style="display:none;" controls></audio>
-                <video src="images/bird.mp4" controls id="videoAlert" style="display:none;"></video>
-                <div id="mealMessage"></div>
-            </div>
-        </div>
+
+    <div class="row center" id="monolog">
+      <div class="col-sm-12 row-spacer">
+        <div class="center"></div>
+        <!-- 
+        alternate audio link: http://www.freesfx.co.uk/rx2/mp3s/6/7299_1343917537.mp3
+        monitor screen tapping audio: http://www.freesfx.co.uk/rx2/mp3s/2/2729_1329133415.mp3
+        -->
+        <audio src="images/alert-sound.mp3" style="display:none;" controls></audio>
+        <video src="images/bird.mp4" controls id="videoAlert" style="display:none;"></video>
+        <div id="mealMessage"></div>
+      </div>
     </div>
-    <div id="overview-container" class="container">
-      <div class="row row-spacer center">
-        <div id="overviewTitle" class="col-sm-12">
-          <h2 class="center">Workout Overview</h2>
-          <h3>Muscle mass building workout for beginners</h3>
-        </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="center">It's 10:00. You need to eat Breakfast</h2>
+
       </div>
-      <div class="row center">
-        <div class="daysOfWeekCardContainer gallery">
-          <!-- MustacheTemplate -->
-          <script id="calendar-template" type="x-tmpl-mustache">
-          <div class="daysOfWeekCard calendarCards">
-            <div class="daysOfWeek">{{ dayOfWeek }}</div>
-            <div class="exercises">{{ dayOfWeekExercise }}</div>
-          </div>
-          </script>
-        </div>
-      </div>
-        <div class="row row-spacer">
-          <div id="beginnerIncreaseWorkout" class="col-xs-12">
-            <span class="glyphicon glyphicon-calendar"></span>
-            <!-- Display today's weight etc. -->
-            <span id="today">
-              <!-- getDayofWeek() is dropping in the Today is Wed. It's a workout day type of message -->
-              <!--  -->
-            </span>
-            <div id="workoutOverviewForStats"></div>
-          </div>
-        </div> 
-        <div class="row">
-          <div class="col-sm-12 row-spacer">
-            <h4>Workout</h4>
-            <div>
-                <p>Monday - Chest and triceps</p>
-                <p>Tuesday - Back and biceps</p>
-                <p>Wednesday - Rest</p>
-                <p>Thursday - Shoulders</p>
-                <p>Friday - Legs</p>
-                <p>Saturday - Rest</p>
-                <p>Sunday - Rest</p>
-            </div>
-            <h4>Meals</h4>
-            <!-- The meals stats will be the same. The only difference is on off days there are no pre or post workout meals -->
-            <div id="meals-container">
-              <!-- MustacheTemplate -->
-              <script id="meals-template" type="x-tmpl-mustache">
-                <p>{{ meals }} - eat these
-                    <ul>
-                        <li>calories: {{ calories }}</li> 
-                        <li>protein: {{ protein }}</li>
-                        <li>carbs: {{ carbs }}</li>
-                        <li>fats: {{ fats }}</li>
-                    </ul>
-                </p>
-              </script>
-            </div>
-        </div>
-        <div id="beginnerDecreaseWorkout" class="col-xs-12">
-            <h2>Get lean workout for beginners</h2>
-            <h4>Workout</h4>
-            <div>
-                <p>Monday - CHEST, TRICEPS & ABS</p>
-                <p>Tuesday - DELTS, LEGS & CALVES</p>
-                <p>Wednesday - BACK, TRAPS & BICEPS</p>
-                <p>Thursday - CHEST, TRICEPS & ABS</p>
-                <p>Friday - DELTS, LEGS & CALVES</p>
-                <p>Saturday - BACK, TRAPS & BICEPS</p>
-                <p>Sunday - Rest</p>
-            </div>
-            <h4>Meals</h4>
-            <div>
-                <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                <p>Late Morning Snack - eat this</p>
-                <p>Lunch - eat this</p>
-                <p>Afternoon Snack - eat this</p>
-                <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                <p>Dinner - eat this</p>
-                <p>Before Bed Snack - eat this</p>
-            </div>
-        </div>
-      </div>
-            <div id="intermediateIncreaseWorkout" class="col-xs-12">
+    </div>
+
+  </div>
+            <div id="overview-container" class="container">
+              <div class="row row-spacer center">
+                <div id="overviewTitle" class="col-sm-12">
+                  <h2 class="center">Workout Overview</h2>
+                  <h3>Muscle mass building workout for beginners</h3>
+                </div>
+              </div>
+              <div class="row center">
+                <div class="daysOfWeekCardContainer gallery">
+                  <!-- MustacheTemplate -->
+                  <script id="calendar-template" type="x-tmpl-mustache">
+                    <div value="{{link}}" id="{{ ids }}" class="daysOfWeekCard">
+                      <div id="{{ ids }}" class="daysOfWeek">{{ dayOfWeek }}</div>
+                      <div id="{{ ids }}" class="exercises">{{ dayOfWeekExercise }}</div>
+                    </div>
+                  </script>
+                </div>
+              </div>
+              <div id="mask"></div>
+              <div id="lightbox-container">
+                <!-- I use the .attr attribute to dynamically change the src of the iframe -->
+                
+                  <div class="lightbox">
+                    <iframe id="daysIframe" type="text/html" src="" frameborder="0"></iframe>
+                  </div>
+                
+              </div>
+              <div class="row row-spacer">
+                <div id="increaseWorkout" class="col-xs-12">
+                  <!-- Display today's day of the week and tell if it's a workout day or a rest day -->
+                  <div class="glyphicon glyphicon-calendar"></div>
+                  <div id="today"></div>
+                  <div id="weight">
+                    <span class="glyphicon glyphicon-scale"></span>
+                  </div>
+                  <div id="workoutOverviewForStats" class="glyphicon glyphicon-cutlery"></div>
+                  <div id="mealAllowances">
+                    <h4>Daily Meal allowances</h4>
+                    <script id="dailyAllowancesTemplate" type="x-tmpl-mustache">
+                    <div class="dayType">
+                    {{dayType}} day
+                    </div>
+                    <div class="nutritionInfoForMealAllowances">
+                    <div class='calories'>
+                    cals<br> 
+                    {{calories}}
+                    </div>
+                    <div class='protein'>
+                    pros<br>
+                    {{protein}}
+                    </div>
+                    <div class='carbs'>
+                    carbs<br>
+                    {{carbs}}
+                    </div>
+                    <div class='fats'>
+                    fats<br>
+                    {{fats}}
+                    </div>
+                    </div>
+                    </script>
+                  </div>
+                </div>
+              </div> 
+              <div id="individualMealsContainer" class="row">
+                <h4 id="individualMealsTitle">Individual Meals</h4>
+                <div id="individualMeals" class="col-sm-12 row-spacer">
+                  <!-- The meals stats will be the same. The only difference is on off days there are no pre or post workout meals -->
+                  <div id="meals-container">
+                    <!-- MustacheTemplate -->
+                    <script id="meals-template" type="x-tmpl-mustache">
+                      <div class="meals">
+                        <div>{{ meals }} - eat these</div>
+                        <div class='calories'>
+                          cals<br> 
+                          {{calories}}
+                        </div>
+                        <div class='protein'>
+                          pros<br>
+                          {{protein}}
+                        </div>
+                        <div class='carbs'>
+                          carbs<br>
+                          {{carbs}}
+                        </div>
+                        <div class='fats'>
+                          fats<br>
+                          {{fats}}
+                        </div>
+                      </div>
+                      <hr>
+                    </script>
+                  </div>
+                </div>
+              </div>
+              <div id="exerciseOverview" class="row row-spacer">
+                <div class="col-sm-12">
+                  <div id="workoutOverviewStats" class="glyphicon glyphicon-heart"></div>
+                  <div id="exercise">Exercise</div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-12">
+                  <h4 id="workoutOverviewTitle">Workout Overview</h4>
+                  <div id="exercisesOverview">
+                    <iframe id="exercisesOverviewIframe" type="text/html" src="http://www.bodybuilding.com/fun/shortcut-to-size.html" frameborder="0"></iframe>
+                  </div>
+                </div>
+                </div>
+                <!-- to be cleaned up. The following div is temporary -->
+                <div>
+                <div id="beginnerDecreaseWorkout" class="col-xs-12">
+                  <h2>Get lean workout for beginners</h2>
+                  <h4>Workout</h4>
+                  <div>
+                    <p>Monday - CHEST, TRICEPS & ABS</p>
+                    <p>Tuesday - DELTS, LEGS & CALVES</p>
+                    <p>Wednesday - BACK, TRAPS & BICEPS</p>
+                    <p>Thursday - CHEST, TRICEPS & ABS</p>
+                    <p>Friday - DELTS, LEGS & CALVES</p>
+                    <p>Saturday - BACK, TRAPS & BICEPS</p>
+                    <p>Sunday - Rest</p>
+                  </div>
+                  <h4>Meals</h4>
+                  <div>
+                    <p><strong>Breakfast 1</strong> (Immediately Upon Waking)</p>
+                    <p><strong>Breakfast 2</strong> (30-60 Minutes After Breakfast 1)</p>
+                    <p><strong>Late Morning Snack</strong></p>
+                    <p><strong>Lunch</strong></p>
+                    <p><strong>Afternoon Snack</strong></p>
+                    <p><strong>Pre-Workout</strong> (Within 30 Minutes Before Workouts)</p>
+                    <p><strong>Post-Workout</strong> (Within 30 Minutes After Workouts)</p>
+                    <p><strong>Dinner</strong></p>
+                    <p><strong>Before Bed Snack</strong></p>
+                  </div>
+                </div>
+              </div>
+              <div id="intermediateIncreaseWorkout" class="col-xs-12">
                 <h2>Muscle mass building workout for intermediate</h2>
                 <h4>Workout</h4>
                 <div>
-                    <p>Monday - Chest and triceps</p>
-                    <p>Tuesday - Back and biceps</p>
-                    <p>Wednesday - Rest</p>
-                    <p>Thursday - Shoulders</p>
-                    <p>Friday - Legs</p>
-                    <p>Saturday - Rest</p>
-                    <p>Sunday - Rest</p>
+                  <p>Monday - Chest and triceps</p>
+                  <p>Tuesday - Back and biceps</p>
+                  <p>Wednesday - Rest</p>
+                  <p>Thursday - Shoulders</p>
+                  <p>Friday - Legs</p>
+                  <p>Saturday - Rest</p>
+                  <p>Sunday - Rest</p>
                 </div>
                 <h4>Meals</h4>
                 <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
+                  <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
+                  <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
+                  <p>Late Morning Snack - eat this</p>
+                  <p>Lunch - eat this</p>
+                  <p>Afternoon Snack - eat this</p>
+                  <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
+                  <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
+                  <p>Dinner - eat this</p>
+                  <p>Before Bed Snack - eat this</p>
                 </div>
-            </div>
-            <div id="intermediateDecreaseWorkout" class="col-xs-12">
+              </div>
+              <div id="intermediateDecreaseWorkout" class="col-xs-12">
                 <h2>Get lean workout for intermediate</h2>
                 <h4>Workout</h4>
                 <div>
-                    <p>Monday - CHEST, TRICEPS & ABS</p>
-                    <p>Tuesday - DELTS, LEGS & CALVES</p>
-                    <p>Wednesday - BACK, TRAPS & BICEPS</p>
-                    <p>Thursday - CHEST, TRICEPS & ABS</p>
-                    <p>Friday - DELTS, LEGS & CALVES</p>
-                    <p>Saturday - BACK, TRAPS & BICEPS</p>
-                    <p>Sunday - Rest</p>
+                  <p>Monday - CHEST, TRICEPS & ABS</p>
+                  <p>Tuesday - DELTS, LEGS & CALVES</p>
+                  <p>Wednesday - BACK, TRAPS & BICEPS</p>
+                  <p>Thursday - CHEST, TRICEPS & ABS</p>
+                  <p>Friday - DELTS, LEGS & CALVES</p>
+                  <p>Saturday - BACK, TRAPS & BICEPS</p>
+                  <p>Sunday - Rest</p>
                 </div>
                 <h4>Meals</h4>
                 <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
+                  <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
+                  <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
+                  <p>Late Morning Snack - eat this</p>
+                  <p>Lunch - eat this</p>
+                  <p>Afternoon Snack - eat this</p>
+                  <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
+                  <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
+                  <p>Dinner - eat this</p>
+                  <p>Before Bed Snack - eat this</p>
                 </div>
-            </div>
-            <div id="advancedIncreaseWorkout" class="col-xs-12">
+              </div>
+              <div id="advancedIncreaseWorkout" class="col-xs-12">
                 <h2>Muscle mass building workout for advanced</h2>
                 <h4>Workout</h4>
                 <div>
-                    <p>Monday - Chest and triceps</p>
-                    <p>Tuesday - Back and biceps</p>
-                    <p>Wednesday - Rest</p>
-                    <p>Thursday - Shoulders</p>
-                    <p>Friday - Legs</p>
-                    <p>Saturday - Rest</p>
-                    <p>Sunday - Rest</p>
+                  <p>Monday - Chest and triceps</p>
+                  <p>Tuesday - Back and biceps</p>
+                  <p>Wednesday - Rest</p>
+                  <p>Thursday - Shoulders</p>
+                  <p>Friday - Legs</p>
+                  <p>Saturday - Rest</p>
+                  <p>Sunday - Rest</p>
                 </div>
                 <h4>Meals</h4>
                 <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
+                  <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
+                  <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
+                  <p>Late Morning Snack - eat this</p>
+                  <p>Lunch - eat this</p>
+                  <p>Afternoon Snack - eat this</p>
+                  <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
+                  <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
+                  <p>Dinner - eat this</p>
+                  <p>Before Bed Snack - eat this</p>
                 </div>
-            </div>
-            <div id="advancedDecreaseWorkout" class="col-xs-12">
+              </div>
+              <div id="advancedDecreaseWorkout" class="col-xs-12">
                 <h2>Get lean workout for advanced</h2>
                 <h4>Workout</h4>
                 <div>
-                    <p>Monday - CHEST, TRICEPS & ABS</p>
-                    <p>Tuesday - DELTS, LEGS & CALVES</p>
-                    <p>Wednesday - BACK, TRAPS & BICEPS</p>
-                    <p>Thursday - CHEST, TRICEPS & ABS</p>
-                    <p>Friday - DELTS, LEGS & CALVES</p>
-                    <p>Saturday - BACK, TRAPS & BICEPS</p>
-                    <p>Sunday - Rest</p>
+                  <p>Monday - CHEST, TRICEPS & ABS</p>
+                  <p>Tuesday - DELTS, LEGS & CALVES</p>
+                  <p>Wednesday - BACK, TRAPS & BICEPS</p>
+                  <p>Thursday - CHEST, TRICEPS & ABS</p>
+                  <p>Friday - DELTS, LEGS & CALVES</p>
+                  <p>Saturday - BACK, TRAPS & BICEPS</p>
+                  <p>Sunday - Rest</p>
                 </div>
                 <h4>Meals</h4>
                 <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
+                  <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
+                  <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
+                  <p>Late Morning Snack - eat this</p>
+                  <p>Lunch - eat this</p>
+                  <p>Afternoon Snack - eat this</p>
+                  <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
+                  <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
+                  <p>Dinner - eat this</p>
+                  <p>Before Bed Snack - eat this</p>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
-    <div id="food-container" class="container">
-        <div class="row">
-            <div class="col-xs-12">
+          </div>
+          <div id="food-container" class="container">
+            <div class="row">
+              <div class="col-xs-12">
                 <h2 class="center">Food Information</h2>
+              </div>
             </div>
-        </div>
-        <div class="row row-spacer">
-            <div class="col-xs-12 card">
+            <div class="row row-spacer">
+              <div class="col-xs-12 card">
                 <form action="javascript:void()" method="get">
-                <input type="search" id ="foodSearch" class="form-control" placeholder="Search nutritional info on food items" name="search" autocomplete = "on" autofocus></input><input id="goSearchSubmit" type="image" src="images/icon-search.png" onclick="renderNutritionFactsAPI();" border="0">
+                  <input type="search" id ="foodSearch" class="form-control" placeholder="Search nutritional info..." name="search" autocomplete = "on"></input><input id="goSearchSubmit" type="image" src="images/icon-search.png" onclick="javascript:renderNutritionFactsAPI();" border="0">
                 </form>
                 <!-- <script src="http://platform.fatsecret.com/js?key=8930f590f6b4480db775c050dbc9e263&auto_load=true"></script> -->
                 <!-- <strong>Brussels sprouts:</strong> 1 cup, 65 cal, 6 gm, low in leucine, lysine, methionine + cystine, phenylalanine + tyrosine<br>
@@ -295,62 +359,72 @@
                 <strong>Apricots:</strong> dried ½ cup, 190 cal, 3 gm, low in methionine + cystine<br>
                 <strong>Peaches:</strong>  dried ½ cup, 185 cal, 3 gm, low in tryptophan and lysine -->
                 
-                <!-- Where to put the contents of the mustache template -->
                 <div id="searchResults">
+                  <form>
                   <!-- Another MustacheTemplate -->
                   <script id="nutrition-info-template" type="x-tmpl-mustache">
-                    <div class='resultContainer'>
-                      <label>
-                        <span>
-                        <input type='checkbox' id='group' name='group'>
-                        </span>
-                        <div class='item'>
-                          {{brandName}} {{itemName}}<br>
-                        </div>
-                        <div id="nutritionInfo">
-                          <div class='calories'>
-                            calories<br> 
-                            {{calories}}
-                          </div>
-                          <div class='protein'>
-                            protein<br>
-                            {{protein}}
-                          </div>
-                          <div class='carbs'>
-                            carbs<br>
-                            {{carbs}}
-                          </div>
-                          <div class='fat'>
-                            fat<br>
-                            {{fat}}
-                          </div>
-                        </div>
-                      </label>
-                    </div>
+                  <div class='resultContainer'>
+                  <label>
+                  <div class='item'>
+                  {{brandName}} {{itemName}}<br>
+                  </div>
+                  <div class="nutritionInfo">
+                  <div class='searchResultCalories'>
+                  calories<br> 
+                  {{calories}}
+                  </div>
+                  <div class='searchResultProtein'>
+                  protein<br>
+                  {{protein}}
+                  </div>
+                  <div class='searchResultCarbs'>
+                  carbs<br>
+                  {{carbs}}
+                  </div>
+                  <div class='searchResultFats'>
+                  fat<br>
+                  {{fat}}
+                  </div>
+                  </div>
+                  </label>
+                  <select class="form-control row-spacer mealToAddTo">
+                    <option value="none">Choose a Meal</option>
+                    <option value="meal1">Breakfast 1</option>
+                    <option value="meal2">Breakfast 2</option>
+                    <option value="meal3">Late Morning Snack</option>
+                    <option value="meal4">Lunch</option>
+                    <option value="meal5">Afternoon Snack</option>
+                    <option value="meal6">Pre-workout</option>
+                    <option value="meal7">Post-Workout</option>
+                    <option value="meal8">Dinner</option>
+                    <option value="meal9">Before Bed Snack</option>
+                  </select>
+                  <button type="button" class="btn btn-large btn-success btn-block saveToMealButton" onclick="saveToMeal()">Save To Meal</button>
+                  </div>
+                  <hr>
                   </script>
+                  </form>
                 </div>
-                <button class="btn btn-primary" id="btnAddToMenu">Add to menu</button>
-
+              </div>
             </div>
-        </div>
-    </div>
-    <div id="footer">
-        <div class="row">
-            <h4>Resources</h4>
-            <div>
+          </div>
+          <div id="footer">
+            <div class="row">
+              <h4>Resources</h4>
+              <div>
                 <a href="http://www.bodybuilding.com/fun/no-meat-muscle-4-rules-for-building-mass-on-vegetarian-diet.html">No Meat Muscle</a><br>
                 <a href="http://rawforbeauty.com/blog/my-experience-10-months-100-raw-vegan-diet-muscle-building.html">Raw Vegan Diet</a><br>
                 <a href="http://www.bodybuilding.com/fun/shortcut-to-size.html">Shortcut to size</a><br>
                 <a href="http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred.html">Shortcut to shred</a>
+              </div>
             </div>
-        </div>
-    </div>
-    
-<!-- scripts -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <!-- Mustache library call -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
-  <script src="js/cards.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
-</body>
-</html>
+          </div>
+          
+          <!-- scripts -->
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+          <!-- Mustache library call -->
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+          <script src="js/cards.js"></script>
+          <script type="text/javascript" src="js/scripts.js"></script>
+        </body>
+        </html>

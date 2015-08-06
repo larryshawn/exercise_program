@@ -42,7 +42,35 @@ body {
 #nutritionInfo {
   text-align: center;
 }
-.calories, .protein, .carbs, .fat {
+#nutritionInfoForMealAllowances {
+  text-align: center;
+    position: relative;
+    bottom: 10px;
+    right: 5px;
+}
+.dayType {
+  font-weight: bold;
+}
+
+#mealAllowances h4 {
+  display: inline;
+  bottom: 1px;
+  position: relative;
+}
+.calories, .protein, .carbs, .fats {
+  border: 1px solid darkgray;
+  display: inline-block;
+  padding: 6px;
+  background-image: linear-gradient(rgb(64, 64, 65), rgb(138, 138, 139));
+  color: white;
+  border-radius: 20px;
+  position: relative;
+  text-align: center;
+  margin: 4px;
+  top: 0px
+}
+
+.searchResultCalories, .searchResultProtein, .searchResultCarbs, .searchResultFats {
   border: 1px solid darkgray;
   display: inline-block;
   padding: 10px;
@@ -50,15 +78,43 @@ body {
   color: white;
   border-radius: 9px;
   position: relative;
-  top: 12px;
   text-align: center;
   margin: 4px;
+  top: 10px;
 }
 
-.resultContainer > label {
+.searchResultC label {
   margin-top: 20px;
   padding: 20px;
   border: 1px solid darkgray;
   width: 100%;
   background-color: white;
+}
+
+#mask {
+  position: fixed;
+  display: none;
+  opacity: .8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  z-index: 999;
+}
+
+.lightbox {
+  position: fixed;
+  top: 10px;
+  width: 90%;
+  height: 440px;
+  margin: 0 auto;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 20px;
+  font-family: sans-serif;
+  font-weight: lighter;
+  display: none;
+  z-index: 9999;
 }
