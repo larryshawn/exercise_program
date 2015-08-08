@@ -4,9 +4,10 @@
 function handleClickEvents() {
   // If the settings icon gets clicked, slide the mask curtain down.
   $('.glyphicon-cog').click(function(e) {
-    // the e.target is the event target. It means, "whichever DOM element was clicked referring to #settingsIcon"
+    // the e.target is the event target. It means, "whichever DOM element was clicked referring to .glyphicon-cog"
     var mask = $(e.target).parent().next('#preferences-container');
-    console.log(mask);
+    // console.log(mask);
+    $("#preferences-container").fadeIn();
     // transform has a bunch of methods like 
     // translate(x-axis-in px) y-axis-in-px); - moves it around 
     // rotate(90deg) - rotates clockwise and counter clockwise
@@ -20,9 +21,20 @@ function handleClickEvents() {
   });
 
   // If any close button gets clicked, slide the mask curtain up.
-  $('.close-btn').click(function(e) {
+  $('#preferencesCloseButton').click(function(e) {
     var mask = $("#preferences-container");
     mask.css('transform', 'translateY(-514px)');
+    $("mask").fadeOut();
+  });
+
+  $('#alertCloseButton').click(function(e) {
+    var mask = $("#preferences-container");
+    mask.css('transform', 'translateY(-514px)');
+    $("#alert-container").fadeOut();
+  });
+
+  $('#preferencesSubmitButton').click(function(e) {
+    mainFunction();
   });
 }
 
@@ -120,7 +132,6 @@ function setPreferences(days, goal, alertType, weight) {
         wantsAudio = true;
     }
     var preferences = [days, goal, alertType, level, weight];
-    // alert(preferences);
     return preferences;
 }
 
@@ -208,12 +219,15 @@ function renderCalendarCard(dayOfWeek, dayOfWeekExercise, ids, link) {
 
     // put it inside the div
     $('.daysOfWeekCardContainer').append(renderedText);
+    $('#overview-container').fadeIn();
 }
 
 // 2-a. set workout
 
 function setIncreaseWorkout() {
 // JSON data lives here.
+var targetLink = "http://www.bodybuilding.com/fun/shortcut-to-size.html";
+$( "#exercisesOverviewIframe" ).attr( "src", targetLink );
   var workoutWeeks = {
     'week1': [
     {
@@ -885,6 +899,7 @@ function showProgramOverview(level, goal, weight) {
     }
     else if (level == "week2") {
         if (goal == 'increase') {
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -895,6 +910,7 @@ function showProgramOverview(level, goal, weight) {
     }
     else if (level == "week3") {
         if (goal == 'increase') {
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -904,6 +920,7 @@ function showProgramOverview(level, goal, weight) {
     }
     else if (level == "week4") {
         if (goal == 'increase') {
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -913,6 +930,7 @@ function showProgramOverview(level, goal, weight) {
     }
     else if (level == "week5") {
         if (goal == 'increase') {
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -922,6 +940,7 @@ function showProgramOverview(level, goal, weight) {
     }
     else if (level == "week6") {
         if (goal == 'increase') {
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -931,6 +950,7 @@ function showProgramOverview(level, goal, weight) {
     }
     else if (level == "week7") {
         if (goal == 'increase') {
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -940,6 +960,7 @@ function showProgramOverview(level, goal, weight) {
     }
     else if (level == "week8") {
         if (goal == 'increase') {
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -949,6 +970,7 @@ function showProgramOverview(level, goal, weight) {
     }
     else if (level == "week9") {
         if (goal == 'increase') {
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -958,6 +980,7 @@ function showProgramOverview(level, goal, weight) {
     }
     else if (level == "week10") {
         if (goal == 'increase') {
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -969,6 +992,7 @@ function showProgramOverview(level, goal, weight) {
     else if (level == "week11") {
         if (goal == 'increase') {
             // document.getElementById("increaseWorkout").style.display = "block";
+            $("#overview-container").fadeIn();
             $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
@@ -980,7 +1004,8 @@ function showProgramOverview(level, goal, weight) {
     else if (level == "week12") {
         if (goal == 'increase') {
             // document.getElementById("increaseWorkout").style.display = "block";
-            $("#increaseWorkout").show();
+            $("#overview-container").fadeIn();
+            $("#increaseWorkout").fadeIn();
             setIncreaseWorkout();
         }
         else {
@@ -1034,7 +1059,7 @@ function showProgramOverview(level, goal, weight) {
         "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
         "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
         "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed()
+        "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed(),
       },
       meal2 = {
         "meals"     : "Breakfast 2 (30-60 Minutes After Breakfast 1)",
@@ -1093,6 +1118,41 @@ function showProgramOverview(level, goal, weight) {
         "fats"      : (dailyIncreaseFatOnRestDays * .08).toFixed()
       }
     ];
+
+// function renderObjectKeys() {
+//   var increaseMeals = {
+//     'meal1': {
+//       allowances: {
+//         "meals"     : "Breakfast 1 (Immediately Upon Waking)",
+//         "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
+//         "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+//         "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
+//         "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed()
+//       },
+//       defaultMeal {
+//         "foodItem"  : "Trader Joes organic multigrain hot cereal",
+//         "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
+//         "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+//         "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
+//         "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed(),
+//         "defaultMeal" :
+//       },
+//       teaser: "The Gulf War is over, and three soldiers want to go home rich. Major Archie Gates retires in two weeks. Sergeant Troy Barlow is a new father. Chief Elgin is on a four-month paid vacation from Detroit. Saddam Hussein stole a great deal of gold from Kuwait, and these soldiers have no problem with stealing it from him. But on their way to collect their booty, they bear witness to the the disturbing results of the war effort. President Bush has encouraged Iraqi citizens to fight back against Saddam and pledged to support them, but when they rise up, they get NO American support, and they're getting slaughtered. As the soldiers realize the true situation in Iraq, they're confronted with their own humanity, and they're forced to rethink who they are and what they're doing."      
+//     },
+
+//     'transformers': {
+//       image: '2.jpg',
+//       cast: 'Mark Wahlberg, Jack Reynor, Nicola Peltz',
+//       teaser: "Transformers: Age of Extinction begins after an epic battle left a great city torn, but with the world saved. As humanity picks up the pieces, a shadowy group reveals itself in an attempt to control the direction of history...while an ancient, powerful new menace sets Earth in its crosshairs. With help from a new cast of humans (led by Mark Wahlberg), Optimus Prime and the Autobots rise to meet their most fearsome challenge yet. In an incredible adventure, they are swept up in a war of good and evil, ultimately leading to a climactic battle across the world."
+//     },
+
+//     'butler': {
+//       image: '3.jpg',
+//       cast: 'Forest Whitaker, Oprah Winfrey, John Cusack',
+//       teaser: "The Butler tells the story of a White House butler who served eight American presidents over three decades. The film traces the dramatic changes that swept American society during this time, from the civil rights movement to Vietnam and beyond, and how those changes affected this man's life and family. Forest Whitaker stars as the butler with Robin Williams as Dwight Eisenhower, John Cusack as Richard Nixon, Alan Rickman as Ronald Reagan, James Marsden as John F. Kennedy, Liev Schreiber as Lyndon B. Johnson, and many more. Academy Award (R) nominated Lee Daniels (PRECIOUS) directs and co-wrote the script with Emmy (R)-award winning Danny Strong (GAME CHANGE)."
+//     },
+//   };
+
     for (var i = 0; i < increaseMeals.length; i++) {
     renderMealsCard(increaseMeals[i].meals, increaseMeals[i].calories, increaseMeals[i].protein, increaseMeals[i].carbs, increaseMeals[i].fats);
     };
@@ -1151,9 +1211,9 @@ function showVideoReminder() {
 function checkTime() {
     // SETTINGS
     /* Set alert Hours in 24hr Notation ie. the 12 in 12:00 */
-    var alertHour=[9, 9, 9];
+    var alertHour=[15, 15, 15];
     /* Set alert Minutes in 24hr Notation ie. the 00 in 12:00 */
-    var alertMinute=[06, 07, 08]; 
+    var alertMinute=[11, 12, 13]; 
     /* Set alert Messages */
     var alertMessages=["Breakfast", "Lunch", "Dinner!"];
     // check to see what?
@@ -1213,29 +1273,54 @@ function mainFunction() {
 }
 
 function renderNutritionFactsAPI() {
-    // set up a search bar
-    var searchItem = $("#foodSearch").val();
-https://nutritionix.com/v1_1/search/
+  // set up a search bar
+  var searchItem = $("#foodSearch").val();
   $.get('https://api.nutritionix.com/v1_1/search/' + searchItem + '?fields=*&appId=fa29d9c4&appKey=0ba07a98eec4870860353ad5617c973e', 
 
     function(nutritionFacts) {
       var items = nutritionFacts.hits;
-      console.log(items);
+      // console.log(items);
       for (var i = 0; i < items.length; i++) {
-        renderNewCard(items[i].fields.brand_name, items[i].fields.item_name, items[i].fields.nf_calories, items[i].fields.nf_protein, items[i].fields.nf_total_carbohydrate, items[i].fields.nf_total_fat);
-    };
-});
+        renderNewCard(items[i].fields.nf_serving_size_qty, items[i].fields.nf_serving_size_unit, items[i].fields.brand_name, items[i].fields.item_name, items[i].fields.item_id, items[i].fields.nf_calories, items[i].fields.nf_protein, items[i].fields.nf_total_carbohydrate, items[i].fields.nf_total_fat);
+      };
+      saveToMeal();
+  });
 }
+
+
 
 function saveToMeal(e) {
   var buttons = $(".saveToMealButton");
 
   buttons.click(function(e) {
     var thisButton = e.target;
+
+    // grab the value from the data-link attribute
+    var theButtonsItemId = $(e.currentTarget).attr("id");
     var mealToAddTo = $(".mealToAddTo option:selected").val();
+
+    // getting the .html() from the .resultsContainer label
+    var addedHtml = $(".nutritionInfo").html;
+    console.log(addedHtml);
+
+    // so now I need to get the id out of mealToAddTo...
+
+    // Click the menu, all spans in all .foo, and paragraphs after headers
+    var currentlySelectMealId = $(".mealToAddTo").attr("id");
+    console.log("You clicked on " + thisButton + " which has an id of " + theButtonsItemId + ". You need to grab the preceding select value which we think is " + mealToAddTo + ".");
+    console.log(currentlySelectMealId);
+    // console.log(theButtonsItemId);
+    console.log(thisButton);
     console.log(mealToAddTo);
+    var itemSearchResult = renderItemIdNutritionFactsAPI(currentlySelectMealId, mealToAddTo);
+    console.log(itemSearchResult);
   });
 
+// function saveToMeal(e) {
+//   $(".saveToMealButton").click(function(e) {
+//     var mealToAddTo = $(e.target).parents(".mealToAddTo option:selected").val();
+//     console.log(mealToAddTo);
+//   });
 }
 
 handleClickEvents();

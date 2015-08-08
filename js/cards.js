@@ -1,17 +1,20 @@
 // mustache template for food item search results
-function renderNewCard(brandName, itemName, calories, protein, carbs, fat) {
+function renderNewCard(servingSizeQuantity, servingSizeUnit, brandName, itemName, itemId, calories, protein, carbs, fat) {
     // Reach out and grab the raw template
     var rawTemplate = $('#nutrition-info-template').html();
     // console.log(rawTemplate);
 
     // Define dynamic values (hydrate the template)
     var values = {
-        'brandName' : brandName,
-        'itemName'  : itemName,
-        'calories'  : calories,
-        'protein'   : protein,
-        'carbs'     : carbs,
-        'fat'       : fat
+        'servingSizeQuantity'   : servingSizeQuantity,
+        'servingSizeUnit'       : servingSizeUnit,
+        'brandName'             : brandName,
+        'itemName'              : itemName,
+        'itemId'                : itemId,
+        'calories'              : calories,
+        'protein'               : protein,
+        'carbs'                 : carbs,
+        'fat'                   : fat
     };
 
     // So you can call it like this:
@@ -22,9 +25,10 @@ function renderNewCard(brandName, itemName, calories, protein, carbs, fat) {
 
     // put it inside the div
     $('#searchResults').append(renderedText);
+    
 }   
 
-// Another mustache template
+// Hydrate the Mustache template for individual meals
 
 function renderMealsCard(meals, calories, protein, carbs, fats) {
   // Reach out and grab your raw template by its ID.

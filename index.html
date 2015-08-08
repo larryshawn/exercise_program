@@ -2,7 +2,7 @@
 <html>
 <head>
   <!-- Required to properly zoom the viewport on mobile. -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1">
   <title>My Health Schedule As Whole Foods Fitness</title>
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/cards.css">
@@ -16,23 +16,24 @@
     <span></span>
     <span id="logo">Whole Foods Fitness</span>
     <span id="settingsIcon">
+      <span id="hint">Set workout preferences ></span>
       <i class="glyphicon glyphicon-cog"></i>
     </span>
     <div id="preferences-container" class="container">
         <div class="row">
           <div class="col-xs-12">
             <h2 class="center">Preferences</h2>
-            <img class="close-btn" src="images/close.png">
+            <img id="preferencesCloseButton" class="close-btn" src="images/close.png">
           </div>
         </div>
         <form name="myForm" action="" onsubmit="getFormValues()" method="post">
           <div class="form-group">
             <label>Days on this schedule</label><br>
-            <input type="number" name="days" id="amountOfDays" class="form-control">
+            <input type="number" name="days" id="amountOfDays" class="form-control" tabindex="1">
           </div>
           <div class="form-group">
             <label>Your goal</label><br>
-            <select id="goal" class="form-control">
+            <select id="goal" class="form-control" tabindex="2">
               <option value="increase">Increase weight</option>
               <option value="decrease">Decrease weight</option>
             </select>
@@ -40,42 +41,42 @@
           <label>Alert Type</label>
           <div class="radio ">
             <label>
-              <input type="radio" name="alertTypeRadios" id="wantsAudio" value="audio" checked>
+              <input type="radio" name="alertTypeRadios" id="wantsAudio" value="audio" checked tabindex="3">
               Audio
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="alertTypeRadios" id="wantsVideo" value="video">
+              <input type="radio" name="alertTypeRadios" id="wantsVideo" value="video" tabindex="4">
               Video
             </label>
           </div>
           <div class="radio">
             <label>
-              <input type="radio" name="alertTypeRadios" id="wantsBoth" value="both">
+              <input type="radio" name="alertTypeRadios" id="wantsBoth" value="both" tabindex="5">
               Both
             </label>
           </div>
           <div class="form-group">
             <label>How much do you weigh?</label><br>
-            <input type="number" name="currentWeight" id="currentWeight" class="form-control">
+            <input type="number" name="currentWeight" id="currentWeight" class="form-control" tabindex="6">
           </div>
-          <button type="button" class="btn btn-large btn-success btn-block row-spacer" onclick="mainFunction()">Show Workout Overview</button>
+          <button type="button" id="preferencesSubmitButton" class="btn btn-large btn-success btn-block row-spacer" tabindex="7">Show Workout Overview</button>
         </form>
       </div>
   </div>
 
 
   <!-- hero image -->
-  <div id="hero" class="jumbotron img-retina container">
-    <h1 id="heroText">Whole Foods Body Building Guide</h1>
+  <div id="hero" class="img-retina container">
+    <!-- <h1 class="jumbotron" id="heroText">Whole Foods Body Building Guide</h1> -->
   </div>
   
   <div id="alert-container" class="container">
-
     <div class="row">
       <div class="col-xs-12">
         <h2 class="center">Alerts</h2>
+        <img id="alertCloseButton" class="close-btn" src="images/close.png">
       </div>
     </div>
 
@@ -119,14 +120,14 @@
                 </div>
               </div>
               <div id="mask"></div>
-              <div id="lightbox-container">
+
+              <div id="lightbox-container" class="row">
                 <!-- I use the .attr attribute to dynamically change the src of the iframe -->
-                
-                  <div class="lightbox">
-                    <iframe id="daysIframe" type="text/html" src="" frameborder="0"></iframe>
-                  </div>
-                
+                <div class="lightbox">
+                  <iframe id="daysIframe" type="text/html" src="" frameborder="0" class="col-sm-12"></iframe>
+                </div>
               </div>
+
               <div class="row row-spacer">
                 <div id="increaseWorkout" class="col-xs-12">
                   <!-- Display today's day of the week and tell if it's a workout day or a rest day -->
@@ -164,34 +165,45 @@
                   </div>
                 </div>
               </div> 
-              <div id="individualMealsContainer" class="row">
-                <h4 id="individualMealsTitle">Individual Meals</h4>
-                <div id="individualMeals" class="col-sm-12 row-spacer">
-                  <!-- The meals stats will be the same. The only difference is on off days there are no pre or post workout meals -->
-                  <div id="meals-container">
-                    <!-- MustacheTemplate -->
-                    <script id="meals-template" type="x-tmpl-mustache">
-                      <div class="meals">
-                        <div>{{ meals }} - eat these</div>
-                        <div class='calories'>
-                          cals<br> 
-                          {{calories}}
+              <div id="individualMealsContainer" class="row row-spacer">
+                <div class="col-sm-12">
+                  <h4 id="individualMealsTitle">Individual Meals</h4>
+                  <div id="individualMeals">
+                    <!-- The meals stats will be the same. The only difference is on off days there are no pre or post workout meals -->
+                    <div id="meals-container">
+                      <!-- MustacheTemplate -->
+                      <script id="meals-template" type="x-tmpl-mustache">
+                        <div class="meals">
+                          <div>{{ meals }} </div>
+                          <div class='calories'>
+                            cals<br> 
+                            {{calories}}
+                          </div>
+                          <div class='protein'>
+                            pros<br>
+                            {{protein}}
+                          </div>
+                          <div class='carbs'>
+                            carbs<br>
+                            {{carbs}}
+                          </div>
+                          <div class='fats'>
+                            fats<br>
+                            {{fats}}
+                          </div>
                         </div>
-                        <div class='protein'>
-                          pros<br>
-                          {{protein}}
+                        <div>Default Meal</div>
+                        <div id="addedItems">
+                        <div>{{ servingSizeQuantity }} {{ servingSizeUnit }} {{ itemName }}
                         </div>
-                        <div class='carbs'>
-                          carbs<br>
-                          {{carbs}}
-                        </div>
-                        <div class='fats'>
-                          fats<br>
-                          {{fats}}
-                        </div>
-                      </div>
-                      <hr>
-                    </script>
+                        <div>{{ addedItemCalories }}</div>
+                        <div>{{ addedItemProtein }}</div>
+                        <div>{{ addedItemCarbs }}</div>
+                        <div>{{ addedItemFats }}</div>
+                        <div>
+                        <hr>
+                      </script>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -205,7 +217,7 @@
                 <div class="col-sm-12">
                   <h4 id="workoutOverviewTitle">Workout Overview</h4>
                   <div id="exercisesOverview">
-                    <iframe id="exercisesOverviewIframe" type="text/html" src="http://www.bodybuilding.com/fun/shortcut-to-size.html" frameborder="0"></iframe>
+                    <iframe id="exercisesOverviewIframe" type="text/html" src="" frameborder="0"></iframe>
                   </div>
                 </div>
                 </div>
@@ -345,10 +357,10 @@
                 <h2 class="center">Food Information</h2>
               </div>
             </div>
-            <div class="row row-spacer">
+            <div class="row">
               <div class="col-xs-12 card">
                 <form action="javascript:void()" method="get">
-                  <input type="search" id ="foodSearch" class="form-control" placeholder="Search nutritional info..." name="search" autocomplete = "on"></input><input id="goSearchSubmit" type="image" src="images/icon-search.png" onclick="javascript:renderNutritionFactsAPI();" border="0">
+                  <input type="search" id ="foodSearch" class="form-control" placeholder="Search nutritional info..." name="search" autocomplete = "on" autoFocus></input><input id="goSearchSubmit" type="image" src="images/icon-search.png" onclick="javascript:renderNutritionFactsAPI();" border="0">
                 </form>
                 <!-- <script src="http://platform.fatsecret.com/js?key=8930f590f6b4480db775c050dbc9e263&auto_load=true"></script> -->
                 <!-- <strong>Brussels sprouts:</strong> 1 cup, 65 cal, 6 gm, low in leucine, lysine, methionine + cystine, phenylalanine + tyrosine<br>
