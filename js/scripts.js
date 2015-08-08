@@ -1,6 +1,10 @@
 // Create a program to keep track of my schedule. When and what I eat. When and what to do that which is physical throughout the day.
 
 // Here are some functions that need to start right away...
+
+$( document ).ready(function() {
+    $( "#hint" ).delay(2000).fadeIn(2000).delay(2000).fadeOut(2000);
+});
 function handleClickEvents() {
   // If the settings icon gets clicked, slide the mask curtain down.
   $('.glyphicon-cog').click(function(e) {
@@ -23,8 +27,10 @@ function handleClickEvents() {
   // If any close button gets clicked, slide the mask curtain up.
   $('#preferencesCloseButton').click(function(e) {
     var mask = $("#preferences-container");
-    mask.css('transform', 'translateY(-514px)');
-    $("mask").fadeOut();
+    mask.css({
+      "transform": "translateY(-514px)",
+      "transition": "transform 1s"
+    });
   });
 
   $('#alertCloseButton').click(function(e) {
@@ -889,116 +895,127 @@ function bindEventListeners() {
 function showProgramOverview(level, goal, weight) {
     if (level == 'week1') {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
-            $("#beginnerDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week2") {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
-            $("#intermediateDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
 
         }
     }
     else if (level == "week3") {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
-            $("#advancedDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week4") {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
-            $("#advancedDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week5") {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
-            $("#advancedDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week6") {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
-            $("#advancedDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week7") {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
-            $("#advancedDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week8") {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
-            $("#advancedDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week9") {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
-            $("#advancedDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week10") {
         if (goal == 'increase') {
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
             // document.getElementById("advancedDecreaseWorkout").style.display = "block";
-            $("#advancedDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week11") {
         if (goal == 'increase') {
             // document.getElementById("increaseWorkout").style.display = "block";
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
+            $("#overview-container").fadeIn(1000);
+            $("#increaseWorkout").fadeIn(1000);
             setIncreaseWorkout();
         }
         else {
             // document.getElementById("advancedDecreaseWorkout").style.display = "block";
-            $("#advancedDecreaseWorkout").fadeIn();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
     else if (level == "week12") {
@@ -1010,7 +1027,8 @@ function showProgramOverview(level, goal, weight) {
         }
         else {
             // document.getElementById("advancedDecreaseWorkout").style.display = "block";
-            $("#advancedDecreaseWorkout").show();
+            $("#beginnerDecreaseWorkout").fadeIn(1000);
+            $("#overview-container").fadeIn(1000);
         }
     }
 
@@ -1208,14 +1226,16 @@ function showVideoReminder() {
     video.play();
 }
 
+
+
 function checkTime() {
     // SETTINGS
     /* Set alert Hours in 24hr Notation ie. the 12 in 12:00 */
-    var alertHour=[15, 15, 15];
+    var alertHour=[8, 9, 12, 14, 16, 17, 18, 21, 22];
     /* Set alert Minutes in 24hr Notation ie. the 00 in 12:00 */
-    var alertMinute=[11, 12, 13]; 
+    var alertMinute=[0, 0, 0, 0, 0, 0, 0, 48, 0]; 
     /* Set alert Messages */
-    var alertMessages=["Breakfast", "Lunch", "Dinner!"];
+    var alertMessages=["Breakfast 1", "Breakfast 2", "Late morning snack", "Lunch", "Afternoon snack", "Pre-Workout", "Post-Workout", "Dinner", "Before bed snack"];
     // check to see what?
     // if nowsDateStamp
     // Now's date stamp. The keyword "new" creates Date() as an object.
@@ -1235,9 +1255,11 @@ function checkTime() {
             if (wantsVideo == true) {
                 showVideoReminder();
             }
-            
+            var message = "It's " + dateStampHours + ":" + dateStampMinutes + ". You need to eat " + alertMessages[i] + ".";
+
             $('#alert-container').fadeIn(function() {
-              alert("The time is" + dateStampHours + ":" + dateStampMinutes + ". You need to eat " + alertMessages[i] + ".");
+              $('#alertMessage').html(message);
+              alert("Sorry for the intrusion. We just wanted to make sure you saw this.");
             });
         }
     }

@@ -78,6 +78,7 @@ a.hover {
   position: relative;
   bottom: 1px;
   right: 4px;
+  display: none;
 }
 
 /* Visited links under #nav-header */
