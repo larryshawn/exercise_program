@@ -73,14 +73,14 @@ body {
 .searchResultCalories, .searchResultProtein, .searchResultCarbs, .searchResultFats {
   border: 1px solid darkgray;
   display: inline-block;
-  padding: 10px;
+  padding: 6px;
   background-image: linear-gradient(rgb(64, 64, 65), rgb(138, 138, 139));
   color: white;
-  border-radius: 9px;
+  border-radius: 20px;
   position: relative;
   text-align: center;
   margin: 4px;
-  top: 10px;
+  top: 0px
 }
 
 .searchResultC label {
