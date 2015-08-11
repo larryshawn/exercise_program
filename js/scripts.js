@@ -24,6 +24,22 @@ function handleClickEvents() {
     // $("#amountOfDays").focus();
   });
 
+  $('#hint').click(function(e) {
+    var mask = $(e.target).parent().next('#preferences-container');
+    // console.log(mask);
+    $("#preferences-container").fadeIn();
+    // transform has a bunch of methods like 
+    // translate(x-axis-in px) y-axis-in-px); - moves it around 
+    // rotate(90deg) - rotates clockwise and counter clockwise
+    // scale(0.1,14) - everything under 1 goes smaller
+    // skewX(139deg) - top and bottom slant
+    // skewY(-20deg) - sides slant
+    // skew(25deg,186deg) - skews on x and y axis unless you only put one value in. In that case it functions just like a skewX()
+    // matrix(scalex, rotate, scaley, translatex, translatey) - all at once
+    mask.css('transform', 'translateY(-48px)');
+    // $("#amountOfDays").focus();
+  });
+
   // If any close button gets clicked, slide the mask curtain up.
   $('#preferencesCloseButton').click(function(e) {
     var mask = $("#preferences-container");

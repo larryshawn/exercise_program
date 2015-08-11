@@ -96,6 +96,14 @@ a.hover {
   display: none;
 }
 
+#hint:hover {
+  cursor: pointer;
+}
+
+.glyphicon-cog:hover {
+  cursor: pointer;
+}
+
 /* Visited links under #nav-header */
 #nav-header a, a:visited {
   text-decoration: none;
