@@ -231,9 +231,23 @@ function renderCalendarCard(dayOfWeek, dayOfWeekExercise, ids, link) {
 // 2-a. set workout
 
 function setIncreaseWorkout() {
+  // load bodybuilding page into iframe
+//   var targetLink = "http://www.bodybuilding.com/fun/shortcut-to-size.html";
+//   $( "#exercisesOverviewIframe" ).attr( "src", targetLink );
+
+// // $( "#exercisesOverviewIframe" ).load( "http://www.bodybuilding.com/fun/shortcut-to-size.html", function() {
+// //   alert( "Load was performed." );
+// // });
+
+// $('#exercisesOverviewIframe').on("load", function() {
+//   alert( "Load was performed." );
+//   $( "div#ad_wrapper a img" ).css( "display", "none", "important" );
+  // a#aw0, div#ad_wrapper {
+  // display: none !important;
+// }
+// });
+
 // JSON data lives here.
-var targetLink = "http://www.bodybuilding.com/fun/shortcut-to-size.html";
-$( "#exercisesOverviewIframe" ).attr( "src", targetLink );
   var workoutWeeks = {
     'week1': [
     {
@@ -1033,20 +1047,22 @@ function showProgramOverview(level, goal, weight) {
     }
 
     // Compute increase daily allowances
+    // ratio * weight = units
+    // ratio = units / weight
     var dailyIncreaseCaloriesOnRestDays = (18 * weight).toFixed();
     var dailyIncreaseProteinOnRestDays = (1.57 * weight).toFixed();
     var dailyIncreaseCarbsOnRestDays = (1.57 * weight).toFixed();
     var dailyIncreaseFatOnRestDays = (.6 * weight).toFixed();
 
     var dailyIncreaseCaloriesOnWorkoutDays = (20 * weight).toFixed();
-    var dailyIncreaseProteinOnWorkoutDays = (1.57 * weight).toFixed();
-    var dailyIncreaseCarbsOnWorkoutDays = (1.57 * weight).toFixed();
+    var dailyIncreaseProteinOnWorkoutDays = (1.75 * weight).toFixed();
+    var dailyIncreaseCarbsOnWorkoutDays = (1.75 * weight).toFixed();
     var dailyIncreaseFatOnWorkoutDays = (.6 * weight).toFixed();
 
     var dailyDecreaseCaloriesForAllDays = (18 * weight).toFixed();
     var dailyDecreaseProteinForAllDays = (1.57 * weight).toFixed();
     var dailyDecreaseCarbsForAllDays = (1.57 * weight).toFixed();
-    var dailyDecreaseFatForAllDays = (.6 * weight).toFixed();
+    var dailyDecreaseFatForAllDays = (.66 * weight).toFixed();
 
     // daily allowance object
     var dailyAllowances = [
