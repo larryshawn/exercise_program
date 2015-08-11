@@ -21,7 +21,7 @@ function handleClickEvents() {
     // skew(25deg,186deg) - skews on x and y axis unless you only put one value in. In that case it functions just like a skewX()
     // matrix(scalex, rotate, scaley, translatex, translatey) - all at once
     mask.css('transform', 'translateY(-48px)');
-    $("#amountOfDays").focus();
+    // $("#amountOfDays").focus();
   });
 
   // If any close button gets clicked, slide the mask curtain up.
