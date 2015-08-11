@@ -29,7 +29,15 @@ function handleClickEvents() {
     var mask = $("#preferences-container");
     mask.css({
       "transform": "translateY(-532px)",
-      "transition": "transform 2s ease-out"
+      "transition": "transform 2s ease-in-out",
+      "-webkit-transition": "transform 2s ease-in-out",
+      "-moz-transition": "transform 2s ease-in-out",
+      "-o-transition": "transform 2s ease-in-out"
+
+  //     -webkit-transition: all 1s ease-in-out;
+  // -moz-transition: all 1s ease-in-out;
+  // -o-transition: all 1s ease-in-out;
+  // transition: all 1s ease-in-out;
     });
   });
 
