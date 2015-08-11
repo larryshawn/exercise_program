@@ -20,6 +20,21 @@ iframe#exercisesOverviewIframe {
   border-radius: 25px;
 }
 
+.btn-success {
+  background-color: #91AE17;
+  border-color: yellowgreen;
+}
+
+.btn-success:focus {
+  background-color: yellowgreen;
+  border-color: #91AE17;
+}
+
+.btn-success:hover {
+  background-color: yellowgreen;
+  border-color: #91AE17;
+}
+
 /* Hide the scrollbars in a gallery. Only works in webkit browsers */
 iframe::-webkit-scrollbar { 
   display: none; 
@@ -136,7 +151,10 @@ a.hover {
 #exercisesOverview {
   display: inline-block;
   height: 320px;
+  border-radius: 20px;
+  margin-top: 10px;
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   padding: 0 20px;
   box-shadow: inset 0 0 10px #666, inset 0 0 10px #666, inset 0 0 10px #666;
 }
@@ -199,7 +217,7 @@ a.hover {
   display: none;
   margin-top: 28px;
   transform: translateY(-514px);
-  transition: transform 750ms;
+  transition: transform 2s ease-out;
 }
 
 #individualMealsContainer {
@@ -427,10 +445,12 @@ video {
 #individualMeals {
   height: 312px;
   width: 100%;
+  box-shadow: inset 0 0 10px #666, inset 0 0 10px #666, inset 0 0 10px #666;
   overflow: scroll;
+  -webkit-overflow-scrolling: touch;
   background-color: #ebebeb;
-  margin: 40px auto;
-  border-radius: 25px;
+  margin: 47px auto 0px;
+  border-radius: 20px;
   text-align: center;
 }
 
@@ -475,8 +495,8 @@ video {
 }
 
 .saveToMealButton {
-  margin-top: 6px;
-  margin-bottom: 25px;
+  margin-top: 10px;
+  margin-bottom: 0px;
   display: inline;
   width: none;
 }

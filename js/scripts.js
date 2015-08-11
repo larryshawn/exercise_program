@@ -28,8 +28,8 @@ function handleClickEvents() {
   $('#preferencesCloseButton').click(function(e) {
     var mask = $("#preferences-container");
     mask.css({
-      "transform": "translateY(-514px)",
-      "transition": "transform 1s"
+      "transform": "translateY(-532px)",
+      "transition": "transform 2s ease-out"
     });
   });
 
