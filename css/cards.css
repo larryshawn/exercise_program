@@ -106,8 +106,8 @@ body {
 .lightbox {
   position: fixed;
   top: 10px;
-  width: 100%;
-  height: 440px;
+  width: 90%;
+  height: 360px;
   margin: 0 auto;
   background-size: 100%;
   background-repeat: no-repeat;
