@@ -4,7 +4,6 @@
   <!-- Required to properly zoom the viewport on mobile. -->
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1">
   <title>My Health Schedule As Whole Foods Fitness</title>
-  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/cards.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -130,10 +129,12 @@
       <div class="daysOfWeekCardContainer gallery">
         <!-- MustacheTemplate -->
         <script id="calendar-template" type="x-tmpl-mustache">
-          <div value="{{link}}" id="{{ ids }}" class="daysOfWeekCard">
-            <div id="{{ ids }}" class="daysOfWeek">{{ dayOfWeek }}</div>
-            <div id="{{ ids }}" class="exercises">{{ dayOfWeekExercise }}</div>
-          </div>
+          <a href = "{{link}}">
+            <div value="{{link}}" id="{{ ids }}" class="daysOfWeekCard">
+              <div id="{{ ids }}" class="daysOfWeek">{{ dayOfWeek }}</div>
+              <div id="{{ ids }}" class="exercises">{{ dayOfWeekExercise }}</div>
+            </div>
+          </a>
         </script>
       </div>
     </div>
@@ -570,9 +571,7 @@
     <div class="row">
       <h4>Resources</h4>
       <div>
-        <a href="http://www.bodybuilding.com/fun/no-meat-muscle-4-rules-for-building-mass-on-vegetarian-diet.html" data-role="button" data-rel="dialog" data-transition="fade" data-inline="true" data-corners="true" data-shadow="true" data-iconshadow="true" data-wrapperels="span" data-theme="c" class="ui-btn ui-shadow ui-btn-corner-all ui-btn-inline ui-btn-up-c">No Meat Muscle</a><br>
-
-
+        <a href="http://www.bodybuilding.com/fun/no-meat-muscle-4-rules-for-building-mass-on-vegetarian-diet.html">No Meat Muscle</a><br>
         <a href="http://rawforbeauty.com/blog/my-experience-10-months-100-raw-vegan-diet-muscle-building.html">Raw Vegan Diet</a><br>
         <a href="http://www.bodybuilding.com/fun/shortcut-to-size.html">Shortcut to size</a><br>
         <a href="http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred.html">Shortcut to shred</a><br>
@@ -585,7 +584,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <!-- Mustache library call -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
-  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <script src="js/cards.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
 </body>

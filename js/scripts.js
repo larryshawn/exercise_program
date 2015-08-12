@@ -1213,7 +1213,7 @@ function bindEventListeners() {
         var targetLink = $(e.currentTarget).attr("value");
         var rawTemplate = $('#lightbox-template').html();
 
-        $( "#daysIframe" ).attr( "src", targetLink );
+        // $( "#daysIframe" ).attr( "src", targetLink );
         // console.log(consoleTest);
         // console.log(rawTemplate);
         // the extraneous stuff is being added below.
@@ -1221,13 +1221,13 @@ function bindEventListeners() {
 
         // console.log(stampedTemplate);
         // $('#lightbox-container').append(stampedTemplate);
-        $('#mask').fadeIn('fast');
-        $('.lightbox').fadeIn('slow');
-        $('#mask').click(function(){
+        // $('#mask').fadeIn('fast');
+        // $('.lightbox').fadeIn('slow');
+        // $('#mask').click(function(){
             
-            $('.lightbox').fadeOut();
-            $('#mask').fadeOut();
-        })
+        //     $('.lightbox').fadeOut();
+        //     $('#mask').fadeOut();
+        // })
     // });
     // $("body").keypress(function (e) {
     //     // body...
