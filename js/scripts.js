@@ -136,17 +136,8 @@ function setPreferences(days, goal, alertType, weight) {
     else if (days >= 85 && days <= 91) {
         level = "week12";
     }
-    // find out what their goal is and store that in a variable
-    // goal = prompt("You're a " + level + ". That's nice and stuff. So are you looking to increase or decrease your weight?");
-    // if their goal is to increase weight do stuff
-    if (goal == "increase") {
-        // var alertType = prompt("Ok, we can do that. Would you like to receive an audio alert, video alert or both as a reminder?");
-        goal = "increase";
-    }
-    else if (goal == "decrease") {
-        // var alertType = prompt("Okay, we can shed those toxins! Would you like to receive an audio alert, video alert or both as a reminder?");
-        goal = "decrease";
-    }
+    
+    // set alert type
     if (alertType == "audio") {
         // showAudioReminder();
         wantsAudio = true;
@@ -254,7 +245,7 @@ function renderCalendarCard(dayOfWeek, dayOfWeekExercise, ids, link) {
 
 // 2-a. set workout
 
-function setIncreaseWorkout() {
+function setWorkout(goal) {
   // load bodybuilding page into iframe
 //   var targetLink = "http://www.bodybuilding.com/fun/shortcut-to-size.html";
 //   $( "#exercisesOverviewIframe" ).attr( "src", targetLink );
@@ -272,626 +263,943 @@ function setIncreaseWorkout() {
 // });
 
 // JSON data lives here.
+  if (goal == "increase") {
+    var workoutWeeks = {
+      'week1': [
+      {
+        day       : '1',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-1.html"
+      },
+      {
+        day       : '2',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-2.html"
+      },
+      {
+        day       : '3',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-3.html"
+      },
+      {
+        day       : '4',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-4.html"
+      },
+      {
+        day       : '5',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-5.html"
+      },
+      {
+        day       : '6',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-6.html"
+      },
+      {
+        day       : '7',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-7.html"
+      }
+    ],
+    'week2': [
+      {
+        day       : '8',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-8.html"
+      },
+      {
+        day       : '9',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-9.html"
+      },
+      {
+        day       : '10',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-10.html"
+      },
+      {
+        day       : '11',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-11.html"
+      },
+      {
+        day       : '12',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-12.html"
+      },
+      {
+        day       : '13',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-13.html"
+      },
+      {
+        day       : '14',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-14.html"
+      }
+    ],
+    'week3': [
+      {
+        day       : '15',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-15.html"
+      },
+      {
+        day       : '16',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-16.html"
+      },
+      {
+        day       : '17',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-17.html"
+      },
+      {
+        day       : '18',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-18.html"
+      },
+      {
+        day       : '19',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-19.html"
+      },
+      {
+        day       : '20',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-20.html"
+      },
+      {
+        day       : '21',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-21.html"
+      }
+    ],
+    'week4': [
+      {
+        day       : '22',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-22.html"
+      },
+      {
+        day       : '23',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-23.html"
+      },
+      {
+        day       : '24',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-24.html"
+      },
+      {
+        day       : '25',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-25.html"
+      },
+      {
+        day       : '26',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-26.html"
+      },
+      {
+        day       : '27',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-27.html"
+      },
+      {
+        day       : '28',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-28.html"
+      }
+    ],
+    'week5': [
+      {
+        day       : '29',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-29.html"
+      },
+      {
+        day       : '30',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-30.html"
+      },
+      {
+        day       : '31',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-31.html"
+      },
+      {
+        day       : '32',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-32.html"
+      },
+      {
+        day       : '33',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-33.html"
+      },
+      {
+        day       : '34',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-34.html"
+      },
+      {
+        day       : '35',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-35.html"
+      }
+    ],
+    'week6': [
+      {
+        day       : '36',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-36.html"
+      },
+      {
+        day       : '37',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-37.html"
+      },
+      {
+        day       : '38',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-38.html"
+      },
+      {
+        day       : '39',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-39.html"
+      },
+      {
+        day       : '40',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-40.html"
+      },
+      {
+        day       : '41',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-41.html"
+      },
+      {
+        day       : '42',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-42.html"
+      }
+    ],
+    'week7': [
+      {
+        day       : '43',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-43.html"
+      },
+      {
+        day       : '44',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-44.html"
+      },
+      {
+        day       : '45',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-45.html"
+      },
+      {
+        day       : '46',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-46.html"
+      },
+      {
+        day       : '47',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-47.html"
+      },
+      {
+        day       : '48',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-48.html"
+      },
+      {
+        day       : '49',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-49.html"
+      }
+    ],
+    'week8': [
+      {
+        day       : '50',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-50.html"
+      },
+      {
+        day       : '51',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-51.html"
+      },
+      {
+        day       : '52',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-52.html"
+      },
+      {
+        day       : '53',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-53.html"
+      },
+      {
+        day       : '54',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-54.html"
+      },
+      {
+        day       : '55',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-55.html"
+      },
+      {
+        day       : '56',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-56.html"
+      }
+    ],
+    'week9': [
+      {
+        day       : '57',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-57.html"
+      },
+      {
+        day       : '58',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-58.html"
+      },
+      {
+        day       : '59',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-59.html"
+      },
+      {
+        day       : '60',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-60.html"
+      },
+      {
+        day       : '61',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-61.html"
+      },
+      {
+        day       : '62',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-62.html"
+      },
+      {
+        day       : '63',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-63.html"
+      }
+    ],
+    'week10': [
+      {
+        day       : '64',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-64.html"
+      },
+      {
+        day       : '65',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-65.html"
+      },
+      {
+        day       : '66',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-66.html"
+      },
+      {
+        day       : '67',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-67.html"
+      },
+      {
+        day       : '68',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-68.html"
+      },
+      {
+        day       : '69',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-69.html"
+      },
+      {
+        day       : '70',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-70.html"
+      }
+    ],
+    'week11': [
+      {
+        day       : '71',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-71.html"
+      },
+      {
+        day       : '72',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-72.html"
+      },
+      {
+        day       : '73',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-73.html"
+      },
+      {
+        day       : '74',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-74.html"
+      },
+      {
+        day       : '75',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-75.html"
+      },
+      {
+        day       : '76',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-76.html"
+      },
+      {
+        day       : '77',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-77.html"
+      }
+    ],
+    'week12': [
+      {
+        day       : '78',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & calves',
+        id        : "chestTricepsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-78.html"
+      },
+      {
+        day       : '79',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Back & biceps',
+        id        : "backAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-79.html"
+      },
+      {
+        day       : '80',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-80.html"
+      },
+      {
+        day       : '81',
+        dayOfWeek : 'Thursday',
+        workout   : 'Shoulders, traps & calves',
+        id        : "shoulders",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-81.html"
+      },
+      {
+        day       : '82',
+        dayOfWeek : 'Friday',
+        workout   : 'Legs',
+        id        : "legs",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-82.html"
+      },
+      {
+        day       : '83',
+        dayOfWeek : 'Saturday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-83.html"
+      },
+      {
+        day       : '84',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-84.html"
+      }
+    ]
+  };
+  var targetLink = "https://www.youtube.com/embed/qfkRhT3WTH0?rel=0";
+  $( "#ytplayer" ).attr( "src", targetLink );
+  $('#increaseOverviewText').fadeIn();
+}
+else if (goal == 'decrease') {
   var workoutWeeks = {
-    'week1': [
-    {
-      day       : '1',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-1.html"
-    },
-    {
-      day       : '2',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-2.html"
-    },
-    {
-      day       : '3',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-3.html"
-    },
-    {
-      day       : '4',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-4.html"
-    },
-    {
-      day       : '5',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-5.html"
-    },
-    {
-      day       : '6',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-6.html"
-    },
-    {
-      day       : '7',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-1-day-7.html"
-    }
-  ],
-  'week2': [
-    {
-      day       : '8',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-8.html"
-    },
-    {
-      day       : '9',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-9.html"
-    },
-    {
-      day       : '10',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-10.html"
-    },
-    {
-      day       : '11',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-11.html"
-    },
-    {
-      day       : '12',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-12.html"
-    },
-    {
-      day       : '13',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-13.html"
-    },
-    {
-      day       : '14',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-2-day-14.html"
-    }
-  ],
-  'week3': [
-    {
-      day       : '15',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-15.html"
-    },
-    {
-      day       : '16',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-16.html"
-    },
-    {
-      day       : '17',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-17.html"
-    },
-    {
-      day       : '18',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-18.html"
-    },
-    {
-      day       : '19',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-19.html"
-    },
-    {
-      day       : '20',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-20.html"
-    },
-    {
-      day       : '21',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-3-day-21.html"
-    }
-  ],
-  'week4': [
-    {
-      day       : '22',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-22.html"
-    },
-    {
-      day       : '23',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-23.html"
-    },
-    {
-      day       : '24',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-24.html"
-    },
-    {
-      day       : '25',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-25.html"
-    },
-    {
-      day       : '26',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-26.html"
-    },
-    {
-      day       : '27',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-27.html"
-    },
-    {
-      day       : '28',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-1-week-4-day-28.html"
-    }
-  ],
-  'week5': [
-    {
-      day       : '29',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-29.html"
-    },
-    {
-      day       : '30',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-30.html"
-    },
-    {
-      day       : '31',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-31.html"
-    },
-    {
-      day       : '32',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-32.html"
-    },
-    {
-      day       : '33',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-33.html"
-    },
-    {
-      day       : '34',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-34.html"
-    },
-    {
-      day       : '35',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-5-day-35.html"
-    }
-  ],
-  'week6': [
-    {
-      day       : '36',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-36.html"
-    },
-    {
-      day       : '37',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-37.html"
-    },
-    {
-      day       : '38',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-38.html"
-    },
-    {
-      day       : '39',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-39.html"
-    },
-    {
-      day       : '40',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-40.html"
-    },
-    {
-      day       : '41',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-41.html"
-    },
-    {
-      day       : '42',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-6-day-42.html"
-    }
-  ],
-  'week7': [
-    {
-      day       : '43',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-43.html"
-    },
-    {
-      day       : '44',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-44.html"
-    },
-    {
-      day       : '45',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-45.html"
-    },
-    {
-      day       : '46',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-46.html"
-    },
-    {
-      day       : '47',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-47.html"
-    },
-    {
-      day       : '48',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-48.html"
-    },
-    {
-      day       : '49',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-7-day-49.html"
-    }
-  ],
-  'week8': [
-    {
-      day       : '50',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-50.html"
-    },
-    {
-      day       : '51',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-51.html"
-    },
-    {
-      day       : '52',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-52.html"
-    },
-    {
-      day       : '53',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-53.html"
-    },
-    {
-      day       : '54',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-54.html"
-    },
-    {
-      day       : '55',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-55.html"
-    },
-    {
-      day       : '56',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-2-week-8-day-56.html"
-    }
-  ],
-  'week9': [
-    {
-      day       : '57',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-57.html"
-    },
-    {
-      day       : '58',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-58.html"
-    },
-    {
-      day       : '59',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-59.html"
-    },
-    {
-      day       : '60',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-60.html"
-    },
-    {
-      day       : '61',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-61.html"
-    },
-    {
-      day       : '62',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-62.html"
-    },
-    {
-      day       : '63',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-9-day-63.html"
-    }
-  ],
-  'week10': [
-    {
-      day       : '64',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-64.html"
-    },
-    {
-      day       : '65',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-65.html"
-    },
-    {
-      day       : '66',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-66.html"
-    },
-    {
-      day       : '67',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-67.html"
-    },
-    {
-      day       : '68',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-68.html"
-    },
-    {
-      day       : '69',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-69.html"
-    },
-    {
-      day       : '70',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-10-day-70.html"
-    }
-  ],
-  'week11': [
-    {
-      day       : '71',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-71.html"
-    },
-    {
-      day       : '72',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-72.html"
-    },
-    {
-      day       : '73',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-73.html"
-    },
-    {
-      day       : '74',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-74.html"
-    },
-    {
-      day       : '75',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-75.html"
-    },
-    {
-      day       : '76',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-76.html"
-    },
-    {
-      day       : '77',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-11-day-77.html"
-    }
-  ],
-  'week12': [
-    {
-      day       : '78',
-      dayOfWeek : 'Monday',
-      workout   : 'Chest, triceps & calves',
-      id        : "chestTricepsAndCalves",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-78.html"
-    },
-    {
-      day       : '79',
-      dayOfWeek : 'Tuesday',
-      workout   : 'Back & biceps',
-      id        : "backAndBiceps",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-79.html"
-    },
-    {
-      day       : '80',
-      dayOfWeek : 'Wednesday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-80.html"
-    },
-    {
-      day       : '81',
-      dayOfWeek : 'Thursday',
-      workout   : 'Shoulders, traps & calves',
-      id        : "shoulders",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-81.html"
-    },
-    {
-      day       : '82',
-      dayOfWeek : 'Friday',
-      workout   : 'Legs',
-      id        : "legs",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-82.html"
-    },
-    {
-      day       : '83',
-      dayOfWeek : 'Saturday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-83.html"
-    },
-    {
-      day       : '84',
-      dayOfWeek : 'Sunday',
-      workout   : 'Rest',
-      id        : "rest",
-      link      : "http://www.bodybuilding.com/fun/shortcut-to-size-phase-3-week-12-day-84.html"
-    }
-  ]
-};
+      'week1': [
+      {
+        day       : '1',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-1-chest-triceps-abs.html"
+      },
+      {
+        day       : '2',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Shoulders, legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-2-shoulders-legs.html"
+      },
+      {
+        day       : '3',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-3-back-biceps.html"
+      },
+      {
+        day       : '4',
+        dayOfWeek : 'Thursday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-4-chest-triceps-abs.html"
+      },
+      {
+        day       : '5',
+        dayOfWeek : 'Friday',
+        workout   : 'Shoulders, Legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-5-shoulders-legs.html"
+      },
+      {
+        day       : '6',
+        dayOfWeek : 'Saturday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-6-back-biceps.html"
+      },
+      {
+        day       : '7',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-7-rest.html"
+      }
+    ],
+    'week2': [
+      {
+        day       : '8',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-8-chest-triceps-abs.html"
+      },
+      {
+        day       : '9',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Shoulders, legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-9-shoulders-legs.html"
+      },
+      {
+        day       : '10',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-10-back-biceps.html"
+      },
+      {
+        day       : '11',
+        dayOfWeek : 'Thursday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-11-chest-triceps.html"
+      },
+      {
+        day       : '12',
+        dayOfWeek : 'Friday',
+        workout   : 'Shoulders, Legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-12-shoulders-legs.html"
+      },
+      {
+        day       : '13',
+        dayOfWeek : 'Saturday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-13-back-biceps.html"
+      },
+      {
+        day       : '14',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-14-rest.html"
+      }
+    ],
+    'week3': [
+      {
+        day       : '15',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-15-chest-triceps-abs.html"
+      },
+      {
+        day       : '16',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Shoulders, legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-16-shoulders-legs.html"
+      },
+      {
+        day       : '17',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-17-back-biceps.html"
+      },
+      {
+        day       : '18',
+        dayOfWeek : 'Thursday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-18-chest-triceps.html"
+      },
+      {
+        day       : '19',
+        dayOfWeek : 'Friday',
+        workout   : 'Shoulders, Legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-19-shoulders-legs.html"
+      },
+      {
+        day       : '20',
+        dayOfWeek : 'Saturday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-20-back-biceps.html"
+      },
+      {
+        day       : '21',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-21-rest.html"
+      }
+    ],
+    'week4': [
+      {
+        day       : '22',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-22-chest-triceps-abs.html"
+      },
+      {
+        day       : '23',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Shoulders, legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-23-shoulders-legs.html"
+      },
+      {
+        day       : '24',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-24-back-biceps.html"
+      },
+      {
+        day       : '25',
+        dayOfWeek : 'Thursday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-25-chest-triceps-ab.html"
+      },
+      {
+        day       : '26',
+        dayOfWeek : 'Friday',
+        workout   : 'Shoulders, Legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-26-shoulders-legs.html"
+      },
+      {
+        day       : '27',
+        dayOfWeek : 'Saturday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-27-back-biceps.html"
+      },
+      {
+        day       : '28',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-28-rest.html"
+      }
+    ],
+    'week5': [
+      {
+        day       : '29',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-29-chest-triceps.html"
+      },
+      {
+        day       : '30',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Shoulders, legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-30-shoulders-legs.html"
+      },
+      {
+        day       : '31',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-31-back-biceps.html"
+      },
+      {
+        day       : '32',
+        dayOfWeek : 'Thursday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-32-chest-triceps.html"
+      },
+      {
+        day       : '33',
+        dayOfWeek : 'Friday',
+        workout   : 'Shoulders, Legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-33-shoulders-legs.html"
+      },
+      {
+        day       : '34',
+        dayOfWeek : 'Saturday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-34-back-biceps.html"
+      },
+      {
+        day       : '35',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-35-rest.html"
+      }
+    ],
+    'week6': [
+      {
+        day       : '36',
+        dayOfWeek : 'Monday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-36-chest-triceps.html"
+      },
+      {
+        day       : '37',
+        dayOfWeek : 'Tuesday',
+        workout   : 'Shoulders, legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-37-shoulders-legs.html"
+      },
+      {
+        day       : '38',
+        dayOfWeek : 'Wednesday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-38-back-biceps.html"
+      },
+      {
+        day       : '39',
+        dayOfWeek : 'Thursday',
+        workout   : 'Chest, triceps & abs',
+        id        : "chestTricepsAndAbs",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-39-chest-triceps.html"
+      },
+      {
+        day       : '40',
+        dayOfWeek : 'Friday',
+        workout   : 'Shoulders, Legs & calves',
+        id        : "shouldersLegsAndCalves",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-40-shoulders-legs.html"
+      },
+      {
+        day       : '41',
+        dayOfWeek : 'Saturday',
+        workout   : 'Back, traps & biceps',
+        id        : "backTrapsAndBiceps",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-41-back-biceps.html"
+      },
+      {
+        day       : '42',
+        dayOfWeek : 'Sunday',
+        workout   : 'Rest',
+        id        : "rest",
+        link      : "http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-42-rest.html"
+      }
+    ]
+  };
+  var targetLink = "https://www.youtube.com/embed/0ITs-atk8Qk?rel=0";
+  $( "#ytplayer" ).attr( "src", targetLink );
+  $('#decreaseOverviewText').fadeIn();
+}
 
 console.log(workoutWeeks);
 
 
   getLevel(workoutWeeks);
-  
   bindEventListeners();
 }
 
@@ -931,302 +1239,234 @@ function bindEventListeners() {
 // 2. programOverview.js
 // show the program overview
 function showProgramOverview(level, goal, weight) {
-    if (level == 'week1') {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week2") {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
+  $("#overview-container").fadeIn(1000);
+  $("#mealAllowanceContainer").fadeIn(1000);
+  setWorkout(goal);
 
-        }
-    }
-    else if (level == "week3") {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week4") {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week5") {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week6") {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week7") {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week8") {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week9") {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week10") {
-        if (goal == 'increase') {
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            // document.getElementById("advancedDecreaseWorkout").style.display = "block";
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week11") {
-        if (goal == 'increase') {
-            // document.getElementById("increaseWorkout").style.display = "block";
-            $("#overview-container").fadeIn(1000);
-            $("#increaseWorkout").fadeIn(1000);
-            setIncreaseWorkout();
-        }
-        else {
-            // document.getElementById("advancedDecreaseWorkout").style.display = "block";
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
-    else if (level == "week12") {
-        if (goal == 'increase') {
-            // document.getElementById("increaseWorkout").style.display = "block";
-            $("#overview-container").fadeIn();
-            $("#increaseWorkout").fadeIn();
-            setIncreaseWorkout();
-        }
-        else {
-            // document.getElementById("advancedDecreaseWorkout").style.display = "block";
-            $("#beginnerDecreaseWorkout").fadeIn(1000);
-            $("#overview-container").fadeIn(1000);
-        }
-    }
+  // Compute increase daily allowances
+  // ratio * weight = units
+  // ratio = units / weight
+  var dailyIncreaseCaloriesOnRestDays = (18 * weight).toFixed();
+  var dailyIncreaseProteinOnRestDays = (1.57 * weight).toFixed();
+  var dailyIncreaseCarbsOnRestDays = (1.57 * weight).toFixed();
+  var dailyIncreaseFatOnRestDays = (.6 * weight).toFixed();
 
-    // Compute increase daily allowances
-    // ratio * weight = units
-    // ratio = units / weight
-    var dailyIncreaseCaloriesOnRestDays = (18 * weight).toFixed();
-    var dailyIncreaseProteinOnRestDays = (1.57 * weight).toFixed();
-    var dailyIncreaseCarbsOnRestDays = (1.57 * weight).toFixed();
-    var dailyIncreaseFatOnRestDays = (.6 * weight).toFixed();
+  var dailyIncreaseCaloriesOnWorkoutDays = (20 * weight).toFixed();
+  var dailyIncreaseProteinOnWorkoutDays = (1.75 * weight).toFixed();
+  var dailyIncreaseCarbsOnWorkoutDays = (1.75 * weight).toFixed();
+  var dailyIncreaseFatOnWorkoutDays = (.6 * weight).toFixed();
 
-    var dailyIncreaseCaloriesOnWorkoutDays = (20 * weight).toFixed();
-    var dailyIncreaseProteinOnWorkoutDays = (1.75 * weight).toFixed();
-    var dailyIncreaseCarbsOnWorkoutDays = (1.75 * weight).toFixed();
-    var dailyIncreaseFatOnWorkoutDays = (.6 * weight).toFixed();
+  // calories are not so important here. They can be flexible
+  var dailyDecreaseCaloriesForAllDays = "flex";
+  // protein remains the same for all 3 phases at 1.5 g per pound
+  var dailyDecreaseProteinForAllDays = (1.5 * weight).toFixed();
+  // fats remains the same for all 3 phases at .5 g per pound
+  var dailyDecreaseFatForAllDays = (.5 * weight).toFixed();
+  // phase 1 = first week
+  if (level == 'week1') {
+    var dailyDecreaseCarbsForAllDays = (1.5 * weight).toFixed();
+  }
+  // phase 2 = weeks 2 & 3
+  else if (level == 'week2' || level == 'week3') {
+    var dailyDecreaseCarbsForAllDays = (1 * weight).toFixed();
+  }
+  // phase 3 = weeks 4, 5 and 6
+  else if (level == 'week4' || level == 'week5' || level == 'week6') {
+    var dailyDecreaseCarbsForAllDays = (.5 * weight).toFixed();
+  }
+  
 
-    var dailyDecreaseCaloriesForAllDays = (18 * weight).toFixed();
-    var dailyDecreaseProteinForAllDays = (1.57 * weight).toFixed();
-    var dailyDecreaseCarbsForAllDays = (1.57 * weight).toFixed();
-    var dailyDecreaseFatForAllDays = (.66 * weight).toFixed();
-
-    // daily allowance object
+  if (goal == 'increase') {
     var dailyAllowances = [
-      increaseRestDays = {
-        "dayType"   : "Rest",
-        "calories"  : dailyIncreaseCaloriesOnRestDays,
-        "protein"   : dailyIncreaseProteinOnRestDays,
-        "carbs"     : dailyIncreaseCarbsOnRestDays,
-        "fats"      : dailyIncreaseFatOnRestDays
-      },
-      increaseWorkoutDays = {
-        "dayType"   : "Exercise",
-        "calories"  : dailyIncreaseCaloriesOnWorkoutDays,
-        "protein"   : dailyIncreaseProteinOnWorkoutDays,
-        "carbs"     : dailyIncreaseCarbsOnWorkoutDays,
-        "fats"      : dailyIncreaseFatOnWorkoutDays
-      }
-    ];
+    increaseRestDays = {
+      "dayType"   : "Rest",
+      "calories"  : dailyIncreaseCaloriesOnRestDays,
+      "protein"   : dailyIncreaseProteinOnRestDays,
+      "carbs"     : dailyIncreaseCarbsOnRestDays,
+      "fats"      : dailyIncreaseFatOnRestDays
+    },
+    increaseWorkoutDays = {
+      "dayType"   : "Exercise",
+      "calories"  : dailyIncreaseCaloriesOnWorkoutDays,
+      "protein"   : dailyIncreaseProteinOnWorkoutDays,
+      "carbs"     : dailyIncreaseCarbsOnWorkoutDays,
+      "fats"      : dailyIncreaseFatOnWorkoutDays
+    }, 
+  ];
+  for (var i = 0; i < dailyAllowances.length; i++) {
+    renderDailyAllowanceCards(dailyAllowances[i].dayType, 
+    dailyAllowances[i].calories, 
+    dailyAllowances[i].protein, 
+    dailyAllowances[i].carbs, 
+    dailyAllowances[i].fats);
+  };
+  // increase object
+  var increaseMeals = [
+    meal1 = {
+      "name"     : "Breakfast 1 (Immediately Upon Waking)",
+      "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
+      "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+      "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
+      "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed(),
+    },
+    meal2 = {
+      "name"     : "Breakfast 2 (30-60 Minutes After Breakfast 1)",
+      "calories"  : (dailyIncreaseCaloriesOnRestDays * .26).toFixed(),
+      "protein"   : (dailyIncreaseProteinOnRestDays * .13).toFixed(),
+      "carbs"     : (dailyIncreaseCarbsOnRestDays * .23).toFixed(),
+      "fats"      : (dailyIncreaseFatOnRestDays * .33).toFixed()
+    },
+    meal3 = {
+      "name"     : "Late Morning Snack",
+      "calories"  : (dailyIncreaseCaloriesOnRestDays * .13).toFixed(),
+      "protein"   : (dailyIncreaseProteinOnRestDays * .11).toFixed(),
+      "carbs"     : (dailyIncreaseCarbsOnRestDays * .16).toFixed(),
+      "fats"      : (dailyIncreaseFatOnRestDays * .05).toFixed()
+    },
+    meal4 = {
+      "name"     : "Lunch",
+      "calories"  : (dailyIncreaseCaloriesOnRestDays * .1).toFixed(),
+      "protein"   : (dailyIncreaseProteinOnRestDays * .06).toFixed(),
+      "carbs"     : (dailyIncreaseCarbsOnRestDays * .21).toFixed(),
+      "fats"      : (dailyIncreaseFatOnRestDays * .13).toFixed()
+    },
+    meal5 = {
+      "name"     : "Afternoon Snack",
+      "calories"  : (dailyIncreaseCaloriesOnRestDays * .11).toFixed(),
+      "protein"   : (dailyIncreaseProteinOnRestDays * .37).toFixed(),
+      "carbs"     : (dailyIncreaseCarbsOnRestDays * .14).toFixed(),
+      "fats"      : (dailyIncreaseFatOnRestDays * .45).toFixed()
+    },
+    meal6 = {
+      "name"     : "Pre-Workout (Within 30 Minutes Before Workouts)",
+      "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
+      "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+      "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
+      "fats"      : (dailyIncreaseFatOnRestDays * .03).toFixed()
+    },
+    meal7 = {
+      "name"     : "Post-Workout (Within 30 Minutes After Workouts)",
+      "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
+      "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+      "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
+      "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed()
+    },
+    meal8 = {
+      "name"     : "Dinner",
+      "calories"  : (dailyIncreaseCaloriesOnRestDays * .14).toFixed(),
+      "protein"   : (dailyIncreaseProteinOnRestDays * .19).toFixed(),
+      "carbs"     : (dailyIncreaseCarbsOnRestDays * .02).toFixed(),
+      "fats"      : (dailyIncreaseFatOnRestDays * 3.13).toFixed()
+    },
+    meal9 = {
+      "name"     : "Before Bed Snack",
+      "calories"  : (dailyIncreaseCaloriesOnRestDays * .05).toFixed(),
+      "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
+      "carbs"     : (dailyIncreaseCarbsOnRestDays * .02).toFixed(),
+      "fats"      : (dailyIncreaseFatOnRestDays * .08).toFixed()
+    }
+  ];
+  for (var i = 0; i < increaseMeals.length; i++) {
+  renderMealCards(increaseMeals[i].name, increaseMeals[i].calories, increaseMeals[i].protein, increaseMeals[i].carbs, increaseMeals[i].fats);
+  };
+  }
 
+  else if (goal == 'decrease') {
+    var dailyAllowances = [
+    decreaseAllDays = {
+      "dayType"   : "all",
+      "calories"  : dailyDecreaseCaloriesForAllDays,
+      "protein"   : dailyDecreaseProteinForAllDays,
+      "carbs"     : dailyDecreaseCarbsForAllDays,
+      "fats"      : dailyDecreaseFatForAllDays
+    }
+    ];
     for (var i = 0; i < dailyAllowances.length; i++) {
-      renderDailyAllowances(dailyAllowances[i].dayType, dailyAllowances[i].calories, dailyAllowances[i].protein, dailyAllowances[i].carbs, dailyAllowances[i].fats);
-    };
+    renderDailyAllowanceCards(dailyAllowances[i].dayType, 
+    dailyAllowances[i].calories, 
+    dailyAllowances[i].protein, 
+    dailyAllowances[i].carbs, 
+    dailyAllowances[i].fats);
+  };
+  // decrease object
+  var decreaseMeals = [
+    meal1 = {
+      "name"      : "Breakfast 1 (Immediately Upon Waking)",
+      "calories"  : "flex",
+      "protein"   : (dailyDecreaseProteinForAllDays * .08).toFixed(),
+      "carbs"     : (dailyDecreaseCarbsForAllDays * .08).toFixed(),
+      "fats"      : (dailyDecreaseFatForAllDays * 1.19).toFixed(),
+    },
+    meal2 = {
+      "name"      : "Breakfast 2 (30-60 Minutes After Breakfast 1)",
+      "calories"  : "flex",
+      "protein"   : (dailyDecreaseProteinForAllDays * .13).toFixed(),
+      "carbs"     : (dailyDecreaseCarbsForAllDays * .23).toFixed(),
+      "fats"      : (dailyDecreaseFatForAllDays * .33).toFixed()
+    },
+    meal3 = {
+      "name"      : "Late Morning Snack",
+      "calories"  : "flex",
+      "protein"   : (dailyDecreaseProteinForAllDays * .11).toFixed(),
+      "carbs"     : (dailyDecreaseCarbsForAllDays * .16).toFixed(),
+      "fats"      : (dailyDecreaseFatForAllDays * .05).toFixed()
+    },
+    meal4 = {
+      "name"      : "Lunch",
+      "calories"  : "flex",
+      "protein"   : (dailyDecreaseProteinForAllDays * .06).toFixed(),
+      "carbs"     : (dailyDecreaseCarbsForAllDays * .21).toFixed(),
+      "fats"      : (dailyDecreaseFatForAllDays * .13).toFixed()
+    },
+    meal5 = {
+      "name"      : "Afternoon Snack",
+      "calories"  : "flex",
+      "protein"   : (dailyDecreaseProteinForAllDays * .37).toFixed(),
+      "carbs"     : (dailyDecreaseCarbsForAllDays * .14).toFixed(),
+      "fats"      : (dailyDecreaseFatForAllDays * .45).toFixed()
+    },
+    meal6 = {
+      "name"      : "Pre-Workout (Within 30 Minutes Before Workouts)",
+      "calories"  : "flex",
+      "protein"   : (dailyDecreaseProteinForAllDays * .08).toFixed(),
+      "carbs"     : (dailyDecreaseCarbsForAllDays * .08).toFixed(),
+      "fats"      : (dailyDecreaseFatForAllDays * .03).toFixed()
+    },
+    meal7 = {
+      "name"      : "Post-Workout (Within 30 Minutes After Workouts)",
+      "calories"  : "flex",
+      "protein"   : (dailyDecreaseProteinForAllDays * .08).toFixed(),
+      "carbs"     : (dailyDecreaseCarbsForAllDays * .08).toFixed(),
+      "fats"      : (dailyDecreaseFatForAllDays * 1.19).toFixed()
+    },
+    meal8 = {
+      "name"      : "Dinner",
+      "calories"  : "flex",
+      "protein"   : (dailyDecreaseProteinForAllDays * .19).toFixed(),
+      "carbs"     : (dailyDecreaseCarbsForAllDays * .02).toFixed(),
+      "fats"      : (dailyDecreaseFatForAllDays * 3.13).toFixed()
+    },
+    meal9 = {
+      "name"      : "Before Bed Snack",
+      "calories"  : "flex",
+      "protein"   : (dailyDecreaseProteinForAllDays * .08).toFixed(),
+      "carbs"     : (dailyDecreaseCarbsForAllDays * .02).toFixed(),
+      "fats"      : (dailyDecreaseFatForAllDays * .08).toFixed()
+    }
+  ];
+  for (var i = 0; i < decreaseMeals.length; i++) {
+  renderMealCards(decreaseMeals[i].name, decreaseMeals[i].calories, decreaseMeals[i].protein, decreaseMeals[i].carbs, decreaseMeals[i].fats);
+  };
+  }
 
-    // increase object
-    var increaseMeals = [
-      meal1 = {
-        "meals"     : "Breakfast 1 (Immediately Upon Waking)",
-        "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
-        "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
-        "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed(),
-      },
-      meal2 = {
-        "meals"     : "Breakfast 2 (30-60 Minutes After Breakfast 1)",
-        "calories"  : (dailyIncreaseCaloriesOnRestDays * .26).toFixed(),
-        "protein"   : (dailyIncreaseProteinOnRestDays * .13).toFixed(),
-        "carbs"     : (dailyIncreaseCarbsOnRestDays * .23).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * .33).toFixed()
-      },
-      meal3 = {
-        "meals"     : "Late Morning Snack",
-        "calories"  : (dailyIncreaseCaloriesOnRestDays * .13).toFixed(),
-        "protein"   : (dailyIncreaseProteinOnRestDays * .11).toFixed(),
-        "carbs"     : (dailyIncreaseCarbsOnRestDays * .16).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * .05).toFixed()
-      },
-      meal4 = {
-        "meals"     : "Lunch",
-        "calories"  : (dailyIncreaseCaloriesOnRestDays * .1).toFixed(),
-        "protein"   : (dailyIncreaseProteinOnRestDays * .06).toFixed(),
-        "carbs"     : (dailyIncreaseCarbsOnRestDays * .21).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * .13).toFixed()
-      },
-      meal5 = {
-        "meals"     : "Afternoon Snack",
-        "calories"  : (dailyIncreaseCaloriesOnRestDays * .11).toFixed(),
-        "protein"   : (dailyIncreaseProteinOnRestDays * .37).toFixed(),
-        "carbs"     : (dailyIncreaseCarbsOnRestDays * .14).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * .45).toFixed()
-      },
-      meal6 = {
-        "meals"     : "Pre-Workout (Within 30 Minutes Before Workouts)",
-        "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
-        "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
-        "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * .03).toFixed()
-      },
-      meal7 = {
-        "meals"     : "Post-Workout (Within 30 Minutes After Workouts)",
-        "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
-        "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
-        "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed()
-      },
-      meal8 = {
-        "meals"     : "Dinner",
-        "calories"  : (dailyIncreaseCaloriesOnRestDays * .14).toFixed(),
-        "protein"   : (dailyIncreaseProteinOnRestDays * .19).toFixed(),
-        "carbs"     : (dailyIncreaseCarbsOnRestDays * .02).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * 3.13).toFixed()
-      },
-      meal9 = {
-        "meals"     : "Before Bed Snack",
-        "calories"  : (dailyIncreaseCaloriesOnRestDays * .05).toFixed(),
-        "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
-        "carbs"     : (dailyIncreaseCarbsOnRestDays * .02).toFixed(),
-        "fats"      : (dailyIncreaseFatOnRestDays * .08).toFixed()
-      }
-    ];
-
-// function renderObjectKeys() {
-//   var increaseMeals = {
-//     'meal1': {
-//       allowances: {
-//         "meals"     : "Breakfast 1 (Immediately Upon Waking)",
-//         "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
-//         "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
-//         "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
-//         "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed()
-//       },
-//       defaultMeal {
-//         "foodItem"  : "Trader Joes organic multigrain hot cereal",
-//         "calories"  : (dailyIncreaseCaloriesOnRestDays * .06).toFixed(),
-//         "protein"   : (dailyIncreaseProteinOnRestDays * .08).toFixed(),
-//         "carbs"     : (dailyIncreaseCarbsOnRestDays * .08).toFixed(),
-//         "fats"      : (dailyIncreaseFatOnRestDays * 1.19).toFixed(),
-//         "defaultMeal" :
-//       },
-//       teaser: "The Gulf War is over, and three soldiers want to go home rich. Major Archie Gates retires in two weeks. Sergeant Troy Barlow is a new father. Chief Elgin is on a four-month paid vacation from Detroit. Saddam Hussein stole a great deal of gold from Kuwait, and these soldiers have no problem with stealing it from him. But on their way to collect their booty, they bear witness to the the disturbing results of the war effort. President Bush has encouraged Iraqi citizens to fight back against Saddam and pledged to support them, but when they rise up, they get NO American support, and they're getting slaughtered. As the soldiers realize the true situation in Iraq, they're confronted with their own humanity, and they're forced to rethink who they are and what they're doing."      
-//     },
-
-//     'transformers': {
-//       image: '2.jpg',
-//       cast: 'Mark Wahlberg, Jack Reynor, Nicola Peltz',
-//       teaser: "Transformers: Age of Extinction begins after an epic battle left a great city torn, but with the world saved. As humanity picks up the pieces, a shadowy group reveals itself in an attempt to control the direction of history...while an ancient, powerful new menace sets Earth in its crosshairs. With help from a new cast of humans (led by Mark Wahlberg), Optimus Prime and the Autobots rise to meet their most fearsome challenge yet. In an incredible adventure, they are swept up in a war of good and evil, ultimately leading to a climactic battle across the world."
-//     },
-
-//     'butler': {
-//       image: '3.jpg',
-//       cast: 'Forest Whitaker, Oprah Winfrey, John Cusack',
-//       teaser: "The Butler tells the story of a White House butler who served eight American presidents over three decades. The film traces the dramatic changes that swept American society during this time, from the civil rights movement to Vietnam and beyond, and how those changes affected this man's life and family. Forest Whitaker stars as the butler with Robin Williams as Dwight Eisenhower, John Cusack as Richard Nixon, Alan Rickman as Ronald Reagan, James Marsden as John F. Kennedy, Liev Schreiber as Lyndon B. Johnson, and many more. Academy Award (R) nominated Lee Daniels (PRECIOUS) directs and co-wrote the script with Emmy (R)-award winning Danny Strong (GAME CHANGE)."
-//     },
-//   };
-
-    for (var i = 0; i < increaseMeals.length; i++) {
-    renderMealsCard(increaseMeals[i].meals, increaseMeals[i].calories, increaseMeals[i].protein, increaseMeals[i].carbs, increaseMeals[i].fats);
-    };
-
+// show weight
     if (goal == 'increase') {
       var weightString = "You weigh " + weight + " pounds."
       $("#weight").append(weightString); 
     }
     if (goal == 'decrease') {
-      document.getElementById("workoutOverviewForStats").innerHTML = 
-      "You weigh " + weight + 
-      ".<br>For both workout days and rest days you need to eat:" + 
-      "<br>calories: " + dailyDecreaseCaloriesForAllDays +
-      "<br>protein: " + dailyDecreaseProteinForAllDays +
-      "<br>carbs: " + dailyDecreaseCarbsForAllDays +
-      "<br>fat: " + dailyDecreaseFatForAllDays;
+      var weightString = "You weigh " + weight + " pounds."
+      $("#weight").append(weightString); 
     }
 }
 
@@ -1275,6 +1515,7 @@ function checkTime() {
     /* Set alert Minutes in 24hr Notation ie. the 00 in 12:00 */
     var alertMinute=[0, 0, 0, 0, 0, 0, 0, 48, 0]; 
     /* Set alert Messages */
+
     var alertMessages=["Breakfast 1", "Breakfast 2", "Late morning snack", "Lunch", "Afternoon snack", "Pre-Workout", "Post-Workout", "Dinner", "Before bed snack"];
     // check to see what?
     // if nowsDateStamp
@@ -1295,7 +1536,12 @@ function checkTime() {
             if (wantsVideo == true) {
                 showVideoReminder();
             }
-            var message = "It's " + dateStampHours + ":" + dateStampMinutes + ". You need to eat " + alertMessages[i] + ".";
+            var ampm = dateStampHours >= 12 ? 'pm' : 'am';
+            dateStampHours = dateStampHours % 12;
+            dateStampHours = dateStampHours ? dateStampHours : 12; // the hour '0' should be '12'
+            dateStampMinutes = dateStampMinutes < 10 ? '0'+dateStampMinutes : dateStampMinutes;
+
+            var message = "It's " + dateStampHours + ':' + dateStampMinutes + ' ' + ampm + ". You need to eat " + alertMessages[i] + ".";
 
             $('#alert-container').fadeIn(function() {
               $('#alertMessage').html(message);

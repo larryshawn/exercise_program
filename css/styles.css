@@ -40,6 +40,9 @@ iframe::-webkit-scrollbar {
   display: none; 
 }
 
+.padding-top-10 {
+  padding-top: 10px;
+}
 
 .center {
   text-align: center;
@@ -386,7 +389,7 @@ input {
 
 
 
-#increaseWorkout, #beginnerDecreaseWorkout, #intermediateIncreaseWorkout, #intermediateDecreaseWorkout, #advancedIncreaseWorkout, #advancedDecreaseWorkout, #monolog, #btnAddToMenu {
+#mealAllowanceContainer, #increaseOverviewText, #decreaseOverviewText, #beginnerDecreaseWorkout, #intermediateIncreaseWorkout, #intermediateDecreaseWorkout, #advancedIncreaseWorkout, #advancedDecreaseWorkout, #monolog, #btnAddToMenu {
   display: none;
 }
 

@@ -25,12 +25,12 @@ function renderNewCard(servingSizeQuantity, servingSizeUnit, brandName, itemName
 
     // put it inside the div
     $('#searchResults').append(renderedText);
-    
+
 }   
 
 // Hydrate the Mustache template for individual meals
 
-function renderMealsCard(meals, calories, protein, carbs, fats) {
+function renderMealCards(name, calories, protein, carbs, fats) {
   // Reach out and grab your raw template by its ID.
   // Specifically this gets the <script> tag by its ID, then sucks out its inner HTML,
   // which is your raw template. This raw template is stored in the variable templateText.
@@ -38,11 +38,11 @@ function renderMealsCard(meals, calories, protein, carbs, fats) {
 
   // Define your dynamic values. Notice that the keys of this plain ol' JavaScript object match precisely the "placeholder" mustaches in your raw template.
   var values = {
-    'meals': meals,
-    'calories': calories,
-    'protein': protein,
-    'carbs': carbs,
-    'fats' : fats
+    'name'      : name,
+    'calories'  : calories,
+    'protein'   : protein,
+    'carbs'     : carbs,
+    'fats'      : fats
   };
 
   // Substitute the values in your raw template using Mustache.render() function.
@@ -52,11 +52,11 @@ function renderMealsCard(meals, calories, protein, carbs, fats) {
   $('#meals-container').append(renderedText);
 }
 
-function renderDailyAllowances(dayType, calories, protein, carbs, fats) {
+function renderDailyAllowanceCards(dayType, calories, protein, carbs, fats) {
     var allowancesTemplate = $('#dailyAllowancesTemplate').html();
     // console.log(allowancesTemplate);
     var values = {
-        'dayType'  : dayType,
+        'dayType'   : dayType,
         'calories'  : calories,
         'protein'   : protein,
         'carbs'     : carbs,

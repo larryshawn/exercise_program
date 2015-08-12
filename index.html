@@ -4,6 +4,7 @@
   <!-- Required to properly zoom the viewport on mobile. -->
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1">
   <title>My Health Schedule As Whole Foods Fitness</title>
+  <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/cards.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
@@ -116,11 +117,11 @@
         </div>
     </div>
     </div>
-    <div id="exerciseOverview" class="row row-spacer">
+    <div id="exerciseOverview" class="row padding-top-10">
       <div class="col-sm-12">
         <div id="workoutOverviewStats" class="glyphicon glyphicon-heart"></div>
         <div id="exercise">Exercise</div>
-
+        <a href="http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-1-chest-triceps-abs.html">Today's workout</a>
         <h3 id="weeklyWorkoutTitle">This weeks muscle mass building workout</h3>
       </div>
     </div>
@@ -156,93 +157,228 @@
         <div id="exercisesOverview">
           <iframe id="ytplayer" width="560" height="315" src="https://www.youtube.com/embed/qfkRhT3WTH0?rel=0" frameborder="0" allowfullscreen></iframe>
 
-          <h4>PHASES</h4>
-          <p>This is a 12-week program in three phases. Each phase lasts 4 weeks. Each week is a different microcycle. Regardless of the week, you'll work every body part once per week in the 4-day split.</p>
+          <div id="increaseOverviewText">
+            <h4>PHASES</h4>
+            <p>This is a 12-week program in three phases. Each phase lasts 4 weeks. Each week is a different microcycle. Regardless of the week, you'll work every body part once per week in the 4-day split.</p>
 
-          <h4>WORKOUT SPLIT</h4>
-          <ul>
-            <li>
-              Monday: Workout 1: Chest and triceps
-            </li>
-            <li>
-              Tuesday: Workout 2: Back and biceps
-            </li>
-            <li>
-              Wednesday: Active Rest
-            </li>
-            <li>
-              Thursday: Workout 3: Shoulders
-            </li>
-            <li>
-              Friday: Workout 4: Legs
-            </li>
-            <li>
-              Saturday: Active Rest
-            </li>
-            <li>
-              Sunday: Active Rest
-            </li>
-          </ul>
+            <h4>WORKOUT SPLIT</h4>
+            <ul>
+              <li>
+                Monday: Workout 1: Chest and triceps
+              </li>
+              <li>
+                Tuesday: Workout 2: Back and biceps
+              </li>
+              <li>
+                Wednesday: Active Rest
+              </li>
+              <li>
+                Thursday: Workout 3: Shoulders
+              </li>
+              <li>
+                Friday: Workout 4: Legs
+              </li>
+              <li>
+                Saturday: Active Rest
+              </li>
+              <li>
+                Sunday: Active Rest
+              </li>
+            </ul>
 
-          <p>
-            Use active rest on your off days. Don't lift weights, but certainly consider doing other activities. Play basketball, go hiking; do specific cardio workouts, particularly if you want to focus on losing body fat while you're building muscle.
-          </p>
+            <p>
+              Use active rest on your off days. Don't lift weights, but certainly consider doing other activities. Play basketball, go hiking; do specific cardio workouts, particularly if you want to focus on losing body fat while you're building muscle.
+            </p>
 
-          <h4>WORKOUT DURATION</h4>
-          <p>
-            Workouts 1 and 2 may take 75-90 minutes.<br>
-            Workouts 3 and 4 can usually be completed within 60 minutes.
-          </p>
-          <p>
-            Your rest periods between exercises will vary from 2-4 minutes, depending on your experience. If you have already built muscular endurance, your rests will be shorter. As you take the shortcut to size, become stronger and increase endurance, your rest periods will get shorter and shorter.
-          </p>
-          <p>
-            Rep ranges exist for scientific reasons. Maintain that range! Your rest periods between sets are determined by how long it takes you to recover so you can effectively complete the rep range with good form for each microcycle.
-          </p>
-          <p>
-            For abs and calves, you'll notice that the rep ranges are a little bit higher as you go through each microcycle; this is because these muscle groups generally fare better (as far as the results you get in both strength and size) when the reps ranges are a bit higher.
-          </p>
-          <h4>TRACKING</h4>
-          <p>
-            Log the weights you use during each microcycle so you know how much to increase your weight by on the next microcycle. It's a good way to look back to where you started and where you ended up at the end of the program. Trust me, it's going to be impressive.
-          </p>
-          <h3>INTENSITY-BOOSTING TECHNIQUES</h3>
-          <h4>Microcycles 1 and 2</h4>
-          <p>
-            Rest-Pause On The Last Set Of Each Exercise
-          </p>
-          <ul>
-            <li>
-              Complete that set until you reach muscle failure
-            </li>
-            <li>
-              Rack the weight
-            </li>
-            <li>
-              Rest 15-20 seconds
-            </li>
-            <li>
-              Continue the set until you reach muscle failure again!
-            </li>
-          </ul>
-          <h4>Microcycles 3 and 4
-          </h4>
-          <p>Drop Sets On The Last Set Of Each Exercise
-          </p>
-          <ul>
-            <li>
-              Complete that set until you reach muscle failure
-            </li>
-            <li>
-              Immediately remove 20-to-30 percent of the weight
-            </li>
-            <li>
-              *Remove enough weight to reach at least the prescribed rep range
-            </li>
-            <li>
-              Continue the set until you reach muscle failure again!
-            </li>
-          </ul>
+            <h4>WORKOUT DURATION</h4>
+            <p>
+              Workouts 1 and 2 may take 75-90 minutes.<br>
+              Workouts 3 and 4 can usually be completed within 60 minutes.
+            </p>
+            <p>
+              Your rest periods between exercises will vary from 2-4 minutes, depending on your experience. If you have already built muscular endurance, your rests will be shorter. As you take the shortcut to size, become stronger and increase endurance, your rest periods will get shorter and shorter.
+            </p>
+            <p>
+              Rep ranges exist for scientific reasons. Maintain that range! Your rest periods between sets are determined by how long it takes you to recover so you can effectively complete the rep range with good form for each microcycle.
+            </p>
+            <p>
+              For abs and calves, you'll notice that the rep ranges are a little bit higher as you go through each microcycle; this is because these muscle groups generally fare better (as far as the results you get in both strength and size) when the reps ranges are a bit higher.
+            </p>
+            <h4>TRACKING</h4>
+            <p>
+              Log the weights you use during each microcycle so you know how much to increase your weight by on the next microcycle. It's a good way to look back to where you started and where you ended up at the end of the program. Trust me, it's going to be impressive.
+            </p>
+            <h3>INTENSITY-BOOSTING TECHNIQUES</h3>
+            <h4>Microcycles 1 and 2</h4>
+            <p>
+              Rest-Pause On The Last Set Of Each Exercise
+            </p>
+            <ul>
+              <li>
+                Complete that set until you reach muscle failure
+              </li>
+              <li>
+                Rack the weight
+              </li>
+              <li>
+                Rest 15-20 seconds
+              </li>
+              <li>
+                Continue the set until you reach muscle failure again!
+              </li>
+            </ul>
+            <h4>Microcycles 3 and 4
+            </h4>
+            <p>Drop Sets On The Last Set Of Each Exercise
+            </p>
+            <ul>
+              <li>
+                Complete that set until you reach muscle failure
+              </li>
+              <li>
+                Immediately remove 20-to-30 percent of the weight
+              </li>
+              <li>
+                *Remove enough weight to reach at least the prescribed rep range
+              </li>
+              <li>
+                Continue the set until you reach muscle failure again!
+              </li>
+            </ul>
+          </div>
+
+          <div id="decreaseOverviewText">
+            <p></p>
+            <p>
+              Shortcut to Shred will help you torch fat, drop excess weight, and get lean faster than ever. The key is a training technique called cardio acceleration. In addition, the Shortcut to Shred workouts, built on microcyles in a periodized scheme, will help you build muscle and gain strength. Shortcut to Shred will help you hit all three goals in six short weeks. Let's dig into the science behind the shred!
+            </p>
+            <h4>WHAT IS CARDIO ACCELERATION?</h4>
+            <p>
+              Cardio acceleration is critical to Shortcut to Shred. It will fire up your fat-burning furnace like nothing else. Cardio acceleration is a technique that combines high-intensity cardio and resistance training into one fast-paced workout. Instead of resting between your lifts, you will do cardio between every single set. Simply put, you'll lift one set of a prescribed exercise, such as bench press, and then immediately follow it with one minute of cardio.
+            </p>
+            <p>
+              Cardio effectively replaces your rest periods. Now, I don't mean you have to rack the barbell, run across the gym, and jump on a treadmill or stationary bike. Your cardio acceleration exercises can be as simple as running in place next to the bench. You can also do jump rope, dumbbell cleans, step-ups, or any combination of full-body exercises. The only requirement is that you move for an entire minute.
+            </p>
+            <p>
+              If you're new to fitness and find that one minute is too long, reduce the time to 30 seconds or go slower. The goal is to gradually increase the time you spend doing high-intensity cardio. You want to keep each cardio acceleration minute as intense and demanding as possible.
+            </p>
+            <p>
+              It might seem strange to do short bursts of cardio, but if you think about it, those one-minute bursts will add up to 20-30 minutes of high-intensity intervals per workout. Twenty minutes of high-intensity training burns much more fat than 20-30 minutes spent walking on a treadmill.
+            </p>
+            <p>
+              The additional intense movement during your workouts will keep your heart rate elevated for the entire training session. You'll burn more calories during the actual workouts, but more important, you'll burn more calories after the workouts. Cardio acceleration keeps your metabolic rate higher, longer, even when you're resting. In other words, you burn more calories during the workouts, but you'll keep burning calories long after you're done training.
+            </p>
+
+            <h4>THE SCIENCE BEHIND THE SHRED</h4>
+            <p>
+              If you're worried about getting too tired from cardio acceleration to lift intensely, don't be. A University of California, Santa Cruz, study found that when subjects did cardio between weightlifting sets, they were able to recover better because of increased blood flow. Cardio acceleration elevates your heart rate, which means more blood pumps to your working muscles throughout your workout.
+            </p>
+            <p>
+              Blood delivers oxygen and nutrients, which enhance your body's ability to generate and maintain energy. In addition, better blood flow delivers a bigger muscle pump, which can lead to greater growth because of the stretch it places on muscle cells and fascia. Bottom line: Cardio acceleration will boost your muscle strength and endurance, not hinder it.
+            </p>
+            <h4>
+              HIIT IT
+            </h4>
+            <p>
+              Many who are new to cardio acceleration wonder if it's better than high-intensity interval training (HIIT). These people don't realize that cardio acceleration is HIIT. Instead of a typical HIIT session, which alternates intervals of high-intensity exercise with intervals of rest, or low-intensity exercise, cardio acceleration mixes high-intensity, cardio-based exercise with intervals of intense resistance exercise. This mix helps you burn fat and build muscle.
+            </p>
+            <p>
+              You don't have to do the same cardio acceleration exercises for an entire workout. You can vary your cardio acceleration choices as much as you'd like. In general, the more variety you have, the better. Variety will help you stick to the program, place new demands on your body to spur adaptations, and keep you from growing bored.
+            </p>
+            <h4>
+              WEIGHTS MATTER
+            </h4>
+            <p>
+              Cardio acceleration is one key to Shortcut to Shred, but the lifting program is equally critical. The right resistance program will not only enhance your fat loss, but will allow you to burn body fat while building strength and muscle. Shortcut to Shred is scientifically designed to help you achieve all three goals.
+            </p>
+            <p>
+              Shortcut to Shred is built on periodization, which calls for systematic changes in the amount of weight you lift and number of reps you perform. Research consistently shows that periodization is one of the best techniques for increasing muscle strength and size. During Shortcut to Shred, reps and weights will change each week. These changes will optimize your gains in muscle strength, size, endurance, and fat loss.
+            </p>
+            <p>
+              Shortcut to Shred combines linear periodization and reverse linear periodization for maximum results. Linear periodization calls for you to lift heavier weight and fewer reps each week. Reverse linear periodization involves decreasing the weight and increasing the rep range each week. How can you follow these two forms of periodization simultaneously? You will train each muscle group twice per week.
+            </p>
+            <h4>
+              WORK IT OUT
+            </h4>
+            <p>
+              The program splits each muscle group into two different workouts per week. During the first half of the week-Monday, Tuesday, and Wednesday-you train with multi-joint, compound exercises. For example, during your first chest session each week, you will only do compound exercises like barbell and dumbbell presses.
+            </p>
+            <p>
+              During the second half of the week-Thursday, Friday, and Saturday-when you train each muscle group for the second time, you will use single-joint, isolation exercises wherever possible. For example, on your second chest day, you will perform dumbbell and cable flyes.
+            </p>
+            <p>
+              The compound workouts in the first half of the week follow linear periodization. Each week, these multi-joint workouts will call for heavier weight and fewer reps. However, the single-joint workouts in the second half of the week follow reverse linear periodization, so the weight will drop and the reps will increase each week.
+            </p>
+            <p>
+              This combination of exercises, weights, and rep ranges will maximize your ability to burn fat. Research suggests that if you lift fewer reps of heavier weight, you burn fewer calories during a workout, but you maintain a higher metabolic rate after the workout is over. If you lift a lighter weight for more reps, you will burn more calories during the workout itself.
+            </p>
+            <h4>
+              PHASE TWO
+            </h4>
+            <p>
+              In phase two, you repeat the cycle above, but you'll be a lot stronger. To keep the program demanding and continue your gains, strive to increase the weight on each lift by 5-10 pounds. You'll also notice slight changes in the exercise selection. These changes allow you to target slightly different muscle fibers for the best overall gains in muscle size.
+            </p>
+            <p>
+              Your ability to handle cardio acceleration will improve. To maintain the difficulty and continue burning fat, boost the intensity of your cardio acceleration exercises or increase the time.
+            </p>
+            <h4>
+              DON'T FEAR OVERTRAINING
+            </h4>
+            <p>
+              I'm not a firm believer in overtraining. Yes, overtraining happens, but most of us sit all day at work, at school, or at home. So, spending an hour or so in the gym six days per week is not going to lead to overtraining. Plus, with the Shortcut to Shred diet and supplements on your side, you'll get maximum recovery so you can handle each and every workout.
+            </p>
+            <h4>
+              TRAINING SORE
+            </h4>
+            <p>
+              If you're unaccustomed to training, your Monday chest workout might leave you sore all the way to your Thursday chest workout. Don't worry. Research shows that when you train a sore muscle, muscles don't incur any more damage than what you've already done to them. In fact, that second workout may actually help recovery. If you want real results in six weeks, you need the intensity and frequency this program provides.
+            </p>
+            <h4>CARDIO ACCELERATION OPTIONS</h4>
+            <ul>
+              <li>KB Swing</li>
+              <li>Goblet Squat</li>
+              <li>Squat Jump</li>
+              <li>Box Jump</li>
+              <li>DB Step-up</li>
+              <li>BB Step-up</li>
+              <li>Sprints</li>
+              <li>Running in place</li>
+              <li>Medicine Ball Slam</li>
+              <li>Dumbbell Lunge</li>
+              <li>Lunge Jumps</li>
+              <li>Side-to-Side Box Shuffle</li>
+              <li>Sledgehammer Swing</li>
+              <li>Battling Ropes</li>
+              <li>Rocket Jump</li>
+              <li>Lateral Bound</li>
+              <li>Lateral Box Jump</li>
+              <li>Side Standing Long Jump</li>
+              <li>Mountain Climber</li>
+              <li>Jump Rope</li>
+              <li>Knee Tuck Jump</li>
+              <li>Diagonal Bound</li>
+              <li>Tire Flip</li>
+              <li>Skipping (in place)</li>
+              <li>Elliptical</li>
+              <li>DB Clean</li>
+              <li>Smith machine clean</li>
+              <li>Step-up with knee raise</li>
+            </ul>
+            <h4>
+              FINAL TIPS FOR SUCCESS
+            </h4>
+            <ol>
+              <li>
+                Keep a training journal. By recording your weights and reps, you'll be able to see improvements in your strength and stamina.
+              </li>
+              <li>
+                Get an accurate body fat measurement and take "before" photos before you begin the trainer. You may not be able to see day-to-day changes, but when you look back after three and six weeks, the difference will amaze you.
+              </li>
+              <li>
+                Create a BodySpace and use the available tools to manage your progress.
+              </li>
+            </ol>
+          </div>
         </div>
         <!-- end exercise overview -->
       </div>
@@ -253,7 +389,7 @@
   <!-- end workoutContainer -->
   
     <div class="row row-spacer">
-      <div id="increaseWorkout" class="col-xs-12">
+      <div id="mealAllowanceContainer" class="col-xs-12">
         
         <div id="workoutOverviewForStats" class="glyphicon glyphicon-cutlery"></div>
         <div id="mealAllowances">
@@ -295,7 +431,7 @@
               <!-- MustacheTemplate -->
               <script id="meals-template" type="x-tmpl-mustache">
                 <div class="meals">
-                  <div>{{ meals }} </div>
+                  <div>{{ name }} </div>
                   <div class='calories'>
                     cals<br> 
                     {{calories}}
@@ -447,6 +583,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <!-- Mustache library call -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
   <script src="js/cards.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
 </body>
