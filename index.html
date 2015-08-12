@@ -120,7 +120,7 @@
       <div class="col-sm-12">
         <div id="workoutOverviewStats" class="glyphicon glyphicon-heart"></div>
         <div id="exercise">Exercise</div>
-        <a href="http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-1-chest-triceps-abs.html">Today's workout</a>
+        <!-- <a href="http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-1-chest-triceps-abs.html">Today's workout</a> -->
         <h3 id="weeklyWorkoutTitle">This weeks muscle mass building workout</h3>
       </div>
     </div>
@@ -129,12 +129,10 @@
       <div class="daysOfWeekCardContainer gallery">
         <!-- MustacheTemplate -->
         <script id="calendar-template" type="x-tmpl-mustache">
-          <a href = "{{link}}">
-            <div value="{{link}}" id="{{ ids }}" class="daysOfWeekCard">
-              <div id="{{ ids }}" class="daysOfWeek">{{ dayOfWeek }}</div>
-              <div id="{{ ids }}" class="exercises">{{ dayOfWeekExercise }}</div>
-            </div>
-          </a>
+          <div value="{{link}}" id="{{ ids }}" class="daysOfWeekCard">
+            <div id="{{ ids }}" class="daysOfWeek">{{ dayOfWeek }}</div>
+            <div id="{{ ids }}" class="exercises">{{ dayOfWeekExercise }}</div>
+          </div>
         </script>
       </div>
     </div>
@@ -502,7 +500,7 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <h2 class="center">Modify Meals</h2>
+          <h4 id="modifyMealsTitle">Modify Meals</h4>
       </div>
     </div>
 

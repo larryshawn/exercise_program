@@ -9,7 +9,6 @@ hr {
 
 iframe#daysIframe {
   height: 360px;
-  width: 90%;
   padding: 1px;
   border-radius: 25px;
 }
@@ -130,8 +129,19 @@ a.hover {
 
 #food-container {
   width: 100%;
-  background-color: yellowgreen;
+  background-color: white;
+  color: #333
   padding-bottom: 20px;
+  display: none;
+}
+
+#modifyMealsTitle {
+  position: relative;
+  border-bottom: 6px solid #91AE17;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  color: #333;
 }
 
 #overview-container {
@@ -324,7 +334,8 @@ a.hover {
 }
 
 #footer {
-  background-color: white;
+  background-color: yellowgreen;
+  color: darkgreen!important;
   font-size: 18px;
   font-weight: lighter;
   color: #666;
@@ -333,7 +344,7 @@ a.hover {
 }
 
 #footer a {
-  color: #666;
+  color: white;
   margin-left: 15px;
 }
 

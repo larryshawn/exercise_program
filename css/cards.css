@@ -106,7 +106,6 @@ body {
 .lightbox {
   position: fixed;
   top: 10px;
-  width: 90%;
   height: 360px;
   margin: 0 auto;
   background-size: 100%;
