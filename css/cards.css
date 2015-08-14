@@ -28,7 +28,7 @@ body {
   color: #333;
   width: 96%;
   margin: 2%;
-  display: inline-table;
+  display: block;
 }
 
 /* setting search results */
@@ -52,10 +52,8 @@ body {
   font-weight: bold;
 }
 
-#mealAllowances h4 {
+#daily-meal-allowances-container h4 {
   display: inline;
-  bottom: 1px;
-  position: relative;
 }
 .calories, .protein, .carbs, .fats {
   border: 1px solid darkgray;
@@ -105,9 +103,11 @@ body {
 
 .lightbox {
   position: fixed;
+  left: 50%;
   top: 10px;
-  height: 360px;
-  margin: 0 auto;
+  width: 75%;
+  height: 520px;
+  margin: 0 0 0 -37.5%;
   background-size: 100%;
   background-repeat: no-repeat;
   background-color: white;

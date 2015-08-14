@@ -21,23 +21,15 @@ function handleClickEvents() {
     // skew(25deg,186deg) - skews on x and y axis unless you only put one value in. In that case it functions just like a skewX()
     // matrix(scalex, rotate, scaley, translatex, translatey) - all at once
     mask.css('transform', 'translateY(-48px)');
-    // $("#amountOfDays").focus();
+    // $("#amount-of-days").focus();
   });
 
   $('#hint').click(function(e) {
     var mask = $(e.target).parent().next('#preferences-container');
     // console.log(mask);
     $("#preferences-container").fadeIn();
-    // transform has a bunch of methods like 
-    // translate(x-axis-in px) y-axis-in-px); - moves it around 
-    // rotate(90deg) - rotates clockwise and counter clockwise
-    // scale(0.1,14) - everything under 1 goes smaller
-    // skewX(139deg) - top and bottom slant
-    // skewY(-20deg) - sides slant
-    // skew(25deg,186deg) - skews on x and y axis unless you only put one value in. In that case it functions just like a skewX()
-    // matrix(scalex, rotate, scaley, translatex, translatey) - all at once
     mask.css('transform', 'translateY(-48px)');
-    // $("#amountOfDays").focus();
+    // $("#amount-of-days").focus();
   });
 
   // If any close button gets clicked, slide the mask curtain up.
@@ -49,11 +41,6 @@ function handleClickEvents() {
       "-webkit-transition": "transform 2s ease-in-out",
       "-moz-transition": "transform 2s ease-in-out",
       "-o-transition": "transform 2s ease-in-out"
-
-  //     -webkit-transition: all 1s ease-in-out;
-  // -moz-transition: all 1s ease-in-out;
-  // -o-transition: all 1s ease-in-out;
-  // transition: all 1s ease-in-out;
     });
   });
 
@@ -75,26 +62,22 @@ function handleBlurEvents() {
   });
 }
 
-
-
 // Here are the functions used listed in call order...
 
 // 1. preferences.js
-function setPreferences(days, goal, alertType, weight) {
+function setPreferences() {
     var days = "";
     var goal = "";
     var alertType = "";
     var weight = 0;
 
-    days = $("#amountOfDays").val();
+    days = $("#amount-of-days").val();
     goal = document.getElementById("goal").value;
     // goal = $("#goal").val();
     // gets the value of the alertTypeRadios
     alertType = $('input[name=alertTypeRadios]:radio:checked').val();
     // gets the value of the weight input field
     weight = parseInt(document.getElementById("currentWeight").value);
-    // welcome and get how long the user has been on this schedule
-    // var days = prompt("Hi. I'm here to guide you. How many days have you been on this schedule?");
     // determine which level they're on and store that in a variable
     // what level are you on?
     if (days <= 7) {
@@ -224,7 +207,7 @@ function getLevel(workoutWeeks) {
 
 function renderCalendarCard(dayOfWeek, dayOfWeekExercise, ids, link) {
     // Reach out and grab the raw template
-    var rawTemplate = $('#calendar-template').html();
+    var rawTemplate = $('#weekly-workout-cards-mustache-template').html();
     // console.log(rawTemplate);
 
     // Define dynamic values (hydrate the template)
@@ -239,29 +222,13 @@ function renderCalendarCard(dayOfWeek, dayOfWeekExercise, ids, link) {
     var renderedText = Mustache.render(rawTemplate, values);
 
     // put it inside the div
-    $('.daysOfWeekCardContainer').append(renderedText);
+    $('#weekly-workout-cards-container').append(renderedText);
     $('#overview-container').fadeIn();
 }
 
 // 2-a. set workout
 
 function setWorkout(goal) {
-  // load bodybuilding page into iframe
-//   var targetLink = "http://www.bodybuilding.com/fun/shortcut-to-size.html";
-//   $( "#exercisesOverviewIframe" ).attr( "src", targetLink );
-
-// // $( "#exercisesOverviewIframe" ).load( "http://www.bodybuilding.com/fun/shortcut-to-size.html", function() {
-// //   alert( "Load was performed." );
-// // });
-
-// $('#exercisesOverviewIframe').on("load", function() {
-//   alert( "Load was performed." );
-//   $( "div#ad_wrapper a img" ).css( "display", "none", "important" );
-  // a#aw0, div#ad_wrapper {
-  // display: none !important;
-// }
-// });
-
 // JSON data lives here.
   if (goal == "increase") {
     var workoutWeeks = {
@@ -879,8 +846,8 @@ function setWorkout(goal) {
     ]
   };
   var targetLink = "https://www.youtube.com/embed/qfkRhT3WTH0?rel=0";
-  $( "#ytplayer" ).attr( "src", targetLink );
-  $('#increaseOverviewText').fadeIn();
+  $( "#youtube-player-iframe" ).attr( "src", targetLink );
+  $('#increase-overview-text').fadeIn();
 }
 else if (goal == 'decrease') {
   var workoutWeeks = {
@@ -1192,8 +1159,8 @@ else if (goal == 'decrease') {
     ]
   };
   var targetLink = "https://www.youtube.com/embed/0ITs-atk8Qk?rel=0";
-  $( "#ytplayer" ).attr( "src", targetLink );
-  $('#decreaseOverviewText').fadeIn();
+  $( "#youtube-player-iframe" ).attr( "src", targetLink );
+  $('#decrease-overview-text').fadeIn();
 }
 
 console.log(workoutWeeks);
@@ -1213,7 +1180,7 @@ function bindEventListeners() {
         var targetLink = $(e.currentTarget).attr("value");
         var rawTemplate = $('#lightbox-template').html();
 
-        $( "#daysIframe" ).attr( "src", targetLink );
+        $( "#daily-workout-iframe" ).attr( "src", targetLink );
         // console.log(consoleTest);
         // console.log(rawTemplate);
         // the extraneous stuff is being added below.
@@ -1240,7 +1207,7 @@ function bindEventListeners() {
 // show the program overview
 function showProgramOverview(level, goal, weight) {
   $("#overview-container").fadeIn(1000);
-  $("#mealAllowanceContainer").fadeIn(1000);
+  $("#daily-meal-allowances-container").fadeIn(1000);
   $("#food-container").fadeIn(1000);
   setWorkout(goal);
 
@@ -1583,6 +1550,9 @@ function mainFunction() {
 
 function renderNutritionFactsAPI() {
   // set up a search bar
+  // clear current search results
+  $('#search-results-container').html("");
+
   var searchItem = $("#foodSearch").val();
   $.get('https://api.nutritionix.com/v1_1/search/' + searchItem + '?fields=*&appId=fa29d9c4&appKey=0ba07a98eec4870860353ad5617c973e', 
 
@@ -1590,8 +1560,9 @@ function renderNutritionFactsAPI() {
       var items = nutritionFacts.hits;
       // console.log(items);
       for (var i = 0; i < items.length; i++) {
-        renderNewCard(items[i].fields.nf_serving_size_qty, items[i].fields.nf_serving_size_unit, items[i].fields.brand_name, items[i].fields.item_name, items[i].fields.item_id, items[i].fields.nf_calories, items[i].fields.nf_protein, items[i].fields.nf_total_carbohydrate, items[i].fields.nf_total_fat);
+        renderSearchResultsCards(items[i].fields.nf_serving_size_qty, items[i].fields.nf_serving_size_unit, items[i].fields.brand_name, items[i].fields.item_name, items[i].fields.item_id, items[i].fields.nf_calories, items[i].fields.nf_protein, items[i].fields.nf_total_carbohydrate, items[i].fields.nf_total_fat);
       };
+
       saveToMeal();
   });
 }

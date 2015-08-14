@@ -3,7 +3,7 @@ var calendarCardsDictionary = {};
 
 function renderCalendarCards(dayOfWeek, dayOfWeekExercise) {
     // Reach out and grab the raw template
-    var rawTemplate = $('#calendar-template').html();
+    var rawTemplate = $('#weekly-workout-cards-mustache-template').html();
     // console.log(rawTemplate);
 
     // Define dynamic values (hydrate the template)
@@ -19,7 +19,7 @@ function renderCalendarCards(dayOfWeek, dayOfWeekExercise) {
     var renderedText = Mustache.render(rawTemplate, values);
 
     // put it inside the div
-    $('.daysOfWeekCardContainer').append(renderedText);
+    $('#weekly-workout-cards-container').append(renderedText);
     buildDictionary(values);
     // Stamp out our cards here.
     bindEventListeners();

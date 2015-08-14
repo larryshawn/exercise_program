@@ -28,7 +28,7 @@
         <form name="myForm" action="" onsubmit="getFormValues()" method="post">
           <div class="form-group">
             <label>How many days you've been on this schedule</label><br>
-            <input type="number" name="days" id="amountOfDays" class="form-control" tabindex="1">
+            <input type="number" name="days" id="amount-of-days" class="form-control" tabindex="1">
           </div>
           <div class="form-group">
             <label>Your goal</label><br>
@@ -99,64 +99,52 @@
   </div>
   <!-- overview container -->
   <div id="overview-container" class="container">
-    
-    <div class="row row-spacer center">
-      <div id="overviewTitle" class="col-sm-12">
-        <h2 class="center">Overview</h2>
-      </div>
-    </div>
 
-    <div id="exerciseOverview" class="row row-spacer">
+    <div class="row row-spacer">
       <div class="col-sm-12">
-        <!-- Display today's day of the week and tell if it's a workout day or a rest day -->
         <div class="glyphicon glyphicon-calendar"></div>
         <div id="today"></div>
         <div id="weight">
           <span class="glyphicon glyphicon-scale"></span>
         </div>
+      </div>
     </div>
-    </div>
-    <div id="exerciseOverview" class="row padding-top-10">
+
+    <div class="row padding-top-10">
       <div class="col-sm-12">
         <div id="workoutOverviewStats" class="glyphicon glyphicon-heart"></div>
         <div id="exercise">Exercise</div>
-        <!-- <a href="http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred-day-1-chest-triceps-abs.html">Today's workout</a> -->
         <h3 id="weeklyWorkoutTitle">This weeks muscle mass building workout</h3>
       </div>
     </div>
 
     <div class="row center">
-      <div class="daysOfWeekCardContainer gallery">
-        <!-- MustacheTemplate -->
-        <script id="calendar-template" type="x-tmpl-mustache">
-          <div value="{{link}}" id="{{ ids }}" class="daysOfWeekCard">
-            <div id="{{ ids }}" class="daysOfWeek">{{ dayOfWeek }}</div>
-            <div id="{{ ids }}" class="exercises">{{ dayOfWeekExercise }}</div>
-          </div>
-        </script>
+      <div id="weekly-workout-cards-container" class="gallery">
+        <!-- weekly-workout-cards-mustache-template gets inserted here -->
       </div>
     </div>
+
     <!-- this mask is for the background of the lightbox -->
     <div id="mask"></div>
 
-    <div id="lightbox-container" class="row">
+    <div class="row">
       <div class="col-sm-12">
         <!-- I use the .attr attribute to dynamically change the src of the iframe -->
         <div class="lightbox">
-          <iframe id="daysIframe" type="text/html" src="" frameborder="0" class="col-sm-12">
+          <!-- TODO replace the iframe with text showing today's workout -->
+          <iframe id="daily-workout-iframe" type="text/html" src="" frameborder="0" class="col-sm-12">
           </iframe>
         </div>
       </div>
     </div>
 
-  <div id="workoutContainer">
     <div class="row">
       <div class="col-sm-12">
-        <h4 id="workoutOverviewTitle">Entire Workout Overview</h4>
-        <div id="exercisesOverview">
-          <iframe id="ytplayer" width="560" height="315" src="https://www.youtube.com/embed/qfkRhT3WTH0?rel=0" frameborder="0" allowfullscreen></iframe>
+        <h4 id="workout-overview-title">Entire Workout Overview</h4>
+        <div id="workout-overview">
+          <iframe id="youtube-player-iframe" width="560" height="315" src="https://www.youtube.com/embed/qfkRhT3WTH0?rel=0" frameborder="0" allowfullscreen></iframe>
 
-          <div id="increaseOverviewText">
+          <div id="increase-overview-text">
             <h4>PHASES</h4>
             <p>This is a 12-week program in three phases. Each phase lasts 4 weeks. Each week is a different microcycle. Regardless of the week, you'll work every body part once per week in the 4-day split.</p>
 
@@ -228,7 +216,8 @@
             </ul>
             <h4>Microcycles 3 and 4
             </h4>
-            <p>Drop Sets On The Last Set Of Each Exercise
+            <p>
+              Drop Sets On The Last Set Of Each Exercise
             </p>
             <ul>
               <li>
@@ -245,8 +234,9 @@
               </li>
             </ul>
           </div>
+          <!-- end increase-overview-text -->
 
-          <div id="decreaseOverviewText">
+          <div id="decrease-overview-text">
             <p></p>
             <p>
               Shortcut to Shred will help you torch fat, drop excess weight, and get lean faster than ever. The key is a training technique called cardio acceleration. In addition, the Shortcut to Shred workouts, built on microcyles in a periodized scheme, will help you build muscle and gain strength. Shortcut to Shred will help you hit all three goals in six short weeks. Let's dig into the science behind the shred!
@@ -378,121 +368,32 @@
               </li>
             </ol>
           </div>
+          <!-- end decrease overview -->
         </div>
         <!-- end exercise overview -->
       </div>
       <!-- end column -->
     </div>
     <!-- end row -->
-  </div>
-  <!-- end workoutContainer -->
   
     <div class="row row-spacer">
-      <div id="mealAllowanceContainer" class="col-xs-12">
-        
-        <div id="workoutOverviewForStats" class="glyphicon glyphicon-cutlery"></div>
-        <div id="mealAllowances">
-          <h4>Daily Meal allowances</h4>
-          <script id="dailyAllowancesTemplate" type="x-tmpl-mustache">
-            <div class="dayType">
-              {{dayType}} day
-            </div>
-            <div class="nutritionInfoForMealAllowances">
-              <div class='calories'>
-                cals<br> 
-                {{calories}}
-              </div>
-              <div class='protein'>
-                pros<br>
-                {{protein}}
-              </div>
-              <div class='carbs'>
-                carbs<br>
-                {{carbs}}
-              </div>
-              <div class='fats'>
-                fats<br>
-                {{fats}}
-              </div>
-            </div>
-          </script>
-        </div>
+      <div id="daily-meal-allowances-container" class="col-xs-12">
+        <i class="glyphicon glyphicon-cutlery"></i>
+        <h4>Daily Meal allowances</h4>
+        <!-- daily-meal-allowances-mustache-template gets inserted here -->
       </div>
     </div> 
 
-    <div id="individualMealsContainer">
-      <div class="row row-spacer">
-        <div class="col-sm-12">
-          <h4 id="individualMealsTitle">Individual Meals</h4>
-          <div id="individualMeals">
-            <!-- The meals stats will be the same. The only difference is on off days there are no pre or post workout meals -->
-            <div id="meals-container">
-              <!-- MustacheTemplate -->
-              <script id="meals-template" type="x-tmpl-mustache">
-                <div class="meals">
-                  <div>{{ name }} </div>
-                  <div class='calories'>
-                    cals<br> 
-                    {{calories}}
-                  </div>
-                  <div class='protein'>
-                    pros<br>
-                    {{protein}}
-                  </div>
-                  <div class='carbs'>
-                    carbs<br>
-                    {{carbs}}
-                  </div>
-                  <div class='fats'>
-                    fats<br>
-                    {{fats}}
-                  </div>
-                </div>
-                <div>Default Meal</div>
-                <div id="addedItems">
-                  <div>{{ servingSizeQuantity }} {{ servingSizeUnit }} {{ itemName }}
-                  </div>
-                  <div>{{ addedItemCalories }}</div>
-                  <div>{{ addedItemProtein }}</div>
-                  <div>{{ addedItemCarbs }}</div>
-                  <div>{{ addedItemFats }}</div>
-                </div>
-                <hr>
-              </script>
-            </div>
-          </div>
+    <div class="row row-spacer">
+      <div class="col-sm-12">
+        <h4 id="individual-meals-title">Individual Meals</h4>
+        <div id="individual-meals-container">
+          <!-- The meals stats will be the same. The only difference is on off days there are no pre or post workout meals -->
+          <!-- individual-meal-allowances-mustache-template gets inserted here -->
         </div>
       </div>
     </div>
-    <!-- end individual meals container -->
 
-    <!-- commented out info to be used for decrease workout. -->
-    <!-- <div>
-    <div id="beginnerDecreaseWorkout" class="col-xs-12">
-      <h2>Get lean workout for beginners</h2>
-      <h4>Workout</h4>
-      <div>
-        <p>Monday - CHEST, TRICEPS & ABS</p>
-        <p>Tuesday - DELTS, LEGS & CALVES</p>
-        <p>Wednesday - BACK, TRAPS & BICEPS</p>
-        <p>Thursday - CHEST, TRICEPS & ABS</p>
-        <p>Friday - DELTS, LEGS & CALVES</p>
-        <p>Saturday - BACK, TRAPS & BICEPS</p>
-        <p>Sunday - Rest</p>
-      </div>
-      <h4>Meals</h4>
-      <div>
-        <p><strong>Breakfast 1</strong> (Immediately Upon Waking)</p>
-        <p><strong>Breakfast 2</strong> (30-60 Minutes After Breakfast 1)</p>
-        <p><strong>Late Morning Snack</strong></p>
-        <p><strong>Lunch</strong></p>
-        <p><strong>Afternoon Snack</strong></p>
-        <p><strong>Pre-Workout</strong> (Within 30 Minutes Before Workouts)</p>
-        <p><strong>Post-Workout</strong> (Within 30 Minutes After Workouts)</p>
-        <p><strong>Dinner</strong></p>
-        <p><strong>Before Bed Snack</strong></p>
-      </div>
-    </div> -->
   </div>
   <!-- end overview container -->
 
@@ -500,68 +401,24 @@
 
     <div class="row">
       <div class="col-xs-12">
-          <h4 id="modifyMealsTitle">Modify Meals</h4>
+          <h4 id="modify-meals-title">Modify Meals</h4>
       </div>
     </div>
 
     <div class="row">
       <div class="col-xs-12 card">
         <form action="javascript:void()" method="get">
-          <input type="search" id ="foodSearch" class="form-control" placeholder="Search nutritional info..." name="search" autocomplete = "on"></input><input id="goSearchSubmit" type="image" src="images/icon-search.png" onclick="javascript:renderNutritionFactsAPI();" border="0">
+          <input type="search" id ="foodSearch" class="form-control" placeholder="Search nutritional info..." name="search" autocomplete = "on"></input>
+          <input id="goSearchSubmit" type="image" src="images/icon-search.png" onclick="javascript:renderNutritionFactsAPI();" border="0">
         </form>
-        
-        <div id="searchResults">
-          <form>
-          <!-- Another MustacheTemplate -->
-          <script id="nutrition-info-template" type="x-tmpl-mustache">
-            <div class='resultContainer'>
-              <label>
-                <div class='item'>
-                  {{brandName}} {{itemName}}<br>
-                </div>
-                <div class="nutritionInfo">
-                  <div class='searchResultCalories'>
-                    cals<br> 
-                    {{calories}}
-                  </div>
-                  <div class='searchResultProtein'>
-                    pros<br>
-                    {{protein}}
-                  </div>
-                  <div class='searchResultCarbs'>
-                    carbs<br>
-                    {{carbs}}
-                  </div>
-                  <div class='searchResultFats'>
-                    fats<br>
-                    {{fat}}
-                  </div>
-                </div>
-              </label>
-              <select class="form-control row-spacer mealToAddTo">
-                <option value="none">Target Meal</option>
-                <option value="meal1">Breakfast 1</option>
-                <option value="meal2">Breakfast 2</option>
-                <option value="meal3">Late Morning Snack</option>
-                <option value="meal4">Lunch</option>
-                <option value="meal5">Afternoon Snack</option>
-                <option value="meal6">Pre-workout</option>
-                <option value="meal7">Post-Workout</option>
-                <option value="meal8">Dinner</option>
-                <option value="meal9">Before Bed Snack</option>
-              </select>
-              <button type="button" class="btn btn-large btn-success btn-block saveToMealButton" onclick="saveToMeal()">Add Meal Item</button>
-              <button type="button" class="btn btn-large btn-default btn-block saveToMealButton" onclick="saveToMeal()">Replace Meal Item</button>
-            </div>
-            <hr>
-          </script>
-          </form>
-        </div>
-        <!-- end search results -->
+        <form>
+          <div id="search-results-container">
+            <!-- search-results-mustache-template gets inserted here -->
+          </div>
+        </form>
       </div>
-      <!-- end column -->
     </div>
-    <!-- end row -->
+
   </div>
   <!-- end food container -->
 
@@ -578,7 +435,114 @@
     </div>
   </div>
   
-  <!-- scripts -->
+  <!-- Mustache Templates -->
+  <script id="weekly-workout-cards-mustache-template" type="x-tmpl-mustache">
+    <div value="{{link}}" id="{{ ids }}" class="daysOfWeekCard">
+      <div id="{{ ids }}" class="daysOfWeek">{{ dayOfWeek }}</div>
+      <div id="{{ ids }}" class="exercises">{{ dayOfWeekExercise }}</div>
+    </div>
+  </script>
+
+  <script id="daily-meal-allowances-mustache-template" type="x-tmpl-mustache">
+    <div class="dayType">
+      {{dayType}} day
+    </div>
+    <div class="nutritionInfoForMealAllowances">
+      <div class='calories'>
+        cals<br> 
+        {{calories}}
+      </div>
+      <div class='protein'>
+        pros<br>
+        {{protein}}
+      </div>
+      <div class='carbs'>
+        carbs<br>
+        {{carbs}}
+      </div>
+      <div class='fats'>
+        fats<br>
+        {{fats}}
+      </div>
+    </div>
+  </script>
+
+  <script id="individual-meal-allowances-mustache-template" type="x-tmpl-mustache">
+    <div class="meals">
+      <div>{{ name }} </div>
+      <div class='calories'>
+        cals<br> 
+        {{calories}}
+      </div>
+      <div class='protein'>
+        pros<br>
+        {{protein}}
+      </div>
+      <div class='carbs'>
+        carbs<br>
+        {{carbs}}
+      </div>
+      <div class='fats'>
+        fats<br>
+        {{fats}}
+      </div>
+    </div>
+    <div>Default Meal</div>
+    <div id="addedItems">
+      <div>{{ servingSizeQuantity }} {{ servingSizeUnit }} {{ itemName }}
+      </div>
+      <div>{{ addedItemCalories }}</div>
+      <div>{{ addedItemProtein }}</div>
+      <div>{{ addedItemCarbs }}</div>
+      <div>{{ addedItemFats }}</div>
+    </div>
+    <hr>
+  </script>
+
+  <script id="search-results-mustache-template" type="x-tmpl-mustache">
+    <div class='resultContainer'>
+      <label>
+        <div class='item'>
+          {{brandName}} {{itemName}}<br>
+        </div>
+        <div class="nutritionInfo">
+          <div class='searchResultCalories'>
+            cals<br> 
+            {{calories}}
+          </div>
+          <div class='searchResultProtein'>
+            pros<br>
+            {{protein}}
+          </div>
+          <div class='searchResultCarbs'>
+            carbs<br>
+            {{carbs}}
+          </div>
+          <div class='searchResultFats'>
+            fats<br>
+            {{fat}}
+          </div>
+        </div>
+      </label>
+      <select class="form-control row-spacer mealToAddTo">
+        <option value="none">Target Meal</option>
+        <option value="meal1">Breakfast 1</option>
+        <option value="meal2">Breakfast 2</option>
+        <option value="meal3">Late Morning Snack</option>
+        <option value="meal4">Lunch</option>
+        <option value="meal5">Afternoon Snack</option>
+        <option value="meal6">Pre-workout</option>
+        <option value="meal7">Post-Workout</option>
+        <option value="meal8">Dinner</option>
+        <option value="meal9">Before Bed Snack</option>
+      </select>
+      <button type="button" class="btn btn-large btn-success btn-block saveToMealButton" onclick="saveToMeal()">Add Meal Item</button>
+      <button type="button" class="btn btn-large btn-default btn-block saveToMealButton" onclick="saveToMeal()">Replace Meal Item</button>
+    </div>
+    <hr>
+  </script>
+
+   <!-- jQuery script -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <!-- Mustache library call -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
