@@ -1,0 +1,87 @@
+"workout" : [ {
+  "increase" {
+    "phase1"    {
+      "week1"     {
+        "day1"      {
+          "ChestTricepsCavs"  {
+            "exercise1"   : "Barbell Bench Press - Medium Grip" {
+              "sets"        : "4",
+              "reps"        : "12 - 15",
+              "poster"      : "//videos.bodybuilding.com/thumb/52000/53781.jpg",
+              "video"       : "barbell-bench-press.mp4",
+              "BarbellBenchPressMediumGripImages" : [
+              "http://www.bodybuilding.com/exercises/exerciseImages/sequences/360/Male/l/360_1.jpg",
+              "http://www.bodybuilding.com/exercises/exerciseImages/sequences/360/Male/l/360_2.jpg"],
+              "description" : "Lie back on a flat bench. Using a medium width grip (a grip that creates a 90-degree angle in the middle of the movement between the forearms and the upper arms), lift the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.
+                From the starting position, breathe in and begin coming down slowly until the bar touches your middle chest.
+                After a brief pause, push the bar back to the starting position as you breathe out. Focus on pushing the bar using your chest muscles. Lock your arms and squeeze your chest in the contracted position at the top of the motion, hold for a second and then start coming down slowly again. Tip: Ideally, lowering the weight should take about twice as long as raising it.
+                Repeat the movement for the prescribed amount of repetitions.
+                When you are done, place the bar back in the rack.
+                Caution:
+
+                If you are new at this exercise, it is advised that you use a spotter. If no spotter is available, then be conservative with the amount of weight used.
+
+                Also, beware of letting the bar drift too far forward. You want the bar to touch your middle chest and nowhere else.
+
+                Don't bounce the weight off your chest. You should be in full control of the barbell at all times."
+            }
+            "exercise2"   : "Barbell Incline Bench Press - Medium Grip" {
+              "sets"        : "3",
+              "reps"        : "12 - 15",
+              "poster"      : "//videos.bodybuilding.com/thumb/52000/53781.jpg",
+              "video"       : "barbell-bench-press.mp4",
+              "BarbellBenchPressMediumGripImages" : [
+              "http://www.bodybuilding.com/exercises/exerciseImages/sequences/360/Male/l/360_1.jpg",
+              "http://www.bodybuilding.com/exercises/exerciseImages/sequences/360/Male/l/360_2.jpg"],
+              "description" : "Lie back on an incline bench. Using a medium-width grip (a grip that creates a 90-degree angle in the middle of the movement between the forearms and the upper arms), lift the bar from the rack and hold it straight over you with your arms locked. This will be your starting position.
+                As you breathe in, come down slowly until you feel the bar on you upper chest.
+                After a second pause, bring the bar back to the starting position as you breathe out and push the bar using your chest muscles. Lock your arms in the contracted position, squeeze your chest, hold for a second and then start coming down slowly again. Tip: it should take at least twice as long to go down than to come up.
+                Repeat the movement for the prescribed amount of repetitions.
+                When you are done, place the bar back in the rack.
+                Caution: If you are new at this exercise, it is advised that you use a spotter. If no spotter is available, then be conservative with the amount of weight used. Also, beware of letting the bar drift too far forward. You want the bar to fall on your upper chest and nowhere else.
+
+                Variations: You can use several angles on the incline bench if the one you are using is adjustable."
+            }
+          }
+        }
+      }
+    }
+  }
+}
+]
+
+
+// sample json
+{
+  "posts" : [ {
+    "description" : "Brainstorming some ideas for mechanics and puzzles.",
+    "image" : "http://files.parsetfss.com/de465e28-d77d-479a-b7ea-1eedcb9d1590/tfss-4bf137cc-65aa-4688-8867-b37b529d7f30-6.jpg",
+    "notes" : 21,
+    "submitted" : "Ben Swinden"
+  }, {
+    "description" : "Thinking about a series of introduction levels for our game Blockadillo.",
+    "image" : "http://files.parsetfss.com/de465e28-d77d-479a-b7ea-1eedcb9d1590/tfss-3852a7b2-6fd9-42cd-9b99-a4730deb2b20-2.jpg",
+    "notes" : 36,
+    "submitted" : "King Baggot"
+  }, {
+    "description" : "A quick design sketch detailing some of the main mechanics, assets and other titbits of my new game Bubs.",
+    "image" : "http://files.parsetfss.com/de465e28-d77d-479a-b7ea-1eedcb9d1590/tfss-e1dede4d-1d8c-417c-974a-9e16edf00114-3.jpg",
+    "notes" : 9,
+    "submitted" : "Docky"
+  }, {
+    "description" : "A basic sketch of ideas for a game that has been on my mind for a few months. Will see how far i can go.",
+    "image" : "http://files.parsetfss.com/de465e28-d77d-479a-b7ea-1eedcb9d1590/tfss-708ea430-d07d-4cb2-97fc-46d5ddc3a14d-4.jpg",
+    "notes" : 17,
+    "submitted" : "Ben657"
+  }, {
+    "description" : "Had a good time today doodling scenery/prop concepts for my new game.",
+    "image" : "http://files.parsetfss.com/de465e28-d77d-479a-b7ea-1eedcb9d1590/tfss-6e7fc95f-46f6-4a50-bd40-77f6927dccd6-5.jpg",
+    "notes" : 25,
+    "submitted" : "Matthieu Sablier"
+  }, {
+    "description" : "This is the last post from my game design blog which I’m wrapping up after 500 ideas because my brain has melted.",
+    "image" : "http://files.parsetfss.com/de465e28-d77d-479a-b7ea-1eedcb9d1590/tfss-bb676bec-018f-4e6e-ac8c-1ec0c07dc75b-1.jpg",
+    "notes" : 12,
+    "submitted" : "Jamie Fristrom"
+  } ]
+}
