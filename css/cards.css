@@ -1,0 +1,119 @@
+body {
+  background-color: black;
+}
+
+#cards-container {
+  text-align: center;
+}
+
+/*.card {
+  display: inline-block;
+  text-align: left;
+  width: 320px;
+  height: 360px;
+  background-size: 320px 180px;
+  background-repeat: no-repeat;
+  border: 1px solid #141414;
+  border-radius: 10px;
+  margin: 25px auto;
+  font-family: sans-serif;
+  font-weight: lighter;
+  font-size: 13px;
+}*/
+
+.card {
+  border: 1px solid lightgray;
+  padding: 16px;
+  background-color: whitesmoke;
+  color: #333;
+  width: 96%;
+  margin: 2%;
+  display: block;
+}
+
+/* setting search results */
+.item {
+  font-weight: bold;
+  display: inline;
+  left: 4px;
+  top: 2px;
+  position: relative;
+}
+#nutritionInfo {
+  text-align: center;
+}
+#nutritionInfoForMealAllowances {
+  text-align: center;
+    position: relative;
+    bottom: 10px;
+    right: 5px;
+}
+.dayType {
+  font-weight: bold;
+}
+
+#daily-meal-allowances-container h4 {
+  display: inline;
+}
+.calories, .protein, .carbs, .fats {
+  border: 1px solid darkgray;
+  display: inline-block;
+  padding: 6px;
+  background-image: linear-gradient(rgb(64, 64, 65), rgb(138, 138, 139));
+  color: white;
+  border-radius: 20px;
+  position: relative;
+  text-align: center;
+  margin: 4px;
+  top: 0px
+}
+
+.searchResultCalories, .searchResultProtein, .searchResultCarbs, .searchResultFats {
+  border: 1px solid darkgray;
+  display: inline-block;
+  padding: 6px;
+  background-image: linear-gradient(rgb(64, 64, 65), rgb(138, 138, 139));
+  color: white;
+  border-radius: 20px;
+  position: relative;
+  text-align: center;
+  margin: 4px;
+  top: 0px
+}
+
+.searchResultC label {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid darkgray;
+  width: 100%;
+  background-color: white;
+}
+
+#mask {
+  position: fixed;
+  display: none;
+  opacity: .8;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #000;
+  z-index: 200;
+}
+
+.lightbox {
+  position: fixed;
+  left: 50%;
+  top: 10px;
+  width: 75%;
+  height: 520px;
+  margin: 0 0 0 -37.5%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-radius: 20px;
+  font-family: sans-serif;
+  font-weight: lighter;
+  display: none;
+  z-index: 201;
+}

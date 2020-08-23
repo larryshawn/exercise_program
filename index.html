@@ -1,280 +1,550 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <!-- Required to properly zoom the viewport on mobile. -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>My Health Schedule As Whole Foods Fitness</title>
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/styles.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script type="text/javascript" src="js/scripts.js"></script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>My Health Schedule As Whole Foods Fitness</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="css/cards.css">
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
 
 <body>
-<!-- header -->
-    <div id="nav-header">
-        <span></span>
-        <span>Whole Foods Fitness</span>
-        <span></span>
-    </div>
-<!-- hero image -->
-    <div id="hero"></div>
+  <!-- header -->
+  <div id="nav-header">
+    <span></span>
+    <span id="logo">Whole Foods Fitness</span>
+    <span id="settingsIcon">
+      <span id="hint">Set workout</span>
+    </span>
     <div id="preferences-container" class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <h2 class="center">Preferences</h2>
-            </div>
+          <div class="col-xs-12">
+            <h2 class="center">Preferences</h2>
+            <img id="preferencesCloseButton" class="close-btn" src="images/close.png">
+          </div>
         </div>
-        <form name="myForm" action="" onsubmit="getFormValues()" method="post">
-        <div class="form-group">
-            <label>Days on this schedule</label><br>
-            <input type="text" name="days" id="amountOfDays" class="form-control">
-        </div>
-        <div class="form-group">
+        <form name="myForm" action="javascript:getFormValues()" method="post">
+          <div class="form-group">
+            <label>How many days you've been on this schedule</label><br>
+            <input type="number" name="days" id="amount-of-days" class="form-control" tabindex="1">
+          </div>
+          <div class="form-group">
             <label>Your goal</label><br>
-            <select id="goal" class="form-control">
-                <option value="increase">Increase weight</option>
-                <option value="decrease">Decrease weight</option>
+            <select id="goal" class="form-control" tabindex="2">
+              <option value="increase">Increase weight</option>
+              <option value="decrease">Decrease weight</option>
             </select>
-        </div>
-        <label>Alert Type</label>
-        <div class="radio ">
-            <label>
-                <input type="radio" name="alertTypeRadios" id="wantsAudio" value="audio" checked>
-                Audio
+          </div>
+          <label>Alert Type</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="alertTypeCheckboxes" id="wantsAudio" value="audio" tabindex="3">
+            <label class="form-check-label" for="wantsAudio">
+              Audio
             </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="alertTypeRadios" id="wantsVideo" value="video">
-                Video
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox"  name="alertTypeCheckboxes" id="wantsVideo" value="video" tabindex="4">
+            <label class="form-check-label" for="wantsVideo">
+              Video
             </label>
-        </div>
-        <div class="radio">
-            <label>
-                <input type="radio" name="alertTypeRadios" id="wantsBoth" value="both">
-                Both
-            </label>
-        </div>
-        <div class="form-group">
-            <label>Your current weight</label><br>
-            <input type="text" name="currentWeight" id="currentWeight" class="form-control">
-        </div>
-        <button type="button" class="btn btn-large btn-success btn-block row-spacer" onclick="mainFunction()">Show Workout Overview</button>
+          </div>
+          <div class="form-group">
+            <label>How much do you weigh?</label><br>
+            <input type="number" name="currentWeight" id="currentWeight" class="form-control" tabindex="6">
+          </div>
+          <button type="submit" id="preferencesSubmitButton" class="btn btn-large btn-success btn-block row-spacer" tabindex="7">Show Workout Overview</button>
         </form>
-    </div>
-    <div id="main-container" class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="center">Alerts</h2>
-            </div>
-        </div>
-        <div class="row center" id="monolog">
-            <div class="col-sm-12 row-spacer">
-                <div class="center"></div>
-                <!-- 
-                    alternate audio link: http://www.freesfx.co.uk/rx2/mp3s/6/7299_1343917537.mp3
-                    monitor screen tapping audio: http://www.freesfx.co.uk/rx2/mp3s/2/2729_1329133415.mp3
-                 -->
-                <audio src="images/alert-sound.mp3" style="display:none;" controls></audio>
-                <video src="images/bird.mp4" controls id="videoAlert" style="display:none;"></video>
-            </div>
-        </div>
-    </div>
-    <div id="alternate-container" class="container">
-        <div class="row">
-            <h2 class="center">Workout Overview</h2>
-            <div id="workoutOverviewForStats"></div>
-            <div id="today"></div>
-            <div id="beginnerIncreaseWorkout" class="col-xs-12">
-                <h3>Muscle mass building workout for beginners</h3>
-                <h4>Workout</h4>
-                <div>
-                    <p>Monday - Chest and triceps</p>
-                    <p>Tuesday - Back and biceps</p>
-                    <p>Wednesday - Rest</p>
-                    <p>Thursday - Shoulders</p>
-                    <p>Friday - Legs</p>
-                    <p>Saturday - Rest</p>
-                    <p>Sunday - Rest</p>
-                </div>
-                <h4>Meals</h4>
-                <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
-                </div>
+      </div>
+  </div>
 
-            </div>
-            <div id="beginnerDecreaseWorkout" class="col-xs-12">
-                <h2>Get lean workout for beginners</h2>
-                <h4>Workout</h4>
-                <div>
-                    <p>Monday - CHEST, TRICEPS & ABS</p>
-                    <p>Tuesday - DELTS, LEGS & CALVES</p>
-                    <p>Wednesday - BACK, TRAPS & BICEPS</p>
-                    <p>Thursday - CHEST, TRICEPS & ABS</p>
-                    <p>Friday - DELTS, LEGS & CALVES</p>
-                    <p>Saturday - BACK, TRAPS & BICEPS</p>
-                    <p>Sunday - Rest</p>
-                </div>
-                <h4>Meals</h4>
-                <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
-                </div>
-            </div>
-            <div id="intermediateIncreaseWorkout" class="col-xs-12">
-                <h2>Muscle mass building workout for intermediate</h2>
-                <h4>Workout</h4>
-                <div>
-                    <p>Monday - Chest and triceps</p>
-                    <p>Tuesday - Back and biceps</p>
-                    <p>Wednesday - Rest</p>
-                    <p>Thursday - Shoulders</p>
-                    <p>Friday - Legs</p>
-                    <p>Saturday - Rest</p>
-                    <p>Sunday - Rest</p>
-                </div>
-                <h4>Meals</h4>
-                <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
-                </div>
-            </div>
-            <div id="intermediateDecreaseWorkout" class="col-xs-12">
-                <h2>Get lean workout for intermediate</h2>
-                <h4>Workout</h4>
-                <div>
-                    <p>Monday - CHEST, TRICEPS & ABS</p>
-                    <p>Tuesday - DELTS, LEGS & CALVES</p>
-                    <p>Wednesday - BACK, TRAPS & BICEPS</p>
-                    <p>Thursday - CHEST, TRICEPS & ABS</p>
-                    <p>Friday - DELTS, LEGS & CALVES</p>
-                    <p>Saturday - BACK, TRAPS & BICEPS</p>
-                    <p>Sunday - Rest</p>
-                </div>
-                <h4>Meals</h4>
-                <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
-                </div>
-            </div>
-            <div id="advancedIncreaseWorkout" class="col-xs-12">
-                <h2>Muscle mass building workout for advanced</h2>
-                <h4>Workout</h4>
-                <div>
-                    <p>Monday - Chest and triceps</p>
-                    <p>Tuesday - Back and biceps</p>
-                    <p>Wednesday - Rest</p>
-                    <p>Thursday - Shoulders</p>
-                    <p>Friday - Legs</p>
-                    <p>Saturday - Rest</p>
-                    <p>Sunday - Rest</p>
-                </div>
-                <h4>Meals</h4>
-                <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
-                </div>
-            </div>
-            <div id="advancedDecreaseWorkout" class="col-xs-12">
-                <h2>Get lean workout for advanced</h2>
-                <h4>Workout</h4>
-                <div>
-                    <p>Monday - CHEST, TRICEPS & ABS</p>
-                    <p>Tuesday - DELTS, LEGS & CALVES</p>
-                    <p>Wednesday - BACK, TRAPS & BICEPS</p>
-                    <p>Thursday - CHEST, TRICEPS & ABS</p>
-                    <p>Friday - DELTS, LEGS & CALVES</p>
-                    <p>Saturday - BACK, TRAPS & BICEPS</p>
-                    <p>Sunday - Rest</p>
-                </div>
-                <h4>Meals</h4>
-                <div>
-                    <p>Breakfast 1 (Immediately Upon Waking) - eat this</p>
-                    <p>Breakfast 2 (30-60 Minutes After Breakfast 1) - eat this</p>
-                    <p>Late Morning Snack - eat this</p>
-                    <p>Lunch - eat this</p>
-                    <p>Afternoon Snack - eat this</p>
-                    <p>Pre-Workout (Within 30 Minutes Before Workouts) - eat this</p>
-                    <p>Post-Workout (Within 30 Minutes After Workouts) - eat this</p>
-                    <p>Dinner - eat this</p>
-                    <p>Before Bed Snack - eat this</p>
-                </div>
-            </div>
-        </div>
+  <!-- hero image -->
+  <div id="hero" class="img-retina container">
+    <!-- <h1 class="jumbotron" id="heroText">Whole Foods Body Building Guide</h1> -->
+  </div>
+  <!-- alert container -->
+  <div id="alert-container" class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 class="center">Alerts</h2>
+        <img id="alertCloseButton" class="close-btn" src="images/close.png">
+      </div>
     </div>
-    <div id="food-container" class="container">
-        <div class="row">
-            <div class="col-xs-12">
-                <h2 class="center">Food Information</h2>
-            </div>
-        </div>
-        <div class="row row-spacer">
-            <div class="col-xs-12 card">
-                <form action="javascript:void()" method="get">
-                <input type="search" id ="foodSearch" class="form-control" onblur="(this.placeholder == '') && (this.placeholder = 'Search nutritional info on food items')" onfocus="(this.placeholder == 'Search nutritional info on food items') && (this.placeholder = '')" placeholder="Search nutritional info on food items" name="search" autocomplete = "on" autofocus></input><input id="goSearchSubmit" type="image" src="images/icon-search.png" onclick="renderNutritionFactsAPI();" border="0">
-                </form>
-                <!-- <script src="http://platform.fatsecret.com/js?key=8930f590f6b4480db775c050dbc9e263&auto_load=true"></script> -->
-                <!-- <strong>Brussels sprouts:</strong> 1 cup, 65 cal, 6 gm, low in leucine, lysine, methionine + cystine, phenylalanine + tyrosine<br>
-                <strong>Spinach:</strong> 1 cup chopped, 65 cal, 6 gm, low in methionine + cystine<br>
-                <strong>Broccoli:</strong> 1 cup spears, 52 cal, 6 gm, low in methionine + cystine<br>
-                <strong>Potato:</strong> 1 med with skin, 161 cal, 4 gm, all aa in proper ratio<br>
-                <strong>Asparagus:</strong> ½ cup, 20 cal, 2 gm, all aa in proper ratio<br>
-                <strong>Apricots:</strong> dried ½ cup, 190 cal, 3 gm, low in methionine + cystine<br>
-                <strong>Peaches:</strong>  dried ½ cup, 185 cal, 3 gm, low in tryptophan and lysine -->
-                
-                <div id="searchResults"></div>
-                <button class="btn btn-primary" id="btnAddToMenu">Add to menu</button>
 
-            </div>
-        </div>
+    <div class="row center" id="monolog">
+      <div class="col-sm-12 row-spacer">
+        <div class="center"></div>
+        <!-- 
+        alternate audio link: http://www.freesfx.co.uk/rx2/mp3s/6/7299_1343917537.mp3
+        monitor screen tapping audio: http://www.freesfx.co.uk/rx2/mp3s/2/2729_1329133415.mp3
+        -->
+        <audio src="images/alert-sound.mp3" style="display:none;" controls></audio>
+        <video src="images/bird.mp4" controls id="videoAlert" style="display:none;"></video>
+        <div id="mealMessage"></div>
+      </div>
     </div>
-    <div id="footer">
-        <div class="row">
-            <h4>Resources</h4>
-            <div>
-                <a href="http://www.bodybuilding.com/fun/no-meat-muscle-4-rules-for-building-mass-on-vegetarian-diet.html">No Meat Muscle</a><br>
-                <a href="http://rawforbeauty.com/blog/my-experience-10-months-100-raw-vegan-diet-muscle-building.html">Raw Vegan Diet</a><br>
-                <a href="http://www.bodybuilding.com/fun/shortcut-to-size.html">Shortcut to size</a><br>
-                <a href="http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred.html">Shortcut to shred</a>
-            </div>
-        </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <h2 id="alertMessage" class="center">It's 10:00. You need to eat Breakfast</h2>
+      </div>
     </div>
+  </div>
+  <!-- overview container -->
+  <div id="overview-container" class="container">
+
+    <div class="row row-spacer">
+      <div class="col-sm-12">
+        <div class="glyphicon glyphicon-calendar"></div>
+        <div id="today"></div>
+        <div id="weight">
+          <span class="glyphicon glyphicon-scale"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="row padding-top-10">
+      <div class="col-sm-12">
+        <div id="workoutOverviewStats" class="glyphicon glyphicon-heart"></div>
+        <div id="exercise">Exercise</div>
+        <h3 id="weeklyWorkoutTitle">This weeks muscle mass building workout</h3>
+      </div>
+    </div>
+
+    <div class="row center">
+      <div id="weekly-workout-cards-container" class="gallery">
+        <!-- weekly-workout-cards-mustache-template gets inserted here -->
+      </div>
+    </div>
+
+    <!-- this mask is for the background of the lightbox -->
+    <div id="mask"></div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <!-- I use the .attr attribute to dynamically change the src of the iframe -->
+        <div class="lightbox">
+          <!-- TODO replace the iframe with text showing today's workout -->
+          <iframe id="daily-workout-iframe" type="text/html" src="" frameborder="0" class="col-sm-12">
+          </iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 id="workout-overview-title">Entire Workout Overview</h4>
+        <div id="workout-overview">
+          <iframe id="youtube-player-iframe" width="560" height="315" src="https://www.youtube.com/embed/qfkRhT3WTH0?rel=0" frameborder="0" allowfullscreen></iframe>
+
+          <div id="increase-overview-text">
+            <h4>PHASES</h4>
+            <p>This is a 12-week program in three phases. Each phase lasts 4 weeks. Each week is a different microcycle. Regardless of the week, you'll work every body part once per week in the 4-day split.</p>
+
+            <h4>WORKOUT SPLIT</h4>
+            <ul>
+              <li>
+                Monday: Workout 1: Chest and triceps
+              </li>
+              <li>
+                Tuesday: Workout 2: Back and biceps
+              </li>
+              <li>
+                Wednesday: Active Rest
+              </li>
+              <li>
+                Thursday: Workout 3: Shoulders
+              </li>
+              <li>
+                Friday: Workout 4: Legs
+              </li>
+              <li>
+                Saturday: Active Rest
+              </li>
+              <li>
+                Sunday: Active Rest
+              </li>
+            </ul>
+
+            <p>
+              Use active rest on your off days. Don't lift weights, but certainly consider doing other activities. Play basketball, go hiking; do specific cardio workouts, particularly if you want to focus on losing body fat while you're building muscle.
+            </p>
+
+            <h4>WORKOUT DURATION</h4>
+            <p>
+              Workouts 1 and 2 may take 75-90 minutes.<br>
+              Workouts 3 and 4 can usually be completed within 60 minutes.
+            </p>
+            <p>
+              Your rest periods between exercises will vary from 2-4 minutes, depending on your experience. If you have already built muscular endurance, your rests will be shorter. As you take the shortcut to size, become stronger and increase endurance, your rest periods will get shorter and shorter.
+            </p>
+            <p>
+              Rep ranges exist for scientific reasons. Maintain that range! Your rest periods between sets are determined by how long it takes you to recover so you can effectively complete the rep range with good form for each microcycle.
+            </p>
+            <p>
+              For abs and calves, you'll notice that the rep ranges are a little bit higher as you go through each microcycle; this is because these muscle groups generally fare better (as far as the results you get in both strength and size) when the reps ranges are a bit higher.
+            </p>
+            <h4>TRACKING</h4>
+            <p>
+              Log the weights you use during each microcycle so you know how much to increase your weight by on the next microcycle. It's a good way to look back to where you started and where you ended up at the end of the program. Trust me, it's going to be impressive.
+            </p>
+            <h3>INTENSITY-BOOSTING TECHNIQUES</h3>
+            <h4>Microcycles 1 and 2</h4>
+            <p>
+              Rest-Pause On The Last Set Of Each Exercise
+            </p>
+            <ul>
+              <li>
+                Complete that set until you reach muscle failure
+              </li>
+              <li>
+                Rack the weight
+              </li>
+              <li>
+                Rest 15-20 seconds
+              </li>
+              <li>
+                Continue the set until you reach muscle failure again!
+              </li>
+            </ul>
+            <h4>Microcycles 3 and 4
+            </h4>
+            <p>
+              Drop Sets On The Last Set Of Each Exercise
+            </p>
+            <ul>
+              <li>
+                Complete that set until you reach muscle failure
+              </li>
+              <li>
+                Immediately remove 20-to-30 percent of the weight
+              </li>
+              <li>
+                *Remove enough weight to reach at least the prescribed rep range
+              </li>
+              <li>
+                Continue the set until you reach muscle failure again!
+              </li>
+            </ul>
+          </div>
+          <!-- end increase-overview-text -->
+
+          <div id="decrease-overview-text">
+            <p></p>
+            <p>
+              Shortcut to Shred will help you torch fat, drop excess weight, and get lean faster than ever. The key is a training technique called cardio acceleration. In addition, the Shortcut to Shred workouts, built on microcyles in a periodized scheme, will help you build muscle and gain strength. Shortcut to Shred will help you hit all three goals in six short weeks. Let's dig into the science behind the shred!
+            </p>
+            <h4>WHAT IS CARDIO ACCELERATION?</h4>
+            <p>
+              Cardio acceleration is critical to Shortcut to Shred. It will fire up your fat-burning furnace like nothing else. Cardio acceleration is a technique that combines high-intensity cardio and resistance training into one fast-paced workout. Instead of resting between your lifts, you will do cardio between every single set. Simply put, you'll lift one set of a prescribed exercise, such as bench press, and then immediately follow it with one minute of cardio.
+            </p>
+            <p>
+              Cardio effectively replaces your rest periods. Now, I don't mean you have to rack the barbell, run across the gym, and jump on a treadmill or stationary bike. Your cardio acceleration exercises can be as simple as running in place next to the bench. You can also do jump rope, dumbbell cleans, step-ups, or any combination of full-body exercises. The only requirement is that you move for an entire minute.
+            </p>
+            <p>
+              If you're new to fitness and find that one minute is too long, reduce the time to 30 seconds or go slower. The goal is to gradually increase the time you spend doing high-intensity cardio. You want to keep each cardio acceleration minute as intense and demanding as possible.
+            </p>
+            <p>
+              It might seem strange to do short bursts of cardio, but if you think about it, those one-minute bursts will add up to 20-30 minutes of high-intensity intervals per workout. Twenty minutes of high-intensity training burns much more fat than 20-30 minutes spent walking on a treadmill.
+            </p>
+            <p>
+              The additional intense movement during your workouts will keep your heart rate elevated for the entire training session. You'll burn more calories during the actual workouts, but more important, you'll burn more calories after the workouts. Cardio acceleration keeps your metabolic rate higher, longer, even when you're resting. In other words, you burn more calories during the workouts, but you'll keep burning calories long after you're done training.
+            </p>
+
+            <h4>THE SCIENCE BEHIND THE SHRED</h4>
+            <p>
+              If you're worried about getting too tired from cardio acceleration to lift intensely, don't be. A University of California, Santa Cruz, study found that when subjects did cardio between weightlifting sets, they were able to recover better because of increased blood flow. Cardio acceleration elevates your heart rate, which means more blood pumps to your working muscles throughout your workout.
+            </p>
+            <p>
+              Blood delivers oxygen and nutrients, which enhance your body's ability to generate and maintain energy. In addition, better blood flow delivers a bigger muscle pump, which can lead to greater growth because of the stretch it places on muscle cells and fascia. Bottom line: Cardio acceleration will boost your muscle strength and endurance, not hinder it.
+            </p>
+            <h4>
+              HIIT IT
+            </h4>
+            <p>
+              Many who are new to cardio acceleration wonder if it's better than high-intensity interval training (HIIT). These people don't realize that cardio acceleration is HIIT. Instead of a typical HIIT session, which alternates intervals of high-intensity exercise with intervals of rest, or low-intensity exercise, cardio acceleration mixes high-intensity, cardio-based exercise with intervals of intense resistance exercise. This mix helps you burn fat and build muscle.
+            </p>
+            <p>
+              You don't have to do the same cardio acceleration exercises for an entire workout. You can vary your cardio acceleration choices as much as you'd like. In general, the more variety you have, the better. Variety will help you stick to the program, place new demands on your body to spur adaptations, and keep you from growing bored.
+            </p>
+            <h4>
+              WEIGHTS MATTER
+            </h4>
+            <p>
+              Cardio acceleration is one key to Shortcut to Shred, but the lifting program is equally critical. The right resistance program will not only enhance your fat loss, but will allow you to burn body fat while building strength and muscle. Shortcut to Shred is scientifically designed to help you achieve all three goals.
+            </p>
+            <p>
+              Shortcut to Shred is built on periodization, which calls for systematic changes in the amount of weight you lift and number of reps you perform. Research consistently shows that periodization is one of the best techniques for increasing muscle strength and size. During Shortcut to Shred, reps and weights will change each week. These changes will optimize your gains in muscle strength, size, endurance, and fat loss.
+            </p>
+            <p>
+              Shortcut to Shred combines linear periodization and reverse linear periodization for maximum results. Linear periodization calls for you to lift heavier weight and fewer reps each week. Reverse linear periodization involves decreasing the weight and increasing the rep range each week. How can you follow these two forms of periodization simultaneously? You will train each muscle group twice per week.
+            </p>
+            <h4>
+              WORK IT OUT
+            </h4>
+            <p>
+              The program splits each muscle group into two different workouts per week. During the first half of the week-Monday, Tuesday, and Wednesday-you train with multi-joint, compound exercises. For example, during your first chest session each week, you will only do compound exercises like barbell and dumbbell presses.
+            </p>
+            <p>
+              During the second half of the week-Thursday, Friday, and Saturday-when you train each muscle group for the second time, you will use single-joint, isolation exercises wherever possible. For example, on your second chest day, you will perform dumbbell and cable flyes.
+            </p>
+            <p>
+              The compound workouts in the first half of the week follow linear periodization. Each week, these multi-joint workouts will call for heavier weight and fewer reps. However, the single-joint workouts in the second half of the week follow reverse linear periodization, so the weight will drop and the reps will increase each week.
+            </p>
+            <p>
+              This combination of exercises, weights, and rep ranges will maximize your ability to burn fat. Research suggests that if you lift fewer reps of heavier weight, you burn fewer calories during a workout, but you maintain a higher metabolic rate after the workout is over. If you lift a lighter weight for more reps, you will burn more calories during the workout itself.
+            </p>
+            <h4>
+              PHASE TWO
+            </h4>
+            <p>
+              In phase two, you repeat the cycle above, but you'll be a lot stronger. To keep the program demanding and continue your gains, strive to increase the weight on each lift by 5-10 pounds. You'll also notice slight changes in the exercise selection. These changes allow you to target slightly different muscle fibers for the best overall gains in muscle size.
+            </p>
+            <p>
+              Your ability to handle cardio acceleration will improve. To maintain the difficulty and continue burning fat, boost the intensity of your cardio acceleration exercises or increase the time.
+            </p>
+            <h4>
+              DON'T FEAR OVERTRAINING
+            </h4>
+            <p>
+              I'm not a firm believer in overtraining. Yes, overtraining happens, but most of us sit all day at work, at school, or at home. So, spending an hour or so in the gym six days per week is not going to lead to overtraining. Plus, with the Shortcut to Shred diet and supplements on your side, you'll get maximum recovery so you can handle each and every workout.
+            </p>
+            <h4>
+              TRAINING SORE
+            </h4>
+            <p>
+              If you're unaccustomed to training, your Monday chest workout might leave you sore all the way to your Thursday chest workout. Don't worry. Research shows that when you train a sore muscle, muscles don't incur any more damage than what you've already done to them. In fact, that second workout may actually help recovery. If you want real results in six weeks, you need the intensity and frequency this program provides.
+            </p>
+            <h4>CARDIO ACCELERATION OPTIONS</h4>
+            <ul>
+              <li>KB Swing</li>
+              <li>Goblet Squat</li>
+              <li>Squat Jump</li>
+              <li>Box Jump</li>
+              <li>DB Step-up</li>
+              <li>BB Step-up</li>
+              <li>Sprints</li>
+              <li>Running in place</li>
+              <li>Medicine Ball Slam</li>
+              <li>Dumbbell Lunge</li>
+              <li>Lunge Jumps</li>
+              <li>Side-to-Side Box Shuffle</li>
+              <li>Sledgehammer Swing</li>
+              <li>Battling Ropes</li>
+              <li>Rocket Jump</li>
+              <li>Lateral Bound</li>
+              <li>Lateral Box Jump</li>
+              <li>Side Standing Long Jump</li>
+              <li>Mountain Climber</li>
+              <li>Jump Rope</li>
+              <li>Knee Tuck Jump</li>
+              <li>Diagonal Bound</li>
+              <li>Tire Flip</li>
+              <li>Skipping (in place)</li>
+              <li>Elliptical</li>
+              <li>DB Clean</li>
+              <li>Smith machine clean</li>
+              <li>Step-up with knee raise</li>
+            </ul>
+            <h4>
+              FINAL TIPS FOR SUCCESS
+            </h4>
+            <ol>
+              <li>
+                Keep a training journal. By recording your weights and reps, you'll be able to see improvements in your strength and stamina.
+              </li>
+              <li>
+                Get an accurate body fat measurement and take "before" photos before you begin the trainer. You may not be able to see day-to-day changes, but when you look back after three and six weeks, the difference will amaze you.
+              </li>
+              <li>
+                Create a BodySpace and use the available tools to manage your progress.
+              </li>
+            </ol>
+          </div>
+          <!-- end decrease overview -->
+        </div>
+        <!-- end exercise overview -->
+      </div>
+      <!-- end column -->
+    </div>
+    <!-- end row -->
+  
+    <div class="row row-spacer">
+      <div id="daily-meal-allowances-container" class="col-xs-12">
+        <i class="glyphicon glyphicon-cutlery"></i>
+        <h4>Daily Meal allowances</h4>
+        <!-- daily-meal-allowances-mustache-template gets inserted here -->
+      </div>
+    </div> 
+
+    <div class="row row-spacer">
+      <div class="col-sm-12">
+        <h4 id="individual-meals-title">Individual Meals</h4>
+        <div id="individual-meals-container">
+          <!-- The meals stats will be the same. The only difference is on off days there are no pre or post workout meals -->
+          <!-- individual-meal-allowances-mustache-template gets inserted here -->
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- end overview container -->
+
+  <div id="food-container" class="container">
+
+    <div class="row">
+      <div class="col-xs-12">
+          <h4 id="modify-meals-title">Modify Meals</h4>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 card">
+        <form action="javascript:void()" method="get">
+          <input type="search" id ="foodSearch" class="form-control" placeholder="Search nutritional info..." name="search" autocomplete = "on"></input>
+          <input id="goSearchSubmit" type="image" src="images/icon-search.png" onclick="javascript:renderNutritionFactsAPI();" border="0">
+        </form>
+        <form>
+          <div id="search-results-container">
+            <!-- search-results-mustache-template gets inserted here -->
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+  <!-- end food container -->
+
+  <div id="footer">
+    <div class="row">
+      <h4>Resources</h4>
+      <div>
+        <a href="http://www.bodybuilding.com/fun/no-meat-muscle-4-rules-for-building-mass-on-vegetarian-diet.html">No Meat Muscle</a><br>
+        <a href="http://rawforbeauty.com/blog/my-experience-10-months-100-raw-vegan-diet-muscle-building.html">Raw Vegan Diet</a><br>
+        <a href="http://www.bodybuilding.com/fun/shortcut-to-size.html">Shortcut to size</a><br>
+        <a href="http://www.bodybuilding.com/fun/jim-stoppani-six-week-shortcut-to-shred.html">Shortcut to shred</a><br>
+        <a href="http://www.bodybuilding.com/fun/justin3.htm">Sample Vegetarian meal plan</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Mustache Templates -->
+  <script id="weekly-workout-cards-mustache-template" type="x-tmpl-mustache">
+    <div value="{{link}}" id="{{ ids }}" class="daysOfWeekCard">
+      <div id="{{ ids }}" class="daysOfWeek">{{ dayOfWeek }}</div>
+      <div id="{{ ids }}" class="exercises">{{ dayOfWeekExercise }}</div>
+    </div>
+  </script>
+
+  <script id="daily-meal-allowances-mustache-template" type="x-tmpl-mustache">
+    <div class="dayType">
+      {{dayType}} day
+    </div>
+    <div class="nutritionInfoForMealAllowances">
+      <div class='calories'>
+        cals<br> 
+        {{calories}}
+      </div>
+      <div class='protein'>
+        pros<br>
+        {{protein}}
+      </div>
+      <div class='carbs'>
+        carbs<br>
+        {{carbs}}
+      </div>
+      <div class='fats'>
+        fats<br>
+        {{fats}}
+      </div>
+    </div>
+  </script>
+
+  <script id="individual-meal-allowances-mustache-template" type="x-tmpl-mustache">
+    <div class="meals">
+      <div>{{ name }} </div>
+      <div class='calories'>
+        cals<br> 
+        {{calories}}
+      </div>
+      <div class='protein'>
+        pros<br>
+        {{protein}}
+      </div>
+      <div class='carbs'>
+        carbs<br>
+        {{carbs}}
+      </div>
+      <div class='fats'>
+        fats<br>
+        {{fats}}
+      </div>
+    </div>
+    <div>Default Meal</div>
+    <div id="addedItems">
+      <div>{{ servingSizeQuantity }} {{ servingSizeUnit }} {{ itemName }}
+      </div>
+      <div>{{ addedItemCalories }}</div>
+      <div>{{ addedItemProtein }}</div>
+      <div>{{ addedItemCarbs }}</div>
+      <div>{{ addedItemFats }}</div>
+    </div>
+    <hr>
+  </script>
+
+  <script id="search-results-mustache-template" type="x-tmpl-mustache">
+    <div class='resultContainer'>
+      <label>
+        <div class='item'>
+          {{brandName}} {{itemName}}<br>
+        </div>
+        <div class="nutritionInfo">
+          <div class='searchResultCalories'>
+            cals<br> 
+            {{calories}}
+          </div>
+          <div class='searchResultProtein'>
+            pros<br>
+            {{protein}}
+          </div>
+          <div class='searchResultCarbs'>
+            carbs<br>
+            {{carbs}}
+          </div>
+          <div class='searchResultFats'>
+            fats<br>
+            {{fat}}
+          </div>
+        </div>
+      </label>
+      <select class="form-control row-spacer mealToAddTo">
+        <option value="none">Target Meal</option>
+        <option value="meal1">Breakfast 1</option>
+        <option value="meal2">Breakfast 2</option>
+        <option value="meal3">Late Morning Snack</option>
+        <option value="meal4">Lunch</option>
+        <option value="meal5">Afternoon Snack</option>
+        <option value="meal6">Pre-workout</option>
+        <option value="meal7">Post-Workout</option>
+        <option value="meal8">Dinner</option>
+        <option value="meal9">Before Bed Snack</option>
+      </select>
+      <button type="button" class="btn btn-large btn-success btn-block saveToMealButton" onclick="saveToMeal()">Add Meal Item</button>
+      <button type="button" class="btn btn-large btn-default btn-block saveToMealButton" onclick="saveToMeal()">Replace Meal Item</button>
+    </div>
+    <hr>
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+   <!-- jQuery script -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <!-- Mustache library call -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
+  <script src="js/cards.js"></script>
+  <script type="text/javascript" src="json/workoutWeeks.js"></script>
+  <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>

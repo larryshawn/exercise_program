@@ -1,6 +1,41 @@
 body {
-  background-color: black;
+  background-color: white;
   color: white;
+}
+
+hr {
+  border-bottom: 1px solid #999;
+}
+
+iframe#daily-workout-iframe {
+  height: 100%;
+  width: 100%;
+  padding: 1px;
+  border-radius: 25px;
+}
+
+.btn-success {
+  background-color: #91AE17;
+  border-color: yellowgreen;
+}
+
+.btn-success:focus {
+  background-color: yellowgreen;
+  border-color: #91AE17;
+}
+
+.btn-success:hover {
+  background-color: yellowgreen;
+  border-color: #91AE17;
+}
+
+/* Hide the scrollbars in a gallery. Only works in webkit browsers */
+iframe::-webkit-scrollbar { 
+  display: none; 
+}
+
+.padding-top-10 {
+  padding-top: 10px;
 }
 
 .center {
@@ -9,12 +44,12 @@ body {
 
 /* Nav Header */
 #nav-header {
-  position: fixed;
+  position: absolute;
   top: 0;
   width: 100%;
   height: 47px;
-  background-color: rgba(0, 0, 0, .5);
-  z-index: 900;
+  background-color: rgba(154, 205, 50, 0.75);
+  z-index: 100;
 }
 
 #nav-header > span {
@@ -22,20 +57,48 @@ body {
   color: white;
   font-size: 15px;
   font-weight: 900;
-  margin: 14px 10px;
+  margin: 14px 10px 0px 0;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
 }
 
-#nav-header a, a:visited {
-  color: white;
+a, a:visited {
+  color: #337AB7;
   text-decoration: none;
 }
 
-#nav-header a.active {
+a.active {
   font-weight: bold;
 }
-    
+
+a.hover {
+  text-decoration: none;
+  border-bottom: 1px solid #337AB7;
+}
+
+#logo {
+  float: left;
+  margin-top: 12px!important;
+  margin-left: 10px!important;
+}
+
+#settingsIcon {
+  float: right;
+}
+
+#hint {
+  position: relative;
+  bottom: 1px;
+  right: 4px;
+}
+
+#hint:hover {
+  cursor: pointer;
+}
+
+.glyphicon-cog:hover {
+  cursor: pointer;
+}
 
 /* Visited links under #nav-header */
 #nav-header a, a:visited {
@@ -51,40 +114,169 @@ body {
   padding-right: 0;
 }
 
-#main-container {
+#alert-container {
   width: 100%;
   background-color: goldenrod;
   padding-bottom: 20px;
+  display: none;
 }
 
 #food-container {
-  width: 100%;
-  background-color: yellowgreen;
+  background-color: white;
+  color: #333
   padding-bottom: 20px;
+  display: none;
+  margin: 0 10px;
 }
 
-#alternate-container {
+#food-container .row:first-child {
+  margin-right: -20px;
+  margin-left: -20px;
+}
+
+#overview-container {
   width: 100%;
-  background-color: #000;
-  color: #ebebeb;
+  background-color: #FFF;
+  color: #333;
   padding-bottom: 20px;
+  display: none;
+}
+
+#overviewTitle h2 {
+  font-size: 25px;
+  font-weight: bold;
+  border-bottom: 6px solid #91AE17;
+  display: inline;
+}
+
+#weeklyWorkoutTitle {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#workout-overview {
+  display: inline-block;
+  height: 320px;
+  border-radius: 20px;
+  margin-top: 10px;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  padding: 0 20px;
+  box-shadow: inset 0 0 10px #666, inset 0 0 10px #666, inset 0 0 10px #666;
+}
+
+/* Hide the scrollbars in the calendar. Only works in webkit browsers */
+#workout-overview::-webkit-scrollbar { 
+  display: none; 
+}
+
+#today {
+  display: block;
+  padding: 0 0 10px 0;
+}
+#exercise {
+  display: inline-block;
+  padding: 0 0 10px 0;
+}
+
+#today span {
+  margin: 0 0 0 2px;
+}
+
+.glyphicon-calendar {
+  top: 1px;
+  float: left;
+}
+.glyphicon-cutlery {
+  position: relative;
+  top: 0px;
+}
+
+#daily-meal-allowances-container {
+  text-align: center;
+  padding-top: 20px;
+}
+
+#workout-overview h3 {
+  font-size: 1.2em
+}
+#workout-overview h4 {
+  font-size: 1.1em
+}
+
+.meals {
+  margin: 10px;
+  background-color: white;
+  padding: 10px;
+  border-radius: 25px;
 }
 
 #preferences-container {
   width: 100%;
-  background-color: #000;
+  background-color: rgba(0,0,0,.8);
   color: #ebebeb;
   padding-bottom: 20px;
-  /*display: none;*/
+  display: none;
+  margin-top: 28px;
+  transform: translateY(-514px);
+  transition: transform 1s ease-out;
+}
+
+#individual-meals-container {
+  margin: 0 auto;
+}
+
+.close-btn {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+  top: 10px;
 }
 
 /* Hero poster */
+.img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
+  background-image: url("@{file-1x}");
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    background-image: url("@{file-2x}");
+    background-size: @width-1x @height-1x;
+  }
+}
+
+
+// Usage
+.jumbotron {
+  .img-retina("../images/mango.jpg-1x.png", "../images/mango.jpg-2x.png", 100px, 100px);
+}
+
 #hero {
-  background-image: url(../images/mango.jpg);
-  height: 188px;
+  background-image: url(../images/hero.jpg);
+  width: 100%;
   background-repeat: no-repeat;
   background-size: cover;
   margin: 0 auto;
+  background-position: 0;
+  position: relative;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  min-height: 240px;
+}
+
+#heroText {
+  text-align: center;
+  background-color: transparent;
+  color: #333380;
 }
 
 #logo-image {
@@ -124,7 +316,8 @@ body {
 }
 
 #footer {
-  background-color: white;
+  background-color: yellowgreen;
+  color: darkgreen!important;
   font-size: 18px;
   font-weight: lighter;
   color: #666;
@@ -133,7 +326,7 @@ body {
 }
 
 #footer a {
-  color: #666;
+  color: white;
   margin-left: 15px;
 }
 
@@ -156,10 +349,6 @@ body {
 
 #tagline3 span {
   color: orange;
-}
-
-.row-spacer {
-  margin-bottom: 25px;
 }
 
 .thumb {
@@ -191,17 +380,9 @@ input {
   left: 16px;
 }
 
-.card {
-  border: 1px solid lightgray;
-  padding: 16px;
-  background-color: whitesmoke;
-  color: #333;
-  width: 96%;
-  margin: 2%;
-  display: inline-table;
-}
 
-#beginnerIncreaseWorkout, #beginnerDecreaseWorkout, #intermediateIncreaseWorkout, #intermediateDecreaseWorkout, #advancedIncreaseWorkout, #advancedDecreaseWorkout, #monolog, #btnAddToMenu {
+
+#daily-meal-allowances-container, #increase-overview-text, #decrease-overview-text, #beginnerDecreaseWorkout, #intermediateIncreaseWorkout, #intermediateDecreaseWorkout, #advancedIncreaseWorkout, #advancedDecreaseWorkout, #monolog, #btnAddToMenu {
   display: none;
 }
 
@@ -210,12 +391,6 @@ video {
   width: 100%;
 }
 
-#workoutOverviewForStats {
-  padding-left: 15px
-}
-#today {
-  padding-left: 15px
-}
 /* style search area */
 #goSearchSubmit {
     display: inline-block;
@@ -230,87 +405,121 @@ video {
 #goSearchSubmit:active {
   top: -33px;
 }
-#searchResults {
+#search-results-container {
   display: block;
   padding: 50px 20px 10px 20px;
 }
-/* setting search results */
-.item {
-  font-weight: bold;
-  display: inline;
-  left: 4px;
-  top: 2px;
-  position: relative;
+
+.navbar-default .navbar-toggle {
+  background-color: #fed136;
+  border-color: #fed136;
 }
-.calories {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
+
+/* Displaying the workout schedule */
+
+#weekly-workout-cards-container {
+  min-height: 115px;
+  padding-bottom: 25px;
+  background-color: #ebebeb;
+}
+
+.daysOfWeekCard {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding-bottom: 10px;
+  background-color: white;
   color: white;
-  border-radius: 9px;
+  border-radius: 4px;
   position: relative;
   top: 12px;
   text-align: center;
+  margin: 4px;
+  min-height: 84px;
+  width: 118px;
+  white-space: normal;
+  vertical-align: top;
 }
-.protein {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
+
+.daysOfWeek {
+  background-color: black;
 }
-.carbs {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
-}
-.servingSize {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
-}
-.servingSizeUnit {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
-}
-.fat {
-  border: 1px solid darkblue;
-  display: block;
-  padding: 10px;
-  background-image: linear-gradient(rgb(7, 0, 255), rgb(102, 102, 255));
-  color: white;
-  border-radius: 9px;
-  position: relative;
-  top: 12px;
-  text-align: center;
-}
-.resultContainer > label {
-  margin-top: 20px;
-  padding: 20px;
-  border: 1px solid darkgray;
+
+#individual-meals-container {
+  height: 312px;
   width: 100%;
+  box-shadow: inset 0 0 10px #666, inset 0 0 10px #666, inset 0 0 10px #666;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+  background-color: #ebebeb;
+  margin: 47px auto 0px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+#individual-meals-title {
+  position: relative;
+  top: 35px;
+  border-bottom: 6px solid #91AE17;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+}
+#workout-overview-title {
+  position: relative;
+  border-bottom: 6px solid #91AE17;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 2px;
+  margin-bottom: 2px;
+}
+
+#modify-meals-title {
+  position: relative;
+  border-bottom: 6px solid #91AE17;
+  margin: 0 auto;
+  width: 100%;
+  text-align: center;
+  color: #333;
+}
+
+/* Hide the scrollbars in a gallery. Only works in webkit browsers */
+#individual-meals-container::-webkit-scrollbar { 
+    display: none; 
+}
+
+.exercises {
+  color: #333;
+  padding: 10px 10px 0px 10px;
+}
+
+/* Horizontal scroll gallery */
+.gallery {
+  overflow-x: scroll;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 25px;
+}
+
+/* Hide the scrollbars in the calendar. Only works in webkit browsers */
+.gallery::-webkit-scrollbar { 
+  display: none; 
+}
+
+.saveToMealButton {
+  margin-top: 10px;
+  margin-bottom: 0px;
+  display: inline;
+  width: none;
+}
+
+#mealToAddTo {
+  display: inline;
+  width: none;
+}
+
+/* YouTube player iFrame */
+#youtube-player-iframe {
+  margin-top: 25px;
+  width: 100%;
+  height: 210px;
 }
