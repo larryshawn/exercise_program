@@ -90,7 +90,6 @@ a.hover {
   position: relative;
   bottom: 1px;
   right: 4px;
-  display: none;
 }
 
 #hint:hover {
@@ -419,7 +418,8 @@ video {
 /* Displaying the workout schedule */
 
 #weekly-workout-cards-container {
-  height: 115px;
+  min-height: 115px;
+  padding-bottom: 25px;
   background-color: #ebebeb;
 }
 
@@ -434,7 +434,7 @@ video {
   top: 12px;
   text-align: center;
   margin: 4px;
-  height: 84px;
+  min-height: 84px;
   width: 118px;
   white-space: normal;
   vertical-align: top;

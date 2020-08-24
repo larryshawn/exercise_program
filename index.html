@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <!-- Required to properly zoom the viewport on mobile. -->
-  <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, initial-scale=1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>My Health Schedule As Whole Foods Fitness</title>
-  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/cards.css">
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
@@ -15,8 +15,7 @@
     <span></span>
     <span id="logo">Whole Foods Fitness</span>
     <span id="settingsIcon">
-      <span id="hint">Set workout <i class="glyphicon glyphicon-hand-right"></i></span>
-      <i class="glyphicon glyphicon-cog"></i>
+      <span id="hint">Set workout</span>
     </span>
     <div id="preferences-container" class="container">
         <div class="row">
@@ -25,7 +24,7 @@
             <img id="preferencesCloseButton" class="close-btn" src="images/close.png">
           </div>
         </div>
-        <form name="myForm" action="" onsubmit="getFormValues()" method="post">
+        <form name="myForm" action="javascript:getFormValues()" method="post">
           <div class="form-group">
             <label>How many days you've been on this schedule</label><br>
             <input type="number" name="days" id="amount-of-days" class="form-control" tabindex="1">
@@ -38,29 +37,23 @@
             </select>
           </div>
           <label>Alert Type</label>
-          <div class="radio ">
-            <label>
-              <input type="radio" name="alertTypeRadios" id="wantsAudio" value="audio" checked tabindex="3">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" name="alertTypeCheckboxes" id="wantsAudio" value="audio" tabindex="3">
+            <label class="form-check-label" for="wantsAudio">
               Audio
             </label>
           </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="alertTypeRadios" id="wantsVideo" value="video" tabindex="4">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox"  name="alertTypeCheckboxes" id="wantsVideo" value="video" tabindex="4">
+            <label class="form-check-label" for="wantsVideo">
               Video
-            </label>
-          </div>
-          <div class="radio">
-            <label>
-              <input type="radio" name="alertTypeRadios" id="wantsBoth" value="both" tabindex="5">
-              Both
             </label>
           </div>
           <div class="form-group">
             <label>How much do you weigh?</label><br>
             <input type="number" name="currentWeight" id="currentWeight" class="form-control" tabindex="6">
           </div>
-          <button type="button" id="preferencesSubmitButton" class="btn btn-large btn-success btn-block row-spacer" tabindex="7">Show Workout Overview</button>
+          <button type="submit" id="preferencesSubmitButton" class="btn btn-large btn-success btn-block row-spacer" tabindex="7">Show Workout Overview</button>
         </form>
       </div>
   </div>
@@ -542,11 +535,16 @@
     <hr>
   </script>
 
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
    <!-- jQuery script -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <!-- Mustache library call -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.1.2/mustache.min.js"></script>
   <script src="js/cards.js"></script>
+  <script type="text/javascript" src="json/workoutWeeks.js"></script>
   <script type="text/javascript" src="js/scripts.js"></script>
 </body>
 </html>

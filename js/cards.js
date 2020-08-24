@@ -2,7 +2,6 @@
 function renderSearchResultsCards(servingSizeQuantity, servingSizeUnit, brandName, itemName, itemId, calories, protein, carbs, fat) {
     // Reach out and grab the raw template
     var mustacheTemplate = $('#search-results-mustache-template').html();
-    // console.log(mustacheTemplate);
 
     // Define dynamic values (hydrate the template)
     var values = {
@@ -16,24 +15,13 @@ function renderSearchResultsCards(servingSizeQuantity, servingSizeUnit, brandNam
         'carbs'                 : carbs,
         'fat'                   : fat
     };
-
-    // So you can call it like this:
-    // doStuff("4.jpg", "yep, me again", "Zweh!");
     
     // Do the Mustache value placement. Stamp out the template with real values.
     var renderedText = Mustache.render(mustacheTemplate, values);
 
     // append each result item from the for loop to the end of the previous result item inside the div
     $('#search-results-container').append(renderedText);
-    // or for a result that doesn't tack each search result set on top of the other, do this...
-
-    // return renderedText;
-
-    // This is how it's really done though ;), ugh, not really.
-    // var currentTextInSearchResultsArea = $( '#searchResults' ).html();
-    // $( '#searchResults' ).text( renderedText );
-
-}   
+} 
 
 // Hydrate the Mustache template for individual meals
 
