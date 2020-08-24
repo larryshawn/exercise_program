@@ -21,7 +21,8 @@ function renderSearchResultsCards(servingSizeQuantity, servingSizeUnit, brandNam
 
     // append each result item from the for loop to the end of the previous result item inside the div
     $('#search-results-container').append(renderedText);
-}
+} 
+
 // Hydrate the Mustache template for individual meals
 
 function renderMealCards(name, calories, protein, carbs, fats) {
