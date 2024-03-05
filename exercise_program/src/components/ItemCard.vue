@@ -1,19 +1,11 @@
 <template>
-    <!-- <router-link
-        class="event-link"
-        :to="{
-            name: 'event-show',
-            params: { id: event.id, title: event.title }
-        }"
-    > -->
-    <div class="event-card -shadow">
-        <!-- <span class="eyebrow">@{{ event.total_hits.hits.length }} on</span> -->
-        <h4 class="title">{{ this.event.fields.item_name }}</h4>
+    <div class="food-card -shadow">
+        <h4 class="title">{{ this.nutrients[0][0].food_name }}</h4>
         <p>
-            Calories: {{ this.event.fields.nf_calories }} <br />
-            Protein: {{ this.event.fields.nf_protein }} <br />
-            Carbs: {{ this.event.fields.nf_total_carbohydrate }} <br />
-            Total Fat: {{ this.event.fields.nf_total_fat }} <br />
+            Calories: {{ this.nutrients[0][0].nf_calories }} <br />
+            Protein: {{ this.nutrients[0][0].nf_protein }} <br />
+            Carbs: {{ this.nutrients[0][0].nf_total_carbohydrate }} <br />
+            Total Fat: {{ this.nutrients[0][0].nf_total_fat }} <br />
             Good Fat:
             {{ goodFat }}
             <br />
@@ -25,13 +17,13 @@
 <script>
 export default {
     props: {
-        event: Object
+        nutrients: Object
     },
     computed: {
         goodFat() {
-            const totalFat = this.event.fields.nf_total_fat
-            const saturatedFat = this.event.fields.nf_saturated_fat
-            const transFat = this.event.fields.nf_trans_fatty_acid
+            const totalFat = this.nutrients[0][0].nf_total_fat
+            const saturatedFat = this.nutrients[0][0].nf_saturated_fat
+            const transFat = this.nutrients[0][0].nf_trans_fatty_acid
             const goodFat = totalFat - saturatedFat - transFat
 
             const formattedGoodFat =
@@ -41,27 +33,30 @@ export default {
 
             return formattedGoodFat
         }
+    },
+    mounted() {
+        console.log('food:', this.nutrients) // Add this console log
     }
 }
 </script>
 
 <style scoped>
-.event-card {
+.food-card {
     padding: 20px;
     margin-bottom: 24px;
     transition: all 0.2s linear;
     cursor: pointer;
 }
-.event-card:hover {
+.food-card:hover {
     transform: scale(1.01);
     box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2),
         0 1px 15px 0 rgba(0, 0, 0, 0.19);
 }
-.event-card > .title {
+.food-card > .title {
     margin: 0;
 }
 
-.event-link {
+.food-link {
     color: black;
     text-decoration: none;
     font-weight: 100;
